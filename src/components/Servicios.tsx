@@ -114,22 +114,22 @@ function ServiceCard({
       initial={{ opacity: 0, y: 30 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.8, delay: 0.2 + index * 0.1, ease: [0.16, 1, 0.3, 1] }}
-      className="group border-b border-white/5 last:border-b-0"
+      className="group border-b border-border last:border-b-0"
     >
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full py-6 sm:py-8 flex items-start gap-6 text-left hover:opacity-80 transition-opacity"
+        className="w-full py-5 sm:py-6 flex items-start gap-6 text-left hover:opacity-80 transition-opacity"
       >
-        <span className="text-sm text-[#444444] group-hover:text-[#666666] transition-colors font-light">
+        <span className="text-sm text-muted-dark group-hover:text-muted transition-colors font-light">
           {service.number}
         </span>
         <div className="flex-1 flex items-start justify-between gap-4">
-          <h3 className="text-lg sm:text-xl font-light text-[#f0f0f0] group-hover:text-white transition-colors">
+          <h3 className="text-base sm:text-lg font-light text-foreground group-hover:text-white transition-colors">
             {service.title}
           </h3>
           <ChevronDown
             size={20}
-            className={`flex-shrink-0 text-[#444444] group-hover:text-[#666666] transition-all duration-300 ${
+            className={`flex-shrink-0 text-muted-dark group-hover:text-foreground transition-all duration-300 ${
               isOpen ? 'rotate-180' : ''
             }`}
           />
@@ -147,13 +147,13 @@ function ServiceCard({
           <div className="ml-10 sm:ml-14 grid md:grid-cols-2 gap-8">
             {/* What's included */}
             <div>
-              <h4 className="text-xs text-[#666666] uppercase tracking-widest mb-4">
+              <h4 className="text-xs text-muted uppercase tracking-widest mb-4">
                 Qué incluye
               </h4>
               <ul className="space-y-3">
                 {service.includes.map((item, i) => (
-                  <li key={i} className="flex items-start gap-3 text-sm text-[#888888]">
-                    <span className="text-[#444444] mt-0.5">→</span>
+                  <li key={i} className="flex items-start gap-3 text-sm text-muted-light">
+                    <span className="text-accent mt-0.5">→</span>
                     {item}
                   </li>
                 ))}
@@ -162,13 +162,13 @@ function ServiceCard({
 
             {/* Deliverables */}
             <div>
-              <h4 className="text-xs text-[#666666] uppercase tracking-widest mb-4">
+              <h4 className="text-xs text-muted uppercase tracking-widest mb-4">
                 Entregables típicos
               </h4>
               <ul className="space-y-3">
                 {service.deliverables.map((item, i) => (
-                  <li key={i} className="flex items-start gap-3 text-sm text-[#888888]">
-                    <span className="text-white/30 mt-0.5">•</span>
+                  <li key={i} className="flex items-start gap-3 text-sm text-muted-light">
+                    <span className="text-muted-dark mt-0.5">•</span>
                     {item}
                   </li>
                 ))}
@@ -186,47 +186,35 @@ export default function Servicios() {
   const isInView = useInView(ref, { once: true, margin: '-100px' });
 
   return (
-    <section id="servicios" className="relative py-24 sm:py-32 lg:py-40 overflow-hidden">
+    <section id="servicios" className="relative py-20 sm:py-24 lg:py-32 overflow-hidden">
       {/* Background */}
-      <div className="absolute inset-0 bg-[#050505]">
+      <div className="absolute inset-0 bg-background">
         <div className="absolute inset-0 dot-pattern opacity-30" />
         <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
       </div>
 
       <div ref={ref} className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="mb-12"
-        >
-          <span className="text-sm text-[#666666] tracking-widest uppercase">
-            05 — Servicios
-          </span>
-        </motion.div>
-
         <motion.h2
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-          className="text-3xl sm:text-4xl md:text-5xl font-light leading-[1.15] mb-6 max-w-3xl"
+          className="text-2xl sm:text-3xl md:text-4xl font-light leading-[1.15] mb-6 max-w-3xl"
         >
-          <span className="text-[#f0f0f0]">Puedes llegar por cualquiera de estos </span>
-          <span className="text-elegant text-[#f0f0f0]">caminos.</span>
+          <span className="text-foreground">Puedes llegar por cualquiera de estos </span>
+          <span className="text-elegant text-foreground">caminos.</span>
         </motion.h2>
 
         <motion.p
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-          className="text-lg sm:text-xl text-[#666666] mb-16 max-w-2xl font-light"
+          className="text-base sm:text-lg text-muted mb-12 max-w-2xl font-light"
         >
           Nuestra prioridad es aterrizar en implementación y resultado.
         </motion.p>
 
         {/* Services List */}
-        <div className="border-t border-white/5">
+        <div className="border-t border-border">
           {services.map((service, index) => (
             <ServiceCard key={service.id} service={service} index={index} isInView={isInView} />
           ))}

@@ -36,39 +36,27 @@ export default function ComoTrabajamos() {
   const isInView = useInView(ref, { once: true, margin: '-100px' });
 
   return (
-    <section className="relative py-24 sm:py-32 lg:py-40 overflow-hidden">
+    <section className="relative py-20 sm:py-24 lg:py-32 overflow-hidden">
       {/* Background */}
-      <div className="absolute inset-0 bg-[#080808]">
+      <div className="absolute inset-0 bg-background-alt">
         <div className="absolute inset-0 dot-pattern opacity-20" />
       </div>
 
       <div ref={ref} className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Label */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="mb-12"
-        >
-          <span className="text-sm text-[#666666] tracking-widest uppercase">
-            04 — Cómo trabajamos
-          </span>
-        </motion.div>
-
         <motion.h2
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-          className="text-3xl sm:text-4xl md:text-5xl font-light leading-[1.15] mb-20 max-w-4xl"
+          className="text-2xl sm:text-3xl md:text-4xl font-light leading-[1.15] mb-14 max-w-4xl"
         >
-          <span className="text-[#f0f0f0]">Un método simple y práctico: </span>
-          <span className="text-elegant text-[#f0f0f0]">entender, construir, integrar</span>
-          <span className="text-[#f0f0f0]"> y </span>
-          <span className="text-elegant text-[#666666]">adoptar.</span>
+          <span className="text-foreground">Un método simple y práctico: </span>
+          <span className="text-elegant text-foreground">entender, construir, integrar</span>
+          <span className="text-foreground"> y </span>
+          <span className="text-elegant text-muted">adoptar.</span>
         </motion.h2>
 
         {/* Process Steps */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-6">
           {steps.map((step, index) => (
             <motion.div
               key={index}
@@ -79,16 +67,16 @@ export default function ComoTrabajamos() {
             >
               {/* Step number */}
               <div className="mb-6">
-                <span className="text-5xl font-light text-white/10 group-hover:text-white/20 transition-colors duration-500">
+                <span className="text-4xl font-light text-white/10 group-hover:text-white/20 transition-colors duration-500">
                   {step.number}
                 </span>
               </div>
 
               {/* Content */}
-              <h3 className="text-xl font-medium text-[#f0f0f0] mb-4 group-hover:text-white transition-colors">
+              <h3 className="text-lg font-semibold text-foreground mb-4 group-hover:text-white transition-colors">
                 {step.title}
               </h3>
-              <p className="text-base text-[#666666] leading-relaxed group-hover:text-[#888888] transition-colors">
+              <p className="text-base text-muted leading-relaxed group-hover:text-muted-light transition-colors">
                 {step.description}
               </p>
             </motion.div>
@@ -100,11 +88,11 @@ export default function ComoTrabajamos() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-20 pt-10 border-t border-white/5"
+          className="mt-14 pt-8 border-t border-border"
         >
-          <p className="text-xl sm:text-2xl font-light leading-relaxed max-w-3xl">
-            <span className="text-[#888888]">Preferimos hacer pocas cosas, bien hechas. </span>
-            <span className="text-elegant text-[#f0f0f0]">
+          <p className="text-lg sm:text-xl font-light leading-relaxed max-w-3xl">
+            <span className="text-muted-light">Preferimos hacer pocas cosas, bien hechas. </span>
+            <span className="text-elegant text-foreground">
               Nuestro trabajo no termina cuando &ldquo;funciona&rdquo;, termina cuando se usa.
             </span>
           </p>

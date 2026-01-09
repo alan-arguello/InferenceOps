@@ -51,16 +51,16 @@ function FAQItem({
   onToggle: () => void;
 }) {
   return (
-    <div className="border-b border-white/5 last:border-b-0">
+    <div className="border-b border-border last:border-b-0">
       <button
         onClick={onToggle}
-        className="w-full py-6 flex items-start justify-between gap-6 text-left group"
+        className="w-full py-5 flex items-start justify-between gap-6 text-left group"
         aria-expanded={isOpen}
       >
-        <span className="text-lg sm:text-xl text-[#f0f0f0] font-light group-hover:text-white transition-colors">
+        <span className="text-base sm:text-lg text-foreground font-light group-hover:text-white transition-colors">
           {faq.question}
         </span>
-        <span className="flex-shrink-0 text-[#444444] group-hover:text-[#666666] transition-colors mt-1">
+        <span className="flex-shrink-0 text-muted-dark group-hover:text-muted transition-colors mt-1">
           {isOpen ? '−' : '+'}
         </span>
       </button>
@@ -73,7 +73,7 @@ function FAQItem({
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
           >
             <div className="pb-6">
-              <p className="text-base text-[#888888] leading-relaxed max-w-3xl">{faq.answer}</p>
+              <p className="text-base text-muted-light leading-relaxed max-w-3xl">{faq.answer}</p>
             </div>
           </motion.div>
         )}
@@ -88,38 +88,26 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section id="faq" className="relative py-24 sm:py-32 lg:py-40 overflow-hidden">
+    <section id="faq" className="relative py-20 sm:py-24 lg:py-32 overflow-hidden">
       {/* Background */}
-      <div className="absolute inset-0 bg-[#050505]">
+      <div className="absolute inset-0 bg-background">
         <div className="absolute inset-0 dot-pattern opacity-30" />
         <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
       </div>
 
       <div ref={ref} className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="mb-12"
-        >
-          <span className="text-sm text-[#666666] tracking-widest uppercase">
-            08 — FAQ
-          </span>
-        </motion.div>
-
         <motion.h2
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-          className="text-3xl sm:text-4xl md:text-5xl font-light leading-[1.15] mb-16"
+          className="text-2xl sm:text-3xl md:text-4xl font-light leading-[1.15] mb-12"
         >
-          <span className="text-[#f0f0f0]">Preguntas </span>
-          <span className="text-elegant text-[#666666]">frecuentes.</span>
+          <span className="text-foreground">Preguntas </span>
+          <span className="text-elegant text-muted">frecuentes.</span>
         </motion.h2>
 
         {/* FAQ List */}
-        <div className="border-t border-white/5">
+        <div className="border-t border-border">
           {faqs.map((faq, index) => (
             <motion.div
               key={index}

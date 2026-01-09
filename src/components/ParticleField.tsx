@@ -63,13 +63,13 @@ export default function ParticleField() {
     window.addEventListener('mousemove', handleMouseMove);
 
     const animate = () => {
-      ctx.fillStyle = 'rgba(5, 5, 5, 0.1)';
+      ctx.fillStyle = 'rgba(9, 11, 17, 0.12)';
       ctx.fillRect(0, 0, dimensions.width, dimensions.height);
 
       const particles = particlesRef.current;
 
       // Draw connecting lines
-      ctx.strokeStyle = 'rgba(0, 255, 136, 0.03)';
+      ctx.strokeStyle = 'rgba(124, 244, 216, 0.04)';
       ctx.lineWidth = 0.5;
 
       for (let i = 0; i < particles.length; i++) {
@@ -80,7 +80,7 @@ export default function ParticleField() {
 
           if (distance < 120) {
             const opacity = (1 - distance / 120) * 0.15;
-            ctx.strokeStyle = `rgba(0, 255, 136, ${opacity})`;
+            ctx.strokeStyle = `rgba(124, 244, 216, ${opacity})`;
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
@@ -97,7 +97,7 @@ export default function ParticleField() {
         const maxDistance = Math.sqrt(dimensions.width ** 2 + dimensions.height ** 2);
         const opacity = ((maxDistance - distance) / maxDistance) * 0.08;
 
-        ctx.strokeStyle = `rgba(0, 255, 136, ${opacity})`;
+        ctx.strokeStyle = `rgba(124, 244, 216, ${opacity})`;
         ctx.lineWidth = 0.5;
         ctx.beginPath();
         ctx.moveTo(particle.x, particle.y);
@@ -149,7 +149,7 @@ export default function ParticleField() {
         // Draw particle
         ctx.beginPath();
         ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(0, 255, 136, ${particle.opacity})`;
+        ctx.fillStyle = `rgba(124, 244, 216, ${particle.opacity})`;
         ctx.fill();
 
         // Draw glow
@@ -157,8 +157,8 @@ export default function ParticleField() {
           particle.x, particle.y, 0,
           particle.x, particle.y, particle.size * 3
         );
-        gradient.addColorStop(0, `rgba(0, 255, 136, ${particle.opacity * 0.3})`);
-        gradient.addColorStop(1, 'rgba(0, 255, 136, 0)');
+        gradient.addColorStop(0, `rgba(124, 244, 216, ${particle.opacity * 0.3})`);
+        gradient.addColorStop(1, 'rgba(124, 244, 216, 0)');
         ctx.beginPath();
         ctx.arc(particle.x, particle.y, particle.size * 3, 0, Math.PI * 2);
         ctx.fillStyle = gradient;
@@ -170,9 +170,9 @@ export default function ParticleField() {
         centerX, centerY, 0,
         centerX, centerY, 300
       );
-      centerGradient.addColorStop(0, 'rgba(0, 255, 136, 0.1)');
-      centerGradient.addColorStop(0.5, 'rgba(0, 255, 136, 0.02)');
-      centerGradient.addColorStop(1, 'rgba(0, 255, 136, 0)');
+      centerGradient.addColorStop(0, 'rgba(124, 244, 216, 0.12)');
+      centerGradient.addColorStop(0.5, 'rgba(124, 244, 216, 0.03)');
+      centerGradient.addColorStop(1, 'rgba(124, 244, 216, 0)');
       ctx.fillStyle = centerGradient;
       ctx.beginPath();
       ctx.arc(centerX, centerY, 300, 0, Math.PI * 2);

@@ -1,6 +1,5 @@
 import Navigation from '@/components/Navigation';
 import Hero from '@/components/Hero';
-import ParaQuien from '@/components/ParaQuien';
 import Oportunidad from '@/components/Oportunidad';
 import QueHacemos from '@/components/QueHacemos';
 import ComoTrabajamos from '@/components/ComoTrabajamos';
@@ -17,7 +16,6 @@ export default function Home() {
       <Navigation />
       <main>
         <Hero />
-        <ParaQuien />
         <Oportunidad />
         <QueHacemos />
         <ComoTrabajamos />
