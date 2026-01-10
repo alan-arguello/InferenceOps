@@ -105,7 +105,7 @@ export default function Navigation() {
                       onClick={() => handleLocaleChange(option.value)}
                       aria-label={`${t("toggleLabel")} ${option.label}`}
                       className={cn(
-                        "text-xs uppercase tracking-[0.2em] transition-colors",
+                        "text-xs uppercase tracking-[0.2em] transition-colors cursor-pointer pointer-events-auto",
                         option.value === currentLocale
                           ? "text-foreground"
                           : "text-muted-dark hover:text-muted-light"
@@ -194,7 +194,7 @@ export default function Navigation() {
                     onClick={() => handleLocaleChange(option.value)}
                     aria-label={`${t("toggleLabel")} ${option.label}`}
                     className={cn(
-                      "text-xs uppercase tracking-[0.3em] transition-colors",
+                      "text-xs uppercase tracking-[0.3em] transition-colors cursor-pointer pointer-events-auto",
                       option.value === currentLocale
                         ? "text-foreground"
                         : "text-muted-dark hover:text-muted-light"
