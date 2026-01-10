@@ -44,51 +44,72 @@ export default function Oportunidad() {
       </div>
 
       <div ref={ref} className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.h2
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="text-2xl sm:text-3xl md:text-4xl font-light leading-[1.15] mb-5"
-          >
-            <span className="text-foreground">
-              La Inteligencia Artificial es la mayor{" "}
-            </span>
-            <span className="text-elegant text-foreground">
-              revolución tecnológica
-            </span>
-            <span className="text-foreground"> y </span>
-            <span className="text-elegant text-muted">
-              traemos el conocimiento
-            </span>
-            <span className="text-foreground"> de Silicon Valley a </span>
-            <span className="text-elegant text-muted">Latinoamérica.</span>
-          </motion.h2>
+        <div className="relative max-w-4xl mx-auto">
+          <div className="pointer-events-none absolute inset-0 translate-x-4 translate-y-4 rounded-[28px] border border-white/10 bg-white/[0.02]" />
+          <div className="pointer-events-none absolute inset-0 translate-x-2 translate-y-2 rounded-[28px] border border-white/10 bg-white/[0.04]" />
+          <div className="relative z-10 rounded-[28px] border border-border-light bg-[rgba(14,18,26,0.78)] backdrop-blur-sm px-5 sm:px-8 lg:px-10 py-6 sm:py-8 lg:py-9 shadow-[0_30px_70px_rgba(0,0,0,0.45)] text-left">
+            <motion.h2
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{
+                duration: 0.8,
+                delay: 0.1,
+                ease: [0.16, 1, 0.3, 1],
+              }}
+              className="mt-5 text-2xl sm:text-3xl md:text-4xl font-light leading-[1.15] mb-5"
+            >
+              <span className="block">
+                <span className="text-foreground">Implementamos en </span>
+                <span className="text-elegant text-foreground">
+                  Latinoamérica
+                </span>
+              </span>
+              <span className="block">
+                <span className="text-foreground">lo que en </span>
+                <span className="text-elegant text-muted">Silicon Valley</span>
+                <span className="text-foreground"> ya funciona en </span>
+                <span className="text-elegant text-foreground">
+                  producción.
+                </span>
+              </span>
+            </motion.h2>
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="space-y-4"
-          >
-            <p className="text-base sm:text-lg text-muted leading-relaxed font-light max-w-3xl mx-auto">
-              Después de conversar con líderes y corporativos en la región,
-              vimos una diferencia abismal entre la adopción tecnológica y la
-              mejora real de eficiencia operativa en las empresas.
-            </p>
-            <p className="text-base sm:text-lg leading-relaxed font-light max-w-3xl mx-auto">
-              <span className="text-muted">
-                Traemos know-how y consultoría{" "}
-              </span>
-              <span className="text-foreground">
-                para desplegar soluciones hechas a la medida
-              </span>
-              <span className="text-muted">
-                , con un objetivo claro: que las empresas de Latinoamérica
-                compitan a nivel mundial.
-              </span>
-            </p>
-          </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{
+                duration: 0.8,
+                delay: 0.2,
+                ease: [0.16, 1, 0.3, 1],
+              }}
+              className="space-y-5 sm:space-y-6 max-w-3xl"
+            >
+              <p className="text-base sm:text-lg text-muted leading-relaxed font-light">
+                En los últimos meses, al hablar con ejecutivos y líderes
+                corporativos de la región, vimos el mismo patrón:{" "}
+                <span className="text-foreground">interés real por IA</span>,
+                pero <span className="text-foreground">poca claridad</span> para
+                convertirlo en{" "}
+                <span className="text-foreground">resultados</span>.
+              </p>
+              <p className="text-base sm:text-lg text-muted leading-relaxed font-light">
+                Muchos esfuerzos fallan no por la tecnología, sino por{" "}
+                <span className="text-foreground">priorización incorrecta</span>,{" "}
+                <span className="text-foreground">falta de integración</span> y{" "}
+                <span className="text-foreground">cero adopción</span>.
+              </p>
+              <p className="text-base sm:text-lg text-muted leading-relaxed font-light">
+                <span className="text-foreground">Por eso existimos:</span>{" "}
+                implementamos lo que sí mueve la operación.
+                <br className="hidden sm:block" />
+                Empezamos por el{" "}
+                <span className="text-foreground">caso con mayor impacto</span>,
+                lo integramos a tus herramientas actuales y acompañamos hasta
+                que el equipo lo use en el día a día, con{" "}
+                <span className="text-foreground">métricas claras</span>.
+              </p>
+            </motion.div>
+          </div>
         </div>
       </div>
     </section>

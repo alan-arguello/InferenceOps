@@ -6,7 +6,7 @@ import ParticleField from "./ParticleField";
 
 const bullets = [
   "Ponemos orden y claridad sobre qué sí vale la pena implementar y qué no",
-  "Integramos la solución a tu operación y a tus herramientas actuales",
+  "Priorizamos lo que sí mueve el P&L y descartamos lo que no)",
   "Acompañamos la adopción para que se vuelva parte del día a día",
 ];
 

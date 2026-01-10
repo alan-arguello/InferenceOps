@@ -12,7 +12,11 @@ function AutomationVisualization() {
     <div className="relative w-full h-32 sm:h-36 overflow-hidden">
       <svg className="absolute inset-0 w-full h-full" viewBox="0 0 200 100">
         {/* API endpoints */}
-        <motion.g initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }}>
+        <motion.g
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.2 }}
+        >
           {/* Left source systems */}
           {[
             { y: 20, label: "CRM" },
@@ -150,7 +154,9 @@ function AutomationVisualization() {
             transition={{ duration: 1.5, repeat: Infinity }}
             className="w-1.5 h-1.5 rounded-full bg-accent"
           />
-          <span className="text-[8px] text-muted-dark font-mono">3 FLOWS ACTIVE</span>
+          <span className="text-[8px] text-muted-dark font-mono">
+            3 FLOWS ACTIVE
+          </span>
         </div>
       </div>
     </div>
@@ -216,7 +222,9 @@ function TrainingVisualization() {
               <div className="text-[7px] text-muted-dark font-mono uppercase">
                 {metric.label}
               </div>
-              <div className="text-sm text-foreground font-mono">{metric.value}</div>
+              <div className="text-sm text-foreground font-mono">
+                {metric.value}
+              </div>
             </motion.div>
           ))}
         </div>
@@ -284,8 +292,8 @@ function StrategyVisualization() {
                 phase.status === "done"
                   ? "#7cf4d8"
                   : phase.status === "current"
-                    ? "#a6ff6a"
-                    : "rgba(255,255,255,0.1)"
+                  ? "#a6ff6a"
+                  : "rgba(255,255,255,0.1)"
               }
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
@@ -356,7 +364,13 @@ function StrategyVisualization() {
         ))}
 
         <defs>
-          <linearGradient id="timeline-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+          <linearGradient
+            id="timeline-gradient"
+            x1="0%"
+            y1="0%"
+            x2="100%"
+            y2="0%"
+          >
             <stop offset="0%" stopColor="#7cf4d8" />
             <stop offset="100%" stopColor="#a6ff6a" />
           </linearGradient>
@@ -391,9 +405,20 @@ function TalentVisualization() {
   ];
 
   const connections = [
-    [0, 4], [1, 4], [1, 5], [2, 5], [2, 6], [3, 6],
-    [4, 5], [5, 6], [4, 7], [5, 7], [5, 8], [6, 8],
-    [0, 5], [3, 5],
+    [0, 4],
+    [1, 4],
+    [1, 5],
+    [2, 5],
+    [2, 6],
+    [3, 6],
+    [4, 5],
+    [5, 6],
+    [4, 7],
+    [5, 7],
+    [5, 8],
+    [6, 8],
+    [0, 5],
+    [3, 5],
   ];
 
   return (
@@ -443,7 +468,9 @@ function TalentVisualization() {
               x={role.x}
               y={role.y + 1.5}
               fontSize="5"
-              fill={role.label === "LEAD" ? "#7cf4d8" : "rgba(165, 175, 188, 0.7)"}
+              fill={
+                role.label === "LEAD" ? "#7cf4d8" : "rgba(165, 175, 188, 0.7)"
+              }
               textAnchor="middle"
               fontFamily="monospace"
             >
@@ -517,8 +544,8 @@ function EventsVisualization() {
                     h > 80
                       ? "rgba(124, 244, 216, 0.6)"
                       : h > 60
-                        ? "rgba(124, 244, 216, 0.4)"
-                        : "rgba(255,255,255,0.15)",
+                      ? "rgba(124, 244, 216, 0.4)"
+                      : "rgba(255,255,255,0.15)",
                 }}
               />
             ))}
@@ -546,8 +573,12 @@ function EventsVisualization() {
                 {metric.label}
               </div>
               <div className="flex items-baseline gap-0.5">
-                <span className="text-sm text-foreground font-mono">{metric.value}</span>
-                <span className="text-[7px] text-muted-dark font-mono">{metric.unit}</span>
+                <span className="text-sm text-foreground font-mono">
+                  {metric.value}
+                </span>
+                <span className="text-[7px] text-muted-dark font-mono">
+                  {metric.unit}
+                </span>
               </div>
             </motion.div>
           ))}
@@ -583,7 +614,11 @@ function SiliconValleyVisualization() {
   ];
 
   const connections = [
-    [0, 1], [0, 2], [0, 4], [1, 3], [2, 4],
+    [0, 1],
+    [0, 2],
+    [0, 4],
+    [1, 3],
+    [2, 4],
   ];
 
   return (
@@ -591,7 +626,12 @@ function SiliconValleyVisualization() {
       <svg className="absolute inset-0 w-full h-full" viewBox="0 0 200 100">
         {/* Grid background */}
         <defs>
-          <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+          <pattern
+            id="grid"
+            width="20"
+            height="20"
+            patternUnits="userSpaceOnUse"
+          >
             <path
               d="M 20 0 L 0 0 0 20"
               fill="none"
@@ -606,7 +646,11 @@ function SiliconValleyVisualization() {
         {connections.map(([from, to], i) => (
           <motion.path
             key={i}
-            d={`M ${locations[from].x} ${locations[from].y} Q ${(locations[from].x + locations[to].x) / 2} ${Math.min(locations[from].y, locations[to].y) - 15} ${locations[to].x} ${locations[to].y}`}
+            d={`M ${locations[from].x} ${locations[from].y} Q ${
+              (locations[from].x + locations[to].x) / 2
+            } ${Math.min(locations[from].y, locations[to].y) - 15} ${
+              locations[to].x
+            } ${locations[to].y}`}
             fill="none"
             stroke="rgba(124, 244, 216, 0.2)"
             strokeWidth="0.5"
@@ -641,7 +685,11 @@ function SiliconValleyVisualization() {
               cx={loc.x}
               cy={loc.y}
               r={loc.primary ? 6 : 4}
-              fill={loc.primary ? "rgba(124, 244, 216, 0.3)" : "rgba(255,255,255,0.05)"}
+              fill={
+                loc.primary
+                  ? "rgba(124, 244, 216, 0.3)"
+                  : "rgba(255,255,255,0.05)"
+              }
               stroke={loc.primary ? "#7cf4d8" : "rgba(255,255,255,0.2)"}
               strokeWidth="1"
             />
@@ -692,7 +740,9 @@ function SiliconValleyVisualization() {
         </div>
         <div className="flex items-center gap-1">
           <div className="w-1 h-1 rounded-full bg-accent-dim" />
-          <span className="text-[8px] text-muted-dark font-mono">LATAM + US + EU</span>
+          <span className="text-[8px] text-muted-dark font-mono">
+            LATAM + US + EU
+          </span>
         </div>
       </motion.div>
     </div>
@@ -734,7 +784,7 @@ const services = [
     id: 4,
     number: "04",
     group: "complementary",
-    title: "Talento y pods",
+    title: "Talento técnico",
     subtitle: "Ejecución ágil",
     description:
       "Talento de alto potencial en Latam y equipos por proyecto sin inflar estructura.",
@@ -787,7 +837,9 @@ function ServiceCard({
   return (
     <motion.div
       initial={{ opacity: 0, y: 24, scale: 0.98, filter: "blur(4px)" }}
-      animate={isInView ? { opacity: 1, y: 0, scale: 1, filter: "blur(0px)" } : {}}
+      animate={
+        isInView ? { opacity: 1, y: 0, scale: 1, filter: "blur(0px)" } : {}
+      }
       transition={{
         duration: 0.7,
         delay: 0.15 + index * 0.08,
@@ -818,14 +870,20 @@ function ServiceCard({
             transition={{ duration: 0.5, delay: 0.4 + index * 0.08 }}
             className="flex items-center gap-3 mb-3"
           >
-            <span className="text-[10px] text-muted-dark font-mono tracking-wider">{service.number}</span>
+            <span className="text-[10px] text-muted-dark font-mono tracking-wider">
+              {service.number}
+            </span>
             <span className="h-px flex-1 bg-gradient-to-r from-white/[0.08] to-transparent" />
           </motion.div>
 
           <motion.h3
             initial={{ opacity: 0, y: 8 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.45 + index * 0.08, ease: [0.16, 1, 0.3, 1] }}
+            transition={{
+              duration: 0.5,
+              delay: 0.45 + index * 0.08,
+              ease: [0.16, 1, 0.3, 1],
+            }}
             className="text-base sm:text-lg font-semibold text-foreground mb-1 group-hover:text-white transition-colors duration-300"
           >
             {service.title}
@@ -891,7 +949,8 @@ export default function Servicios() {
           transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
           className="text-base sm:text-lg text-muted mb-10 sm:mb-12 max-w-2xl mx-auto sm:mx-0 text-center sm:text-left font-light"
         >
-          Nuestra prioridad es aterrizar en implementación y resultado.
+          Nuestra prioridad: impacto medible, implementación en producción y
+          adopción por el equipo.
         </motion.p>
 
         {/* Services Grid */}
