@@ -3,14 +3,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import SkylineDots from "./SkylineDots";
-
-const blockers = [
-  "Nadie aterriza esto al trabajo real del equipo",
-  "La iniciativa se frena por datos, seguridad o falta de responsables internos",
-  "Se intenta hacer todo a la vez y nada se adopta de forma consistente",
-  'Se confunde "usar herramientas" con "transformar procesos"',
-];
+import Image from "next/image";
 
 export default function Oportunidad() {
   const ref = useRef(null);
@@ -26,8 +19,22 @@ export default function Oportunidad() {
         <div className="absolute inset-0 dot-pattern opacity-20" />
         {/* Subtle gradient */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-white/[0.02] rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-0 w-[360px] sm:w-[520px] lg:w-[640px] h-[160px] sm:h-[220px] lg:h-[260px] opacity-60 pointer-events-none">
-          <SkylineDots />
+        {/* San Francisco Skyline Image */}
+        <div className="absolute bottom-0 right-0 w-full sm:w-[70%] lg:w-[60%] h-[200px] sm:h-[280px] lg:h-[350px] pointer-events-none">
+          <div className="relative w-full h-full">
+            <Image
+              src="/sf-skyline.jpg"
+              alt="San Francisco Bay Bridge Skyline"
+              fill
+              className="object-cover object-center opacity-40"
+              style={{
+                maskImage: "linear-gradient(to right, transparent 0%, black 30%, black 100%), linear-gradient(to top, black 60%, transparent 100%)",
+                WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 30%, black 100%), linear-gradient(to top, black 60%, transparent 100%)",
+                maskComposite: "intersect",
+                WebkitMaskComposite: "source-in",
+              }}
+            />
+          </div>
         </div>
       </div>
 
