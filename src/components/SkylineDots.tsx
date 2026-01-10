@@ -4,6 +4,8 @@ import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 
+const skylineImage = "/skyline/sf-night.jpg";
+
 export default function SkylineDots() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-120px' });
@@ -55,7 +57,23 @@ export default function SkylineDots() {
             <rect x="740" y="140" width="40" height="50" fill="white" />
           </mask>
         </defs>
-        <rect width="800" height="240" fill="url(#skyline-dot)" mask="url(#skyline-mask)" />
+        <image
+          href={skylineImage}
+          x="0"
+          y="0"
+          width="800"
+          height="240"
+          preserveAspectRatio="xMidYMid slice"
+          mask="url(#skyline-mask)"
+          className="skyline-photo"
+        />
+        <rect
+          width="800"
+          height="240"
+          fill="url(#skyline-dot)"
+          mask="url(#skyline-mask)"
+          className="skyline-dot-layer"
+        />
       </svg>
     </motion.div>
   );

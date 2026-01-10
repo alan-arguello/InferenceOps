@@ -600,6 +600,16 @@ p {
   mix-blend-mode: screen;
 }
 
+.skyline-photo {
+  opacity: 0.55;
+  filter: grayscale(1) contrast(1.1) brightness(0.85);
+}
+
+.skyline-dot-layer {
+  opacity: 0.75;
+  mix-blend-mode: screen;
+}
+
 @keyframes skyline-float {
   0%, 100% {
     transform: translateY(0);

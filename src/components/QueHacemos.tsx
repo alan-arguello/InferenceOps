@@ -77,44 +77,10 @@ export default function QueHacemos() {
               diseñar la solución correcta, implementarla en herramientas reales
               y asegurar adopción.
             </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{
-                duration: 0.8,
-                delay: 0.25,
-                ease: [0.16, 1, 0.3, 1],
-              }}
-              className="mt-8 flex flex-wrap gap-3"
-            >
-              {[
-                "Diagnóstico real",
-                "Implementación en flujo",
-                "Adopción sostenida",
-              ].map((chip) => (
-                <span key={chip} className="result-chip">
-                  {chip}
-                </span>
-              ))}
-            </motion.div>
           </div>
 
           {/* Right Column - Results */}
           <div className="lg:border-l lg:border-white/10 lg:pl-10">
-            <motion.h3
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{
-                duration: 0.8,
-                delay: 0.3,
-                ease: [0.16, 1, 0.3, 1],
-              }}
-              className="text-sm text-muted uppercase tracking-widest mb-6"
-            >
-              Resultados típicos
-            </motion.h3>
-
             <div className="result-grid">
               {results.map((result, index) => (
                 <motion.div
@@ -128,11 +94,6 @@ export default function QueHacemos() {
                   }}
                   className="result-card"
                 >
-                  <div className="flex items-center justify-between mb-6">
-                    <span className="text-xs text-muted-dark uppercase tracking-[0.3em]">
-                      Impacto
-                    </span>
-                  </div>
                   <h3 className="text-lg font-semibold text-foreground mb-3">
                     {result.title}
                   </h3>
