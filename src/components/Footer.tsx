@@ -14,7 +14,7 @@ export default function Footer() {
       {/* CTA Section */}
       <section
         id="contacto"
-        className="relative py-20 sm:py-24 lg:py-32 overflow-hidden"
+        className="relative py-16 sm:py-24 lg:py-32 overflow-hidden"
       >
         {/* Background */}
         <div className="absolute inset-0 bg-background-alt">
@@ -25,13 +25,13 @@ export default function Footer() {
 
         <div
           ref={ref}
-          className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
+        className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
         >
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="text-3xl sm:text-4xl md:text-5xl font-light leading-[1.1] mb-8"
+            className="text-2xl sm:text-4xl md:text-5xl font-light leading-[1.1] mb-6 sm:mb-8"
           >
             <span className="text-foreground">Hablemos y lo </span>
             <span className="text-elegant text-foreground">aterrizamos</span>
@@ -44,7 +44,7 @@ export default function Footer() {
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="text-base sm:text-lg text-muted leading-relaxed mb-10 max-w-2xl mx-auto font-light"
+            className="text-base sm:text-lg text-muted leading-relaxed mb-8 sm:mb-10 max-w-2xl mx-auto font-light"
           >
             En una llamada breve entendemos tu contexto y te decimos si hay una
             oportunidad real para implementar esto con valor. Si no la hay, te
@@ -58,7 +58,7 @@ export default function Footer() {
           >
             <a
               href="mailto:contacto@operationalinference.com"
-              className="group btn btn-primary"
+              className="group btn btn-primary w-full sm:w-auto"
             >
               Agendar llamada
               <ArrowRight
@@ -71,7 +71,7 @@ export default function Footer() {
       </section>
 
       {/* Footer */}
-      <footer className="relative py-16 border-t border-border">
+      <footer className="relative py-12 sm:py-16 border-t border-border">
         <div className="absolute inset-0 bg-background" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -24,7 +24,7 @@ export default function Hero() {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
-        <div className="max-w-5xl">
+        <div className="max-w-5xl text-center sm:text-left">
           {/* Main Headline - Mixed Typography */}
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
@@ -48,7 +48,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="text-base sm:text-lg md:text-xl text-muted leading-relaxed mb-10 max-w-3xl font-light"
+            className="text-base sm:text-lg md:text-xl text-muted leading-relaxed mb-8 sm:mb-10 max-w-3xl mx-auto sm:mx-0 font-light"
           >
             Ayudamos a equipos ejecutivos a mejorar eficiencia, ventas y
             operación con soluciones que se integran al trabajo real de sus
@@ -60,12 +60,12 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="space-y-4 mb-10"
+            className="space-y-3 sm:space-y-4 mb-8 sm:mb-10 max-w-md sm:max-w-none mx-auto sm:mx-0 text-left"
           >
             {bullets.map((bullet, index) => (
               <li key={index} className="flex items-start gap-4 group">
                 <span className="flex-shrink-0 w-1.5 h-1.5 mt-2.5 bg-accent rounded-full group-hover:bg-accent-dim transition-colors" />
-                <span className="text-base sm:text-lg text-muted group-hover:text-muted-light transition-colors">
+                <span className="text-sm sm:text-base lg:text-lg text-muted group-hover:text-muted-light transition-colors">
                   {bullet}
                 </span>
               </li>

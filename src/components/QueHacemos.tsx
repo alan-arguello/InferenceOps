@@ -44,9 +44,9 @@ export default function QueHacemos() {
         ref={ref}
         className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
       >
-        <div className="grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] gap-12 lg:gap-16 items-start">
+        <div className="grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] gap-10 sm:gap-12 lg:gap-16 items-start">
           {/* Left Column */}
-          <div>
+          <div className="text-center lg:text-left">
             <motion.h2
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -55,7 +55,7 @@ export default function QueHacemos() {
                 delay: 0.1,
                 ease: [0.16, 1, 0.3, 1],
               }}
-              className="text-2xl sm:text-3xl md:text-4xl font-light leading-[1.15] mb-6 max-w-xl"
+              className="text-2xl sm:text-3xl md:text-4xl font-light leading-[1.15] mb-5 max-w-xl mx-auto lg:mx-0"
             >
               <span className="text-foreground">Hacemos que esto </span>
               <span className="text-elegant text-foreground">funcione</span>
@@ -71,7 +71,7 @@ export default function QueHacemos() {
                 delay: 0.2,
                 ease: [0.16, 1, 0.3, 1],
               }}
-              className="text-base sm:text-lg text-muted leading-relaxed font-light max-w-xl"
+              className="text-base sm:text-lg text-muted leading-relaxed font-light max-w-xl mx-auto lg:mx-0"
             >
               Nos integramos con tu equipo para identificar dónde hay valor,
               diseñar la solución correcta, implementarla en herramientas reales
@@ -94,10 +94,10 @@ export default function QueHacemos() {
                   }}
                   className="result-card"
                 >
-                  <h3 className="text-lg font-semibold text-foreground mb-3">
+                  <h3 className="text-base sm:text-lg font-semibold text-foreground mb-3">
                     {result.title}
                   </h3>
-                  <p className="text-sm text-muted-light leading-relaxed">
+                  <p className="text-sm sm:text-base text-muted-light leading-relaxed">
                     {result.description}
                   </p>
                 </motion.div>

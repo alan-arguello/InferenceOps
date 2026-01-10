@@ -24,7 +24,7 @@ const team = [
   },
   {
     name: "Michelle Arguello",
-    role: "CFO",
+    role: "CFO, Venture Capital Specialist",
     image: "/michelle.jpeg",
     bio: [
       "Contadora especializada en operación y finanzas.",
@@ -62,7 +62,7 @@ export default function Equipo() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-          className="text-2xl sm:text-3xl md:text-4xl font-light leading-[1.15] mb-6"
+          className="text-2xl sm:text-3xl md:text-4xl font-light leading-[1.15] mb-5 sm:mb-6 text-center sm:text-left"
         >
           <span className="text-foreground">Equipo core y </span>
           <span className="text-elegant text-muted">red de especialistas.</span>
@@ -72,7 +72,7 @@ export default function Equipo() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-          className="text-base text-muted mb-12 max-w-2xl"
+          className="text-base text-muted mb-10 sm:mb-12 max-w-2xl mx-auto sm:mx-0 text-center sm:text-left"
         >
           Somos un equipo compacto. Según el tipo de proyecto, sumamos perfiles
           técnicos y de integración bajo un modelo de colaboración por proyecto,
@@ -129,7 +129,7 @@ export default function Equipo() {
                 {member.bio.map((paragraph, i) => (
                   <p
                     key={i}
-                    className="text-sm text-muted-light leading-relaxed text-justify"
+                    className="text-sm text-muted-light leading-relaxed text-left sm:text-justify"
                   >
                     {paragraph}
                   </p>

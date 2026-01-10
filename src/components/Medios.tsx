@@ -42,7 +42,7 @@ export default function Medios() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-          className="text-2xl sm:text-3xl md:text-4xl font-light leading-[1.15] mb-12"
+          className="text-2xl sm:text-3xl md:text-4xl font-light leading-[1.15] mb-8 sm:mb-12 text-center sm:text-left"
         >
           <span className="text-foreground">Medios y </span>
           <span className="text-elegant text-muted">comunidades.</span>
@@ -52,7 +52,7 @@ export default function Medios() {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-          className="text-base text-muted mb-10 max-w-2xl"
+          className="text-base text-muted mb-10 max-w-2xl mx-auto sm:mx-0 text-center sm:text-left"
         >
           Conversaciones públicas y colaboraciones con medios y comunidades
           relevantes para la región.

@@ -52,8 +52,8 @@ export default function ComoTrabajamos() {
         ref={ref}
         className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
       >
-        <div className="grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1.3fr)] gap-12 lg:gap-16 items-start">
-          <div className="lg:sticky lg:top-24">
+        <div className="grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1.3fr)] gap-10 sm:gap-12 lg:gap-16 items-start">
+          <div className="lg:sticky lg:top-24 text-center lg:text-left">
             <motion.h2
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -62,7 +62,7 @@ export default function ComoTrabajamos() {
                 delay: 0.1,
                 ease: [0.16, 1, 0.3, 1],
               }}
-              className="text-2xl sm:text-3xl md:text-4xl font-light leading-[1.15] mb-6 max-w-md"
+              className="text-2xl sm:text-3xl md:text-4xl font-light leading-[1.15] mb-5 max-w-md mx-auto lg:mx-0"
             >
               <span className="text-foreground">
                 Un método simple y práctico:{" "}
@@ -82,7 +82,7 @@ export default function ComoTrabajamos() {
                 delay: 0.2,
                 ease: [0.16, 1, 0.3, 1],
               }}
-              className="text-base sm:text-lg text-muted leading-relaxed max-w-md"
+              className="text-base sm:text-lg text-muted leading-relaxed max-w-md mx-auto lg:mx-0"
             >
               Cada paso se construye sobre el anterior para asegurar adopción,
               no solo implementación.
@@ -96,7 +96,7 @@ export default function ComoTrabajamos() {
               className="absolute left-[7px] top-2 bottom-2 w-px bg-gradient-to-b from-accent via-accent-dim to-accent"
               style={{ scaleY: lineScale, transformOrigin: "top" }}
             />
-            <div className="space-y-10">
+            <div className="space-y-8 sm:space-y-10">
               {steps.map((step, index) => (
                 <motion.div
                   key={index}
@@ -119,10 +119,10 @@ export default function ComoTrabajamos() {
                     </span>
                     <span className="h-px flex-1 bg-white/10" />
                   </div>
-                  <h3 className="text-lg font-semibold text-foreground mb-3">
+                  <h3 className="text-base sm:text-lg font-semibold text-foreground mb-3">
                     {step.title}
                   </h3>
-                  <p className="text-base text-muted leading-relaxed">
+                  <p className="text-sm sm:text-base text-muted leading-relaxed">
                     {step.description}
                   </p>
                 </motion.div>

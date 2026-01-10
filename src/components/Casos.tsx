@@ -596,12 +596,12 @@ function CaseCard({
         </div>
 
         {/* Content */}
-        <div className="p-5">
+        <div className="p-4 sm:p-5">
           {/* Header */}
-          <div className="flex items-start justify-between mb-4">
+          <div className="flex items-start justify-between mb-3 sm:mb-4">
             <div className="flex-1">
               <div className="flex items-center gap-2">
-                <h3 className="text-base font-semibold text-foreground group-hover:text-white transition-colors">
+                <h3 className="text-base sm:text-lg font-semibold text-foreground group-hover:text-white transition-colors">
                   {caseItem.company}
                 </h3>
                 <ArrowUpRight
@@ -616,7 +616,7 @@ function CaseCard({
           </div>
 
           {/* Content sections */}
-          <div className="space-y-3">
+          <div className="space-y-2 sm:space-y-3">
             <div>
               <div className="flex items-center gap-2 mb-1">
                 <div className="w-3 h-px bg-white/20" />
@@ -694,7 +694,7 @@ export default function Casos() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-          className="text-2xl sm:text-3xl md:text-4xl font-light leading-[1.15] mb-6 max-w-3xl"
+          className="text-2xl sm:text-3xl md:text-4xl font-light leading-[1.15] mb-5 sm:mb-6 max-w-3xl text-center sm:text-left mx-auto sm:mx-0"
         >
           <span className="text-foreground">Casos reales</span>
           <span className="text-elegant text-muted"> en operación.</span>
@@ -704,7 +704,7 @@ export default function Casos() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-          className="text-base sm:text-lg text-muted mb-12 max-w-2xl font-light"
+          className="text-base sm:text-lg text-muted mb-10 sm:mb-12 max-w-2xl text-center sm:text-left mx-auto sm:mx-0 font-light"
         >
           Implementación con resultados visibles y adopción por el equipo.
         </motion.p>

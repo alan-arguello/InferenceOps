@@ -43,7 +43,7 @@ export default function CitiesCarousel() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-120px" }}
           transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-          className="text-2xl sm:text-3xl md:text-4xl font-light leading-[1.15] mb-4"
+          className="text-2xl sm:text-3xl md:text-4xl font-light leading-[1.15] mb-4 text-center sm:text-left"
         >
           <span className="text-foreground">Desde </span>
           <span className="text-elegant text-foreground">Silicon Valley</span>
@@ -56,7 +56,7 @@ export default function CitiesCarousel() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-120px" }}
           transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="text-base sm:text-lg text-muted max-w-2xl mb-10"
+          className="text-base sm:text-lg text-muted max-w-2xl mb-10 mx-auto sm:mx-0 text-center sm:text-left"
         >
           Conectamos líderes de tecnología.
         </motion.p>

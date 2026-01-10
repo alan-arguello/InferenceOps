@@ -9,7 +9,7 @@ import { useRef } from "react";
 // Implementation - API/Integration Flow
 function AutomationVisualization() {
   return (
-    <div className="relative w-full h-36 overflow-hidden">
+    <div className="relative w-full h-32 sm:h-36 overflow-hidden">
       <svg className="absolute inset-0 w-full h-full" viewBox="0 0 200 100">
         {/* API endpoints */}
         <motion.g initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }}>
@@ -160,7 +160,7 @@ function AutomationVisualization() {
 // Training - Learning Progress Dashboard
 function TrainingVisualization() {
   return (
-    <div className="relative w-full h-36 overflow-hidden p-3">
+    <div className="relative w-full h-32 sm:h-36 overflow-hidden p-3">
       <div className="h-full flex gap-4">
         {/* Skills matrix */}
         <div className="flex-1">
@@ -238,7 +238,7 @@ function TrainingVisualization() {
 // Strategy - Roadmap Timeline
 function StrategyVisualization() {
   return (
-    <div className="relative w-full h-36 overflow-hidden">
+    <div className="relative w-full h-32 sm:h-36 overflow-hidden">
       <svg className="absolute inset-0 w-full h-full" viewBox="0 0 200 100">
         {/* Timeline base */}
         <motion.line
@@ -397,7 +397,7 @@ function TalentVisualization() {
   ];
 
   return (
-    <div className="relative w-full h-36 overflow-hidden">
+    <div className="relative w-full h-32 sm:h-36 overflow-hidden">
       <svg className="absolute inset-0 w-full h-full" viewBox="0 0 180 100">
         {/* Connections */}
         {connections.map(([from, to], i) => (
@@ -496,7 +496,7 @@ function TalentVisualization() {
 // Events - Attendance Analytics
 function EventsVisualization() {
   return (
-    <div className="relative w-full h-36 overflow-hidden p-3">
+    <div className="relative w-full h-32 sm:h-36 overflow-hidden p-3">
       <div className="h-full flex gap-4">
         {/* Attendance chart */}
         <div className="flex-1">
@@ -587,7 +587,7 @@ function SiliconValleyVisualization() {
   ];
 
   return (
-    <div className="relative w-full h-36 overflow-hidden">
+    <div className="relative w-full h-32 sm:h-36 overflow-hidden">
       <svg className="absolute inset-0 w-full h-full" viewBox="0 0 200 100">
         {/* Grid background */}
         <defs>
@@ -791,17 +791,19 @@ function ServiceCard({
         </div>
 
         {/* Content */}
-        <div className="p-5">
+        <div className="p-4 sm:p-5">
           <div className="flex items-center gap-3 mb-3">
             <span className="text-[10px] text-muted-dark font-mono">{service.number}</span>
             <span className="h-px flex-1 bg-white/[0.06]" />
           </div>
 
-          <h3 className="text-base font-semibold text-foreground mb-1 group-hover:text-white transition-colors">
+          <h3 className="text-base sm:text-lg font-semibold text-foreground mb-1 group-hover:text-white transition-colors">
             {service.title}
           </h3>
-          <p className="text-[11px] text-muted-dark mb-3 font-mono">{service.subtitle}</p>
-          <p className="text-sm text-muted-light leading-relaxed">
+          <p className="text-[10px] sm:text-[11px] text-muted-dark mb-3 font-mono">
+            {service.subtitle}
+          </p>
+          <p className="text-sm sm:text-base text-muted-light leading-relaxed">
             {service.description}
           </p>
         </div>
@@ -837,7 +839,7 @@ export default function Servicios() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-          className="text-2xl sm:text-3xl md:text-4xl font-light leading-[1.15] mb-6 max-w-3xl"
+          className="text-2xl sm:text-3xl md:text-4xl font-light leading-[1.15] mb-5 max-w-3xl mx-auto sm:mx-0 text-center sm:text-left"
         >
           <span className="text-foreground">Nuestros </span>
           <span className="text-elegant text-foreground">servicios.</span>
@@ -847,7 +849,7 @@ export default function Servicios() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-          className="text-base sm:text-lg text-muted mb-12 max-w-2xl font-light"
+          className="text-base sm:text-lg text-muted mb-10 sm:mb-12 max-w-2xl mx-auto sm:mx-0 text-center sm:text-left font-light"
         >
           Nuestra prioridad es aterrizar en implementación y resultado.
         </motion.p>
@@ -855,10 +857,10 @@ export default function Servicios() {
         {/* Services Grid */}
         <div className="space-y-12">
           <div>
-            <p className="text-[10px] text-muted uppercase tracking-widest mb-2 font-mono">
+            <p className="text-[10px] text-muted uppercase tracking-widest mb-2 font-mono text-center sm:text-left">
               Servicios core
             </p>
-            <p className="text-sm text-muted mb-6 max-w-2xl">
+            <p className="text-sm text-muted mb-6 max-w-2xl mx-auto sm:mx-0 text-center sm:text-left">
               Lo que siempre ejecutamos para asegurar implementación y adopción
               real.
             </p>
@@ -875,10 +877,10 @@ export default function Servicios() {
           </div>
 
           <div>
-            <p className="text-[10px] text-muted uppercase tracking-widest mb-2 font-mono">
+            <p className="text-[10px] text-muted uppercase tracking-widest mb-2 font-mono text-center sm:text-left">
               Complementarios
             </p>
-            <p className="text-sm text-muted mb-6 max-w-2xl">
+            <p className="text-sm text-muted mb-6 max-w-2xl mx-auto sm:mx-0 text-center sm:text-left">
               Activaciones y soporte adicional cuando el proyecto lo requiere.
             </p>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
