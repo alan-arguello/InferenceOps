@@ -1,102 +1,135 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import { useInView } from 'framer-motion';
-import { useRef } from 'react';
+import { motion, useInView, useScroll, useSpring } from "framer-motion";
+import { useRef } from "react";
 
 const steps = [
   {
-    number: '01',
-    title: 'Entender tu realidad',
+    title: "Entender tu realidad",
     description:
-      'Entramos al proceso con tu equipo. Observamos cómo operan, qué se hace manualmente, dónde hay retrabajo, qué datos existen y qué sistemas usan.',
+      "Entramos al proceso con tu equipo. Observamos cómo operan, qué se hace manualmente, dónde hay retrabajo, qué datos existen y qué sistemas usan.",
   },
   {
-    number: '02',
-    title: 'Elegir un caso con valor claro',
+    title: "Elegir un caso con valor claro",
     description:
       'Priorizamos un caso donde el impacto sea evidente para el negocio. Evitamos casos de "demo" que nadie usa.',
   },
   {
-    number: '03',
-    title: 'Implementar en sistemas reales',
+    title: "Implementar en sistemas reales",
     description:
-      'Conectamos la solución al flujo de trabajo real. Trabajamos sobre tus herramientas actuales, como CRM, correo, WhatsApp, ERP, formularios y bases internas.',
+      "Conectamos la solución al flujo de trabajo real. Trabajamos sobre tus herramientas actuales, como CRM, correo, WhatsApp, ERP, formularios y bases internas.",
   },
   {
-    number: '04',
-    title: 'Asegurar adopción',
+    title: "Asegurar adopción",
     description:
-      'Acompañamos el uso, iteramos con usuarios reales y dejamos responsables internos, documentación y una forma clara de mantenerlo.',
+      "Acompañamos el uso, iteramos con usuarios reales y dejamos responsables internos, documentación y una forma clara de mantenerlo.",
   },
 ];
 
 export default function ComoTrabajamos() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const timelineRef = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const { scrollYProgress } = useScroll({
+    target: timelineRef,
+    offset: ["start 0.15", "end 0.85"],
+  });
+  const lineScale = useSpring(scrollYProgress, {
+    stiffness: 140,
+    damping: 30,
+    mass: 0.2,
+  });
 
   return (
     <section className="relative py-20 sm:py-24 lg:py-32 overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-background-alt">
-        <div className="absolute inset-0 dot-pattern opacity-20" />
+        <div className="absolute inset-0 grid-pattern opacity-40" />
+        <div className="absolute inset-0 dot-pattern opacity-15" />
       </div>
 
-      <div ref={ref} className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.h2
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-          className="text-2xl sm:text-3xl md:text-4xl font-light leading-[1.15] mb-14 max-w-4xl"
-        >
-          <span className="text-foreground">Un método simple y práctico: </span>
-          <span className="text-elegant text-foreground">entender, construir, integrar</span>
-          <span className="text-foreground"> y </span>
-          <span className="text-elegant text-muted">adoptar.</span>
-        </motion.h2>
-
-        {/* Process Steps */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-6">
-          {steps.map((step, index) => (
-            <motion.div
-              key={index}
+      <div
+        ref={ref}
+        className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+      >
+        <div className="grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1.3fr)] gap-12 lg:gap-16 items-start">
+          <div className="lg:sticky lg:top-24">
+            <motion.h2
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.2 + index * 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className="group"
+              transition={{
+                duration: 0.8,
+                delay: 0.1,
+                ease: [0.16, 1, 0.3, 1],
+              }}
+              className="text-2xl sm:text-3xl md:text-4xl font-light leading-[1.15] mb-6 max-w-md"
             >
-              {/* Step number */}
-              <div className="mb-6">
-                <span className="text-4xl font-light text-white/10 group-hover:text-white/20 transition-colors duration-500">
-                  {step.number}
-                </span>
-              </div>
+              <span className="text-foreground">
+                Un método simple y práctico:{" "}
+              </span>
+              <span className="text-elegant text-foreground">
+                entender, construir, integrar
+              </span>
+              <span className="text-foreground"> y </span>
+              <span className="text-elegant text-muted">adoptar.</span>
+            </motion.h2>
 
-              {/* Content */}
-              <h3 className="text-lg font-semibold text-foreground mb-4 group-hover:text-white transition-colors">
-                {step.title}
-              </h3>
-              <p className="text-base text-muted leading-relaxed group-hover:text-muted-light transition-colors">
-                {step.description}
-              </p>
-            </motion.div>
-          ))}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{
+                duration: 0.8,
+                delay: 0.2,
+                ease: [0.16, 1, 0.3, 1],
+              }}
+              className="text-base sm:text-lg text-muted leading-relaxed max-w-md"
+            >
+              Cada paso se construye sobre el anterior para asegurar adopción,
+              no solo implementación.
+            </motion.p>
+          </div>
+
+          {/* Process Steps */}
+          <div ref={timelineRef} className="relative">
+            <div className="absolute left-[7px] top-2 bottom-2 w-px bg-white/10" />
+            <motion.div
+              className="absolute left-[7px] top-2 bottom-2 w-px bg-gradient-to-b from-accent via-accent-dim to-accent"
+              style={{ scaleY: lineScale, transformOrigin: "top" }}
+            />
+            <div className="space-y-10">
+              {steps.map((step, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-20% 0px -20% 0px" }}
+                  transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                  className="relative pl-10"
+                >
+                  <motion.span
+                    initial={{ scale: 0.7, opacity: 0.5 }}
+                    whileInView={{ scale: 1, opacity: 1 }}
+                    viewport={{ once: true, margin: "-20% 0px -20% 0px" }}
+                    transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                    className="absolute left-0 top-2 h-4 w-4 rounded-full border border-accent/60 bg-background shadow-[0_0_12px_rgba(124,244,216,0.3)]"
+                  />
+                  <div className="flex items-center gap-3 mb-2">
+                    <span className="text-xs text-muted-dark uppercase tracking-[0.3em]">
+                      Paso {index + 1}
+                    </span>
+                    <span className="h-px flex-1 bg-white/10" />
+                  </div>
+                  <h3 className="text-lg font-semibold text-foreground mb-3">
+                    {step.title}
+                  </h3>
+                  <p className="text-base text-muted leading-relaxed">
+                    {step.description}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
         </div>
-
-        {/* Closing statement */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-14 pt-8 border-t border-border"
-        >
-          <p className="text-lg sm:text-xl font-light leading-relaxed max-w-3xl">
-            <span className="text-muted-light">Preferimos hacer pocas cosas, bien hechas. </span>
-            <span className="text-elegant text-foreground">
-              Nuestro trabajo no termina cuando &ldquo;funciona&rdquo;, termina cuando se usa.
-            </span>
-          </p>
-        </motion.div>
       </div>
     </section>
   );

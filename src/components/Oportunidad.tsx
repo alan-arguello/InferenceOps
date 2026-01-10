@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
+import SkylineDots from "./SkylineDots";
 
 const blockers = [
   "Nadie aterriza esto al trabajo real del equipo",
@@ -25,6 +26,9 @@ export default function Oportunidad() {
         <div className="absolute inset-0 dot-pattern opacity-20" />
         {/* Subtle gradient */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-white/[0.02] rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-0 w-[360px] sm:w-[520px] lg:w-[640px] h-[160px] sm:h-[220px] lg:h-[260px] opacity-60 pointer-events-none">
+          <SkylineDots />
+        </div>
       </div>
 
       <div

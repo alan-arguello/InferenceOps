@@ -1,31 +1,31 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import { useInView } from 'framer-motion';
-import { useRef } from 'react';
-import { ArrowUpRight } from 'lucide-react';
+import Image from "next/image";
+import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
+import { useRef } from "react";
 
-const mediaLinks = [
+const pressLinks = [
   {
-    name: 'Bloomberg Línea',
-    description: 'En qué emprender en LATAM en 2026: la IA seguirá liderando',
-    url: 'https://www.bloomberglinea.com/latinoamerica/en-que-emprender-en-latam-en-2026-la-ia-seguira-liderando-pero-tenga-en-cuenta-estos-tips/',
+    name: "Bloomberg Línea",
+    logo: "/press/bloomberg.png",
+    url: "https://www.bloomberglinea.com/latinoamerica/en-que-emprender-en-latam-en-2026-la-ia-seguira-liderando-pero-tenga-en-cuenta-estos-tips/",
   },
   {
-    name: 'Forbes México',
-    description: 'La sequía de inversiones amenaza a las startups',
-    url: 'https://forbes.com.mx/la-sequia-de-inversiones-amenaza-a-las-startups/',
+    name: "Forbes México",
+    logo: "/press/forbes.webp",
+    url: "https://forbes.com.mx/la-sequia-de-inversiones-amenaza-a-las-startups/",
   },
   {
-    name: 'Davivienda, Social Skin',
-    description: 'Podcast sobre emprendimiento e innovación',
-    url: 'https://open.spotify.com/episode/0OkBKUaO6d6XbQM1R8vJR7',
+    name: "Davivienda, Social Skin",
+    logo: "/press/davivienda.png",
+    url: "https://open.spotify.com/episode/0OkBKUaO6d6XbQM1R8vJR7",
   },
 ];
 
 export default function Medios() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
     <section className="relative py-20 sm:py-24 lg:py-32 overflow-hidden">
@@ -34,7 +34,10 @@ export default function Medios() {
         <div className="absolute inset-0 dot-pattern opacity-20" />
       </div>
 
-      <div ref={ref} className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div
+        ref={ref}
+        className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+      >
         <motion.h2
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -45,29 +48,31 @@ export default function Medios() {
           <span className="text-elegant text-muted">medios.</span>
         </motion.h2>
 
-        {/* Media Links */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {mediaLinks.map((media, index) => (
+        {/* Press Logos */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 sm:gap-8 items-center">
+          {pressLinks.map((press, index) => (
             <motion.a
-              key={index}
-              href={media.url}
+              key={press.name}
+              href={press.url}
               target="_blank"
               rel="noopener noreferrer"
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.2 + index * 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className="group surface-card p-5"
+              transition={{
+                duration: 0.8,
+                delay: 0.2 + index * 0.1,
+                ease: [0.16, 1, 0.3, 1],
+              }}
+              className="press-logo-link"
+              aria-label={press.name}
             >
-              <div className="flex items-start justify-between mb-3">
-                <span className="text-base font-semibold text-foreground group-hover:text-white transition-colors duration-300">
-                  {media.name}
-                </span>
-                <ArrowUpRight
-                  size={16}
-                  className="flex-shrink-0 text-muted-dark group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300"
-                />
-              </div>
-              <p className="text-sm text-muted leading-relaxed clamp-2">{media.description}</p>
+              <Image
+                src={press.logo}
+                alt={press.name}
+                width={180}
+                height={60}
+                className="press-logo-image"
+              />
             </motion.a>
           ))}
         </div>

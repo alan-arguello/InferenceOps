@@ -110,8 +110,7 @@ export default function Casos() {
           transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
           className="text-base text-muted mb-12 text-center max-w-2xl mx-auto"
         >
-          En llamada podemos compartir más contexto. Preferimos decir menos y
-          ejecutar más.
+          Somos los mejores en conseguir un retorno tangible.
         </motion.p>
 
         {/* Cases Grid */}

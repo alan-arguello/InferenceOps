@@ -9,12 +9,12 @@ import { Linkedin } from "lucide-react";
 const team = [
   {
     name: "Alan Arguello",
-    role: "CEO & CTO",
+    role: "CEO, Software Engineer & MBA",
     image: "/alan.png",
     bio: [
-      "Ingeniero de software con MBA enfocado trabajar de cerca con equipos ejecutivos.",
-      "Cofundó Torrenegra Organization junto al inversor de Shark Tank, Alexander Torrenegra, apoyando a más de 100 empresas en ejecución, operación y expansión.",
-      "Parte del equipo de Makers Fellowship con Andrés Bilbao, cofundador de Rappi, y fue acelerado por Platanus Ventures.",
+      "Cofundó Torrenegra Organization junto al inversor de Shark Tank, Alex Torrenegra, apoyando a más de 100 empresas en ejecución, operación y expansión.",
+      "Parte del equipo de Makers Fellowship con Andrés Bilbao, cofundador de Rappi en donde apoyó a empresas a conseguir talento.",
+      "Invertido por Platanus Ventures. Miembro de Latitud, On Deck y AI Circle.",
     ],
     logos: [
       { src: "/alan_logos/Group 2.svg", alt: "Torrenegra Organization" },
@@ -27,7 +27,7 @@ const team = [
     role: "CFO",
     image: "/michelle.jpeg",
     bio: [
-      "Contadora especializada en operación y finanzas, con experiencia asesorando empresas y corporativos en México.",
+      "Contadora especializada en operación y finanzas.",
       "Fue Administration Manager en IGNIA Partners, liderando reportes a inversionistas, capital calls y soporte financiero del fondo.",
       "Ha dirigido procesos de control operativo y gobierno financiero para compañías en crecimiento, con foco en claridad, cumplimiento y continuidad.",
     ],
