@@ -12,8 +12,34 @@ import FAQ from "@/components/FAQ";
 import Footer from "@/components/Footer";
 
 export default function Home() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        name: "Operational Inference",
+        url: "https://operationalinference.com",
+        description:
+          "Ayudamos a equipos ejecutivos a mejorar eficiencia, ventas y operación con soluciones de IA que se integran al trabajo real.",
+        email: "contacto@operationalinference.com",
+        logo: "https://operationalinference.com/ogsf.png",
+        image: "https://operationalinference.com/ogsf.png",
+      },
+      {
+        "@type": "WebSite",
+        name: "Operational Inference",
+        url: "https://operationalinference.com",
+        inLanguage: "es-MX",
+      },
+    ],
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Navigation />
       <main>
         <Hero />

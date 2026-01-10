@@ -30,13 +30,13 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-light leading-[1.05] tracking-tight mb-8"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light leading-[1.05] tracking-tight mb-8 max-w-[20ch] sm:max-w-none mx-auto sm:mx-0"
           >
-            <span className="block whitespace-nowrap">
+            <span className="block sm:whitespace-nowrap">
               <span className="text-foreground">Implementamos </span>
               <span className="text-elegant text-foreground">inteligencia</span>
             </span>
-            <span className="block whitespace-nowrap">
+            <span className="block sm:whitespace-nowrap">
               <span className="text-elegant text-foreground">artificial</span>
               <span className="text-foreground"> en tu </span>
               <span className="text-elegant text-foreground">empresa.</span>

@@ -6,10 +6,11 @@ import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
-  { href: "#servicios", label: "Servicios" },
-  { href: "#casos", label: "Casos" },
-  { href: "#equipo", label: "Equipo" },
-  { href: "#faq", label: "FAQ" },
+  { href: "/#servicios", label: "Servicios" },
+  { href: "/#casos", label: "Casos" },
+  { href: "/#equipo", label: "Equipo" },
+  { href: "/blog", label: "Blog" },
+  { href: "/#faq", label: "FAQ" },
 ];
 
 export default function Navigation() {
@@ -40,7 +41,7 @@ export default function Navigation() {
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 sm:h-20">
             {/* Logo */}
-            <a href="#" className="flex items-center gap-3 group">
+            <a href="/" className="flex items-center gap-3 group">
               <div className="w-7 h-7 relative">
                 <div className="absolute inset-0 bg-white rounded-[2px] transform rotate-45 group-hover:rotate-[135deg] transition-transform duration-700 ease-out" />
                 <div className="absolute inset-[3px] bg-background rounded-[1px] transform rotate-45" />
@@ -66,7 +67,7 @@ export default function Navigation() {
 
             {/* Desktop CTA */}
             <div className="hidden lg:flex items-center gap-4">
-              <a href="#contacto" className="group btn btn-primary btn-small">
+              <a href="/#contacto" className="group btn btn-primary btn-small">
                 Agendar llamada
               </a>
             </div>
@@ -111,7 +112,7 @@ export default function Navigation() {
                 {navLinks.map((link, index) => (
                   <motion.a
                     key={link.href}
-                    href={link.href}
+                  href={link.href}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.1 + index * 0.05 }}
@@ -129,7 +130,7 @@ export default function Navigation() {
                 className="mt-10"
               >
                 <a
-                  href="#contacto"
+                  href="/#contacto"
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="btn btn-primary w-full"
                 >
