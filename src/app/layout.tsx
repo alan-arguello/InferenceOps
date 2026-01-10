@@ -1,4 +1,5 @@
 import { Inter, Playfair_Display, JetBrains_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/react";
 import { getLocale } from "next-intl/server";
 import "./globals.css";
 
@@ -34,6 +35,7 @@ export default async function RootLayout({
         className={`${inter.variable} ${playfair.variable} ${jetbrainsMono.variable} antialiased bg-background text-foreground`}
       >
         {children}
+        <Analytics />
       </body>
     </html>
   );
