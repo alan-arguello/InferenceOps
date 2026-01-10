@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useCallback, MouseEvent } from "react";
 
 // Premium service visualizations
 
@@ -772,40 +772,80 @@ function ServiceCard({
   isInView: boolean;
 }) {
   const Visualization = service.visualization;
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  // Handle mouse move for spotlight effect
+  const handleMouseMove = useCallback((e: MouseEvent<HTMLDivElement>) => {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    cardRef.current.style.setProperty("--mouse-x", `${x}%`);
+    cardRef.current.style.setProperty("--mouse-y", `${y}%`);
+  }, []);
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 24 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      initial={{ opacity: 0, y: 24, scale: 0.98, filter: "blur(4px)" }}
+      animate={isInView ? { opacity: 1, y: 0, scale: 1, filter: "blur(0px)" } : {}}
       transition={{
-        duration: 0.6,
-        delay: 0.2 + index * 0.1,
+        duration: 0.7,
+        delay: 0.15 + index * 0.08,
         ease: [0.16, 1, 0.3, 1],
       }}
       className="group"
     >
-      <div className="surface-card h-full">
+      <div
+        ref={cardRef}
+        onMouseMove={handleMouseMove}
+        className="surface-card h-full"
+      >
+        {/* Premium glow effect on border */}
+        <div className="surface-card-glow" />
+        {/* Shimmer effect */}
+        <div className="surface-card-shimmer" />
+
         {/* Visualization */}
-        <div className="border-b border-white/[0.06]">
+        <div className="viz-container relative">
           <Visualization />
         </div>
 
         {/* Content */}
-        <div className="p-4 sm:p-5">
-          <div className="flex items-center gap-3 mb-3">
-            <span className="text-[10px] text-muted-dark font-mono">{service.number}</span>
-            <span className="h-px flex-1 bg-white/[0.06]" />
-          </div>
+        <div className="p-4 sm:p-5 relative">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.5, delay: 0.4 + index * 0.08 }}
+            className="flex items-center gap-3 mb-3"
+          >
+            <span className="text-[10px] text-muted-dark font-mono tracking-wider">{service.number}</span>
+            <span className="h-px flex-1 bg-gradient-to-r from-white/[0.08] to-transparent" />
+          </motion.div>
 
-          <h3 className="text-base sm:text-lg font-semibold text-foreground mb-1 group-hover:text-white transition-colors">
+          <motion.h3
+            initial={{ opacity: 0, y: 8 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5, delay: 0.45 + index * 0.08, ease: [0.16, 1, 0.3, 1] }}
+            className="text-base sm:text-lg font-semibold text-foreground mb-1 group-hover:text-white transition-colors duration-300"
+          >
             {service.title}
-          </h3>
-          <p className="text-[10px] sm:text-[11px] text-muted-dark mb-3 font-mono">
+          </motion.h3>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.5, delay: 0.5 + index * 0.08 }}
+            className="text-[10px] sm:text-[11px] text-muted-dark mb-3 font-mono tracking-wide"
+          >
             {service.subtitle}
-          </p>
-          <p className="text-sm sm:text-base text-muted-light leading-relaxed">
+          </motion.p>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.5, delay: 0.55 + index * 0.08 }}
+            className="text-sm sm:text-base text-muted-light leading-relaxed"
+          >
             {service.description}
-          </p>
+          </motion.p>
         </div>
       </div>
     </motion.div>

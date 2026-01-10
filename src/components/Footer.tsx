@@ -25,7 +25,7 @@ export default function Footer() {
 
         <div
           ref={ref}
-        className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
+          className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
         >
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
@@ -33,11 +33,13 @@ export default function Footer() {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="text-2xl sm:text-4xl md:text-5xl font-light leading-[1.1] mb-6 sm:mb-8"
           >
-            <span className="text-foreground">Hablemos y lo </span>
-            <span className="text-elegant text-foreground">aterrizamos</span>
+            <span className="text-foreground">
+              La mejor manera de predecir{" "}
+            </span>
+            <span className="text-elegant text-foreground">el futuro</span>
             <br className="hidden sm:block" />
-            <span className="text-foreground"> con </span>
-            <span className="text-elegant text-muted">claridad.</span>
+            <span className="text-foreground"> es </span>
+            <span className="text-elegant text-muted">construyéndolo.</span>
           </motion.h2>
 
           <motion.p
@@ -46,9 +48,7 @@ export default function Footer() {
             transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
             className="text-base sm:text-lg text-muted leading-relaxed mb-8 sm:mb-10 max-w-2xl mx-auto font-light"
           >
-            En una llamada breve entendemos tu contexto y te decimos si hay una
-            oportunidad real para implementar esto con valor. Si no la hay, te
-            dejamos recomendaciones claras y listo.
+            Exploremos oportunidades de colaboración
           </motion.p>
 
           <motion.div

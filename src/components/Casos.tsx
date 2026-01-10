@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useCallback, MouseEvent } from "react";
 import { ArrowUpRight } from "lucide-react";
 
 // Premium industry-specific visualizations
@@ -574,50 +574,90 @@ function CaseCard({
   isInView: boolean;
 }) {
   const Visualization = caseItem.visualization;
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  // Handle mouse move for spotlight effect
+  const handleMouseMove = useCallback((e: MouseEvent<HTMLDivElement>) => {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    cardRef.current.style.setProperty("--mouse-x", `${x}%`);
+    cardRef.current.style.setProperty("--mouse-y", `${y}%`);
+  }, []);
 
   return (
     <motion.a
       href={caseItem.url}
       target="_blank"
       rel="noopener noreferrer"
-      initial={{ opacity: 0, y: 24 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      initial={{ opacity: 0, y: 24, scale: 0.98, filter: "blur(4px)" }}
+      animate={isInView ? { opacity: 1, y: 0, scale: 1, filter: "blur(0px)" } : {}}
       transition={{
-        duration: 0.6,
-        delay: 0.2 + index * 0.1,
+        duration: 0.7,
+        delay: 0.15 + index * 0.08,
         ease: [0.16, 1, 0.3, 1],
       }}
       className="group block"
     >
-      <div className="surface-card h-full cursor-pointer">
+      <div
+        ref={cardRef}
+        onMouseMove={handleMouseMove}
+        className="surface-card h-full cursor-pointer"
+      >
+        {/* Premium glow effect on border */}
+        <div className="surface-card-glow" />
+        {/* Shimmer effect */}
+        <div className="surface-card-shimmer" />
+
         {/* Visualization */}
-        <div className="border-b border-white/[0.06]">
+        <div className="viz-container relative">
           <Visualization />
         </div>
 
         {/* Content */}
-        <div className="p-4 sm:p-5">
+        <div className="p-4 sm:p-5 relative">
           {/* Header */}
           <div className="flex items-start justify-between mb-3 sm:mb-4">
             <div className="flex-1">
               <div className="flex items-center gap-2">
-                <h3 className="text-base sm:text-lg font-semibold text-foreground group-hover:text-white transition-colors">
+                <motion.h3
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.5, delay: 0.35 + index * 0.08, ease: [0.16, 1, 0.3, 1] }}
+                  className="text-base sm:text-lg font-semibold text-foreground group-hover:text-white transition-colors duration-300"
+                >
                   {caseItem.company}
-                </h3>
-                <ArrowUpRight
-                  size={14}
-                  className="opacity-0 group-hover:opacity-100 transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 text-accent"
-                />
+                </motion.h3>
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                  transition={{ duration: 0.3, delay: 0.5 + index * 0.08 }}
+                >
+                  <ArrowUpRight
+                    size={14}
+                    className="opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 text-accent"
+                  />
+                </motion.div>
               </div>
-              <p className="text-[11px] text-muted-dark mt-1 font-mono">
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={isInView ? { opacity: 1 } : {}}
+                transition={{ duration: 0.5, delay: 0.4 + index * 0.08 }}
+                className="text-[11px] text-muted-dark mt-1 font-mono tracking-wide"
+              >
                 {caseItem.industry}
-              </p>
+              </motion.p>
             </div>
           </div>
 
           {/* Content sections */}
           <div className="space-y-2 sm:space-y-3">
-            <div>
+            <motion.div
+              initial={{ opacity: 0, x: -8 }}
+              animate={isInView ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 0.5, delay: 0.45 + index * 0.08 }}
+            >
               <div className="flex items-center gap-2 mb-1">
                 <div className="w-3 h-px bg-white/20" />
                 <span className="text-[9px] text-muted-dark uppercase tracking-widest font-mono">
@@ -627,9 +667,13 @@ function CaseCard({
               <p className="text-sm text-muted-light leading-relaxed line-clamp-2">
                 {caseItem.context}
               </p>
-            </div>
+            </motion.div>
 
-            <div>
+            <motion.div
+              initial={{ opacity: 0, x: -8 }}
+              animate={isInView ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 0.5, delay: 0.5 + index * 0.08 }}
+            >
               <div className="flex items-center gap-2 mb-1">
                 <div className="w-3 h-px bg-accent/40" />
                 <span className="text-[9px] text-muted-dark uppercase tracking-widest font-mono">
@@ -639,9 +683,13 @@ function CaseCard({
               <p className="text-sm text-muted-light leading-relaxed line-clamp-2">
                 {caseItem.action}
               </p>
-            </div>
+            </motion.div>
 
-            <div>
+            <motion.div
+              initial={{ opacity: 0, x: -8 }}
+              animate={isInView ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 0.5, delay: 0.55 + index * 0.08 }}
+            >
               <div className="flex items-center gap-2 mb-1">
                 <div className="w-3 h-px bg-accent" />
                 <span className="text-[9px] text-accent uppercase tracking-widest font-mono">
@@ -651,21 +699,26 @@ function CaseCard({
               <p className="text-sm text-foreground leading-relaxed line-clamp-2">
                 {caseItem.result}
               </p>
-            </div>
+            </motion.div>
           </div>
 
           {/* Footer */}
-          <div className="mt-4 pt-4 border-t border-white/[0.06] flex items-center justify-between">
-            <span className="text-[10px] text-muted-dark group-hover:text-muted transition-colors font-mono">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.5, delay: 0.6 + index * 0.08 }}
+            className="mt-4 pt-4 border-t border-white/[0.06] flex items-center justify-between"
+          >
+            <span className="text-[10px] text-muted-dark group-hover:text-muted transition-colors duration-300 font-mono">
               Visitar sitio
             </span>
-            <div className="w-6 h-6 rounded border border-white/10 flex items-center justify-center group-hover:border-accent/40 group-hover:bg-accent/5 transition-all">
+            <div className="icon-btn-premium w-6 h-6 rounded">
               <ArrowUpRight
                 size={12}
-                className="text-muted-dark group-hover:text-accent transition-colors"
+                className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
               />
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </motion.a>
