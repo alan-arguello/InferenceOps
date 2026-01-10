@@ -4,630 +4,696 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 
-// Animated visualization components for each service
+// Premium service visualizations
+
+// Implementation - API/Integration Flow
 function AutomationVisualization() {
   return (
-    <div className="relative w-full h-48 overflow-hidden">
-      {/* Central hub */}
-      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-        <motion.div
-          animate={{ scale: [1, 1.1, 1] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          className="w-12 h-12 rounded-xl bg-white/10 backdrop-blur border border-white/20 flex items-center justify-center"
-        >
-          <div className="w-6 h-6 rounded-lg bg-gradient-to-br from-blue-400 to-violet-500" />
-        </motion.div>
-      </div>
+    <div className="relative w-full h-36 overflow-hidden">
+      <svg className="absolute inset-0 w-full h-full" viewBox="0 0 200 100">
+        {/* API endpoints */}
+        <motion.g initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }}>
+          {/* Left source systems */}
+          {[
+            { y: 20, label: "CRM" },
+            { y: 50, label: "ERP" },
+            { y: 80, label: "API" },
+          ].map((item, i) => (
+            <g key={i}>
+              <rect
+                x="10"
+                y={item.y - 8}
+                width="32"
+                height="16"
+                rx="2"
+                fill="rgba(255,255,255,0.04)"
+                stroke="rgba(255,255,255,0.1)"
+                strokeWidth="0.5"
+              />
+              <text
+                x="26"
+                y={item.y + 1}
+                fontSize="6"
+                fill="rgba(165, 175, 188, 0.7)"
+                textAnchor="middle"
+                fontFamily="monospace"
+              >
+                {item.label}
+              </text>
+            </g>
+          ))}
 
-      {/* Left side icons */}
-      <div className="absolute left-4 top-1/2 -translate-y-1/2 flex flex-col gap-3">
-        {[
-          { icon: "⚡", delay: 0 },
-          { icon: "📊", delay: 0.2 },
-          { icon: "🔄", delay: 0.4 },
-        ].map((item, i) => (
-          <motion.div
-            key={i}
-            initial={{ x: -20, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ delay: item.delay, duration: 0.5 }}
-            className="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-xs"
+          {/* Center processing node */}
+          <rect
+            x="85"
+            y="35"
+            width="30"
+            height="30"
+            rx="4"
+            fill="rgba(124, 244, 216, 0.1)"
+            stroke="rgba(124, 244, 216, 0.4)"
+            strokeWidth="1"
+          />
+          <text
+            x="100"
+            y="52"
+            fontSize="5"
+            fill="#7cf4d8"
+            textAnchor="middle"
+            fontFamily="monospace"
           >
-            {item.icon}
-          </motion.div>
-        ))}
-      </div>
+            AI
+          </text>
 
-      {/* Right side outputs */}
-      <div className="absolute right-4 top-1/2 -translate-y-1/2 flex flex-col gap-3">
-        {[
-          { color: "from-emerald-400 to-teal-500", delay: 0.6 },
-          { color: "from-amber-400 to-orange-500", delay: 0.8 },
-          { color: "from-rose-400 to-pink-500", delay: 1 },
-        ].map((item, i) => (
-          <motion.div
-            key={i}
-            initial={{ x: 20, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ delay: item.delay, duration: 0.5 }}
-            className="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center"
-          >
-            <div className={`w-4 h-4 rounded bg-gradient-to-br ${item.color}`} />
-          </motion.div>
-        ))}
-      </div>
+          {/* Right output systems */}
+          {[
+            { y: 20, label: "SLACK" },
+            { y: 50, label: "MAIL" },
+            { y: 80, label: "DB" },
+          ].map((item, i) => (
+            <g key={i}>
+              <rect
+                x="158"
+                y={item.y - 8}
+                width="32"
+                height="16"
+                rx="2"
+                fill="rgba(166, 255, 106, 0.08)"
+                stroke="rgba(166, 255, 106, 0.3)"
+                strokeWidth="0.5"
+              />
+              <text
+                x="174"
+                y={item.y + 1}
+                fontSize="5"
+                fill="rgba(166, 255, 106, 0.8)"
+                textAnchor="middle"
+                fontFamily="monospace"
+              >
+                {item.label}
+              </text>
+            </g>
+          ))}
+        </motion.g>
 
-      {/* Animated connection lines */}
-      <svg className="absolute inset-0 w-full h-full" viewBox="0 0 200 150">
-        {/* Left to center */}
+        {/* Connection paths */}
+        {[20, 50, 80].map((y, i) => (
+          <g key={`path-${i}`}>
+            <motion.path
+              d={`M 42 ${y} L 85 50`}
+              fill="none"
+              stroke="rgba(124, 244, 216, 0.2)"
+              strokeWidth="0.5"
+              initial={{ pathLength: 0 }}
+              animate={{ pathLength: 1 }}
+              transition={{ delay: 0.5 + i * 0.1, duration: 0.5 }}
+            />
+            <motion.path
+              d={`M 115 50 L 158 ${y}`}
+              fill="none"
+              stroke="rgba(166, 255, 106, 0.3)"
+              strokeWidth="0.5"
+              initial={{ pathLength: 0 }}
+              animate={{ pathLength: 1 }}
+              transition={{ delay: 0.8 + i * 0.1, duration: 0.5 }}
+            />
+          </g>
+        ))}
+
+        {/* Data flow particles */}
         {[0, 1, 2].map((i) => (
-          <motion.path
-            key={`left-${i}`}
-            d={`M 35 ${55 + i * 22} Q 70 ${55 + i * 22} 85 75`}
-            fill="none"
-            stroke="url(#gradient-blue)"
-            strokeWidth="1.5"
-            initial={{ pathLength: 0, opacity: 0 }}
-            animate={{ pathLength: 1, opacity: 0.6 }}
-            transition={{ delay: i * 0.2, duration: 1 }}
+          <motion.circle
+            key={`particle-${i}`}
+            r="1.5"
+            fill="#7cf4d8"
+            initial={{ opacity: 0 }}
+            animate={{
+              opacity: [0, 1, 1, 0],
+              cx: [42, 85, 115, 158],
+              cy: [20 + i * 30, 50, 50, 20 + i * 30],
+            }}
+            transition={{
+              duration: 2.5,
+              repeat: Infinity,
+              delay: i * 0.3,
+              ease: "linear",
+            }}
           />
         ))}
-        {/* Center to right */}
-        {[0, 1, 2].map((i) => (
-          <motion.path
-            key={`right-${i}`}
-            d={`M 115 75 Q 130 ${55 + i * 22} 165 ${55 + i * 22}`}
-            fill="none"
-            stroke={
-              i === 0
-                ? "url(#gradient-green)"
-                : i === 1
-                  ? "url(#gradient-orange)"
-                  : "url(#gradient-pink)"
-            }
-            strokeWidth="1.5"
-            initial={{ pathLength: 0, opacity: 0 }}
-            animate={{ pathLength: 1, opacity: 0.6 }}
-            transition={{ delay: 0.6 + i * 0.2, duration: 1 }}
+      </svg>
+
+      {/* Status */}
+      <div className="absolute bottom-2 right-3 flex items-center gap-2">
+        <div className="flex items-center gap-1">
+          <motion.div
+            animate={{ opacity: [0.4, 1, 0.4] }}
+            transition={{ duration: 1.5, repeat: Infinity }}
+            className="w-1.5 h-1.5 rounded-full bg-accent"
           />
+          <span className="text-[8px] text-muted-dark font-mono">3 FLOWS ACTIVE</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// Training - Learning Progress Dashboard
+function TrainingVisualization() {
+  return (
+    <div className="relative w-full h-36 overflow-hidden p-3">
+      <div className="h-full flex gap-4">
+        {/* Skills matrix */}
+        <div className="flex-1">
+          <div className="text-[7px] text-muted-dark font-mono uppercase tracking-wider mb-2">
+            Adoption Rate
+          </div>
+          <div className="space-y-2">
+            {[
+              { label: "Prompting", value: 92 },
+              { label: "Tools", value: 78 },
+              { label: "Workflows", value: 85 },
+              { label: "Analysis", value: 71 },
+            ].map((skill, i) => (
+              <div key={i} className="flex items-center gap-2">
+                <span className="text-[7px] text-muted-dark font-mono w-14 truncate">
+                  {skill.label}
+                </span>
+                <div className="flex-1 h-1.5 bg-white/[0.04] rounded-full overflow-hidden">
+                  <motion.div
+                    initial={{ width: 0 }}
+                    animate={{ width: `${skill.value}%` }}
+                    transition={{ delay: 0.3 + i * 0.1, duration: 0.8 }}
+                    className="h-full rounded-full"
+                    style={{
+                      background:
+                        skill.value > 80
+                          ? "rgba(124, 244, 216, 0.7)"
+                          : "rgba(166, 255, 106, 0.5)",
+                    }}
+                  />
+                </div>
+                <span className="text-[8px] text-foreground font-mono w-6 text-right">
+                  {skill.value}%
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Session metrics */}
+        <div className="w-16 flex flex-col justify-between border-l border-white/[0.06] pl-3">
+          {[
+            { label: "Sessions", value: "24" },
+            { label: "Hours", value: "48" },
+            { label: "Teams", value: "6" },
+          ].map((metric, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, x: 10 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.6 + i * 0.1 }}
+            >
+              <div className="text-[7px] text-muted-dark font-mono uppercase">
+                {metric.label}
+              </div>
+              <div className="text-sm text-foreground font-mono">{metric.value}</div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+
+      {/* Completion indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1 }}
+        className="absolute top-2 right-2 flex items-center gap-1"
+      >
+        <span className="text-[8px] text-accent font-mono">81.5% COMPLETE</span>
+      </motion.div>
+    </div>
+  );
+}
+
+// Strategy - Roadmap Timeline
+function StrategyVisualization() {
+  return (
+    <div className="relative w-full h-36 overflow-hidden">
+      <svg className="absolute inset-0 w-full h-full" viewBox="0 0 200 100">
+        {/* Timeline base */}
+        <motion.line
+          x1="20"
+          y1="50"
+          x2="180"
+          y2="50"
+          stroke="rgba(255,255,255,0.1)"
+          strokeWidth="1"
+          initial={{ pathLength: 0 }}
+          animate={{ pathLength: 1 }}
+          transition={{ duration: 0.8 }}
+        />
+
+        {/* Progress line */}
+        <motion.line
+          x1="20"
+          y1="50"
+          x2="120"
+          y2="50"
+          stroke="url(#timeline-gradient)"
+          strokeWidth="2"
+          strokeLinecap="round"
+          initial={{ pathLength: 0 }}
+          animate={{ pathLength: 1 }}
+          transition={{ delay: 0.5, duration: 1 }}
+        />
+
+        {/* Phase markers */}
+        {[
+          { x: 20, label: "Q1", status: "done" },
+          { x: 60, label: "Q2", status: "done" },
+          { x: 100, label: "Q3", status: "current" },
+          { x: 140, label: "Q4", status: "pending" },
+          { x: 180, label: "SCALE", status: "pending" },
+        ].map((phase, i) => (
+          <g key={i}>
+            <motion.circle
+              cx={phase.x}
+              cy="50"
+              r={phase.status === "current" ? 5 : 3}
+              fill={
+                phase.status === "done"
+                  ? "#7cf4d8"
+                  : phase.status === "current"
+                    ? "#a6ff6a"
+                    : "rgba(255,255,255,0.1)"
+              }
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{ delay: 0.8 + i * 0.1 }}
+            />
+            {phase.status === "current" && (
+              <motion.circle
+                cx={phase.x}
+                cy="50"
+                r="8"
+                fill="none"
+                stroke="rgba(166, 255, 106, 0.3)"
+                strokeWidth="1"
+                animate={{ scale: [1, 1.3, 1], opacity: [0.5, 0, 0.5] }}
+                transition={{ duration: 2, repeat: Infinity }}
+              />
+            )}
+            <text
+              x={phase.x}
+              y="68"
+              fontSize="6"
+              fill={
+                phase.status === "pending"
+                  ? "rgba(165, 175, 188, 0.4)"
+                  : "rgba(165, 175, 188, 0.8)"
+              }
+              textAnchor="middle"
+              fontFamily="monospace"
+            >
+              {phase.label}
+            </text>
+          </g>
         ))}
+
+        {/* Milestone cards */}
+        {[
+          { x: 40, y: 25, label: "Diagnóstico" },
+          { x: 80, y: 25, label: "Diseño" },
+          { x: 120, y: 25, label: "Ejecución" },
+        ].map((milestone, i) => (
+          <motion.g
+            key={i}
+            initial={{ opacity: 0, y: 5 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.2 + i * 0.15 }}
+          >
+            <rect
+              x={milestone.x - 18}
+              y={milestone.y - 8}
+              width="36"
+              height="14"
+              rx="2"
+              fill="rgba(255,255,255,0.03)"
+              stroke="rgba(255,255,255,0.08)"
+              strokeWidth="0.5"
+            />
+            <text
+              x={milestone.x}
+              y={milestone.y + 1}
+              fontSize="5"
+              fill="rgba(165, 175, 188, 0.7)"
+              textAnchor="middle"
+              fontFamily="monospace"
+            >
+              {milestone.label}
+            </text>
+          </motion.g>
+        ))}
+
         <defs>
-          <linearGradient id="gradient-blue" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#60a5fa" />
-            <stop offset="100%" stopColor="#a78bfa" />
-          </linearGradient>
-          <linearGradient id="gradient-green" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#34d399" />
-            <stop offset="100%" stopColor="#14b8a6" />
-          </linearGradient>
-          <linearGradient
-            id="gradient-orange"
-            x1="0%"
-            y1="0%"
-            x2="100%"
-            y2="0%"
-          >
-            <stop offset="0%" stopColor="#fbbf24" />
-            <stop offset="100%" stopColor="#f97316" />
-          </linearGradient>
-          <linearGradient id="gradient-pink" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#fb7185" />
-            <stop offset="100%" stopColor="#ec4899" />
+          <linearGradient id="timeline-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="#7cf4d8" />
+            <stop offset="100%" stopColor="#a6ff6a" />
           </linearGradient>
         </defs>
       </svg>
-    </div>
-  );
-}
 
-function TrainingVisualization() {
-  return (
-    <div className="relative w-full h-48 overflow-hidden">
-      {/* Dashboard mockup */}
-      <div className="absolute inset-4 rounded-xl bg-white/5 border border-white/10 overflow-hidden">
-        {/* Top bar */}
-        <div className="h-6 bg-white/5 border-b border-white/10 flex items-center px-2 gap-1.5">
-          <div className="w-2 h-2 rounded-full bg-red-400/60" />
-          <div className="w-2 h-2 rounded-full bg-yellow-400/60" />
-          <div className="w-2 h-2 rounded-full bg-green-400/60" />
-        </div>
-
-        {/* Content */}
-        <div className="p-3 flex gap-3">
-          {/* Sidebar */}
-          <div className="w-12 flex flex-col gap-2">
-            {[0, 1, 2, 3].map((i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, x: -10 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: i * 0.1 }}
-                className={`h-2 rounded ${i === 1 ? "bg-blue-400/60" : "bg-white/10"}`}
-              />
-            ))}
-          </div>
-
-          {/* Main content */}
-          <div className="flex-1 space-y-2">
-            {/* Charts row */}
-            <div className="flex gap-2">
-              <motion.div
-                initial={{ scaleY: 0 }}
-                animate={{ scaleY: 1 }}
-                transition={{ delay: 0.3, duration: 0.5 }}
-                className="flex-1 h-16 rounded-lg bg-gradient-to-t from-blue-500/20 to-transparent border border-white/10 origin-bottom"
-              />
-              <motion.div
-                initial={{ scaleY: 0 }}
-                animate={{ scaleY: 1 }}
-                transition={{ delay: 0.5, duration: 0.5 }}
-                className="flex-1 h-16 rounded-lg bg-gradient-to-t from-violet-500/20 to-transparent border border-white/10 origin-bottom"
-              />
-            </div>
-
-            {/* Progress bars */}
-            <div className="space-y-1.5">
-              {[80, 60, 90].map((width, i) => (
-                <div key={i} className="flex items-center gap-2">
-                  <div className="w-4 h-4 rounded bg-white/5 flex items-center justify-center">
-                    <div className="w-2 h-2 rounded-sm bg-white/20" />
-                  </div>
-                  <div className="flex-1 h-1.5 bg-white/5 rounded-full overflow-hidden">
-                    <motion.div
-                      initial={{ width: 0 }}
-                      animate={{ width: `${width}%` }}
-                      transition={{ delay: 0.8 + i * 0.2, duration: 0.8 }}
-                      className={`h-full rounded-full ${i === 0 ? "bg-emerald-400/60" : i === 1 ? "bg-amber-400/60" : "bg-blue-400/60"}`}
-                    />
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Floating badge */}
+      {/* Progress indicator */}
       <motion.div
-        animate={{ y: [0, -5, 0] }}
-        transition={{ duration: 2, repeat: Infinity }}
-        className="absolute -top-1 right-2 px-2 py-1 bg-emerald-500/20 border border-emerald-500/30 rounded-full flex items-center gap-1"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.5 }}
+        className="absolute bottom-2 left-3 text-[8px] text-muted-dark font-mono"
       >
-        <div className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-        <span className="text-[10px] text-emerald-300">Activo</span>
+        PHASE 3 OF 5
       </motion.div>
     </div>
   );
 }
 
-function StrategyVisualization() {
-  return (
-    <div className="relative w-full h-48 overflow-hidden p-4">
-      {/* Roadmap visualization */}
-      <div className="relative h-full flex items-center">
-        {/* Main line */}
-        <motion.div
-          initial={{ scaleX: 0 }}
-          animate={{ scaleX: 1 }}
-          transition={{ duration: 1 }}
-          className="absolute left-0 right-0 h-0.5 bg-gradient-to-r from-blue-500/50 via-violet-500/50 to-emerald-500/50 origin-left"
-        />
-
-        {/* Nodes */}
-        {[
-          { label: "Diagnóstico", color: "blue", pos: "5%" },
-          { label: "Diseño", color: "violet", pos: "35%" },
-          { label: "Ejecución", color: "emerald", pos: "65%" },
-          { label: "Escala", color: "amber", pos: "95%" },
-        ].map((node, i) => (
-          <motion.div
-            key={i}
-            initial={{ scale: 0, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ delay: 0.5 + i * 0.2, type: "spring" }}
-            className="absolute flex flex-col items-center"
-            style={{ left: node.pos, transform: "translateX(-50%)" }}
-          >
-            <div
-              className={`w-4 h-4 rounded-full bg-${node.color}-500/30 border-2 border-${node.color}-400 flex items-center justify-center`}
-              style={{
-                backgroundColor:
-                  node.color === "blue"
-                    ? "rgba(59, 130, 246, 0.3)"
-                    : node.color === "violet"
-                      ? "rgba(139, 92, 246, 0.3)"
-                      : node.color === "emerald"
-                        ? "rgba(16, 185, 129, 0.3)"
-                        : "rgba(251, 191, 36, 0.3)",
-                borderColor:
-                  node.color === "blue"
-                    ? "#60a5fa"
-                    : node.color === "violet"
-                      ? "#a78bfa"
-                      : node.color === "emerald"
-                        ? "#34d399"
-                        : "#fbbf24",
-              }}
-            >
-              <div
-                className="w-2 h-2 rounded-full"
-                style={{
-                  backgroundColor:
-                    node.color === "blue"
-                      ? "#60a5fa"
-                      : node.color === "violet"
-                        ? "#a78bfa"
-                        : node.color === "emerald"
-                          ? "#34d399"
-                          : "#fbbf24",
-                }}
-              />
-            </div>
-            <span className="mt-2 text-[10px] text-muted-light whitespace-nowrap">
-              {node.label}
-            </span>
-
-            {/* Floating cards */}
-            {i < 3 && (
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1 + i * 0.3 }}
-                className="absolute -top-12 w-16 h-8 rounded bg-white/5 border border-white/10 flex items-center justify-center"
-              >
-                <div className="space-y-1">
-                  <div className="w-10 h-1 bg-white/20 rounded" />
-                  <div className="w-6 h-1 bg-white/10 rounded" />
-                </div>
-              </motion.div>
-            )}
-          </motion.div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
+// Talent - Team Network Matrix
 function TalentVisualization() {
+  const roles = [
+    { x: 30, y: 25, label: "ML", size: 4 },
+    { x: 70, y: 20, label: "FE", size: 3 },
+    { x: 110, y: 25, label: "BE", size: 3 },
+    { x: 150, y: 20, label: "DS", size: 4 },
+    { x: 50, y: 55, label: "PM", size: 3 },
+    { x: 90, y: 50, label: "LEAD", size: 5 },
+    { x: 130, y: 55, label: "QA", size: 3 },
+    { x: 70, y: 80, label: "UX", size: 3 },
+    { x: 110, y: 80, label: "DBA", size: 3 },
+  ];
+
+  const connections = [
+    [0, 4], [1, 4], [1, 5], [2, 5], [2, 6], [3, 6],
+    [4, 5], [5, 6], [4, 7], [5, 7], [5, 8], [6, 8],
+    [0, 5], [3, 5],
+  ];
+
   return (
-    <div className="relative w-full h-48 overflow-hidden">
-      {/* Network of people */}
-      <div className="absolute inset-0 flex items-center justify-center">
-        {/* Center person */}
-        <motion.div
-          animate={{ scale: [1, 1.05, 1] }}
-          transition={{ duration: 3, repeat: Infinity }}
-          className="relative z-10 w-14 h-14 rounded-full bg-gradient-to-br from-blue-500/30 to-violet-500/30 border-2 border-white/20 flex items-center justify-center"
-        >
-          <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-400 to-violet-500" />
-        </motion.div>
-
-        {/* Orbiting people */}
-        {[0, 1, 2, 3, 4, 5].map((i) => {
-          const angle = (i * 60 * Math.PI) / 180;
-          const radius = 70;
-          const x = Math.cos(angle) * radius;
-          const y = Math.sin(angle) * radius;
-
-          return (
-            <motion.div
-              key={i}
-              initial={{ scale: 0, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ delay: 0.2 + i * 0.1, type: "spring" }}
-              className="absolute w-8 h-8 rounded-full bg-white/5 border border-white/20 flex items-center justify-center"
-              style={{
-                transform: `translate(${x}px, ${y}px)`,
-              }}
-            >
-              <div
-                className="w-4 h-4 rounded-full"
-                style={{
-                  background: `linear-gradient(135deg, ${["#f472b6", "#34d399", "#fbbf24", "#60a5fa", "#a78bfa", "#f97316"][i]} 0%, ${["#ec4899", "#10b981", "#f59e0b", "#3b82f6", "#8b5cf6", "#ea580c"][i]} 100%)`,
-                }}
-              />
-            </motion.div>
-          );
-        })}
-
-        {/* Connection lines */}
-        <svg
-          className="absolute inset-0 w-full h-full"
-          viewBox="0 0 200 150"
-          style={{ overflow: "visible" }}
-        >
-          {[0, 1, 2, 3, 4, 5].map((i) => {
-            const angle = (i * 60 * Math.PI) / 180;
-            const endX = 100 + Math.cos(angle) * 50;
-            const endY = 75 + Math.sin(angle) * 50;
-            return (
-              <motion.line
-                key={i}
-                x1="100"
-                y1="75"
-                x2={endX}
-                y2={endY}
-                stroke="white"
-                strokeOpacity="0.1"
-                strokeWidth="1"
-                initial={{ pathLength: 0 }}
-                animate={{ pathLength: 1 }}
-                transition={{ delay: 0.5 + i * 0.1, duration: 0.5 }}
-              />
-            );
-          })}
-        </svg>
-      </div>
-
-      {/* Floating skill tags */}
-      <motion.div
-        animate={{ y: [0, -3, 0] }}
-        transition={{ duration: 2, repeat: Infinity, delay: 0 }}
-        className="absolute top-3 left-3 px-2 py-0.5 bg-emerald-500/10 border border-emerald-500/20 rounded text-[9px] text-emerald-300"
-      >
-        ML Engineer
-      </motion.div>
-      <motion.div
-        animate={{ y: [0, -3, 0] }}
-        transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
-        className="absolute top-3 right-3 px-2 py-0.5 bg-blue-500/10 border border-blue-500/20 rounded text-[9px] text-blue-300"
-      >
-        Full Stack
-      </motion.div>
-      <motion.div
-        animate={{ y: [0, -3, 0] }}
-        transition={{ duration: 2, repeat: Infinity, delay: 1 }}
-        className="absolute bottom-3 left-1/2 -translate-x-1/2 px-2 py-0.5 bg-violet-500/10 border border-violet-500/20 rounded text-[9px] text-violet-300"
-      >
-        Data Science
-      </motion.div>
-    </div>
-  );
-}
-
-function EventsVisualization() {
-  return (
-    <div className="relative w-full h-48 overflow-hidden p-3">
-      {/* Stage/venue mockup */}
-      <div className="relative h-full">
-        {/* Background gradient */}
-        <div className="absolute inset-0 bg-gradient-to-t from-violet-500/10 via-transparent to-transparent rounded-xl" />
-
-        {/* Stage */}
-        <motion.div
-          initial={{ scaleY: 0 }}
-          animate={{ scaleY: 1 }}
-          transition={{ duration: 0.5 }}
-          className="absolute bottom-0 left-1/2 -translate-x-1/2 w-32 h-20 bg-gradient-to-t from-white/10 to-white/5 rounded-t-lg border-t border-x border-white/20 origin-bottom"
-        >
-          {/* Podium */}
-          <motion.div
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.5 }}
-            className="absolute top-4 left-1/2 -translate-x-1/2 w-8 h-12 bg-white/10 rounded border border-white/20"
-          />
-        </motion.div>
-
-        {/* Spotlight beams */}
-        {[-30, 0, 30].map((angle, i) => (
-          <motion.div
+    <div className="relative w-full h-36 overflow-hidden">
+      <svg className="absolute inset-0 w-full h-full" viewBox="0 0 180 100">
+        {/* Connections */}
+        {connections.map(([from, to], i) => (
+          <motion.line
             key={i}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: [0.1, 0.3, 0.1] }}
-            transition={{ duration: 2, repeat: Infinity, delay: 0.8 + i * 0.3 }}
-            className="absolute top-0 left-1/2 w-20 h-32 origin-top"
-            style={{
-              transform: `translateX(-50%) rotate(${angle}deg)`,
-              background: `linear-gradient(180deg, ${i === 0 ? "rgba(96, 165, 250, 0.3)" : i === 1 ? "rgba(167, 139, 250, 0.3)" : "rgba(251, 191, 36, 0.3)"} 0%, transparent 100%)`,
-              clipPath: "polygon(40% 0%, 60% 0%, 100% 100%, 0% 100%)",
-            }}
+            x1={roles[from].x}
+            y1={roles[from].y}
+            x2={roles[to].x}
+            y2={roles[to].y}
+            stroke="rgba(124, 244, 216, 0.15)"
+            strokeWidth="0.5"
+            initial={{ pathLength: 0 }}
+            animate={{ pathLength: 1 }}
+            transition={{ delay: i * 0.03, duration: 0.3 }}
           />
         ))}
 
-        {/* Audience dots */}
-        <div className="absolute bottom-2 left-0 right-0 flex justify-center gap-1">
-          {[...Array(9)].map((_, i) => (
-            <motion.div
-              key={i}
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{ delay: 1 + i * 0.05 }}
-              className="w-2 h-2 rounded-full bg-white/20"
+        {/* Role nodes */}
+        {roles.map((role, i) => (
+          <motion.g
+            key={i}
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ delay: 0.5 + i * 0.05, type: "spring" }}
+          >
+            <circle
+              cx={role.x}
+              cy={role.y}
+              r={role.size * 2.5}
+              fill={
+                role.label === "LEAD"
+                  ? "rgba(124, 244, 216, 0.15)"
+                  : "rgba(255,255,255,0.03)"
+              }
+              stroke={
+                role.label === "LEAD"
+                  ? "rgba(124, 244, 216, 0.5)"
+                  : "rgba(255,255,255,0.1)"
+              }
+              strokeWidth="0.5"
             />
-          ))}
-        </div>
-
-        {/* Calendar badge */}
-        <motion.div
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          transition={{ delay: 0.3, type: "spring" }}
-          className="absolute top-0 right-0 w-10 h-12 bg-white/10 border border-white/20 rounded-lg overflow-hidden"
-        >
-          <div className="h-3 bg-rose-500/40" />
-          <div className="flex flex-col items-center justify-center h-9">
-            <span className="text-[10px] text-muted">MAR</span>
-            <span className="text-sm font-medium text-white">15</span>
-          </div>
-        </motion.div>
-
-        {/* Attendee count */}
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 1.2 }}
-          className="absolute top-0 left-0 flex items-center gap-1.5 px-2 py-1 bg-white/5 border border-white/10 rounded-lg"
-        >
-          <div className="flex -space-x-1">
-            {[0, 1, 2].map((i) => (
-              <div
-                key={i}
-                className="w-4 h-4 rounded-full border border-background"
-                style={{
-                  background: `linear-gradient(135deg, ${["#60a5fa", "#a78bfa", "#34d399"][i]} 0%, ${["#3b82f6", "#8b5cf6", "#10b981"][i]} 100%)`,
-                }}
-              />
-            ))}
-          </div>
-          <span className="text-[10px] text-muted-light">+124</span>
-        </motion.div>
-      </div>
-    </div>
-  );
-}
-
-function SiliconValleyVisualization() {
-  return (
-    <div className="relative w-full h-48 overflow-hidden flex items-center justify-center">
-      {/* Globe wireframe */}
-      <div className="relative w-36 h-36">
-        {/* Outer ring */}
-        <motion.div
-          animate={{ rotateY: 360 }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          className="absolute inset-0 rounded-full border border-white/10"
-          style={{ transformStyle: "preserve-3d" }}
-        />
-
-        {/* Horizontal lines */}
-        {[0, 1, 2, 3, 4].map((i) => (
-          <div
-            key={`h-${i}`}
-            className="absolute left-1/2 -translate-x-1/2 w-full border-t border-white/5"
-            style={{ top: `${20 + i * 15}%` }}
-          />
+            <text
+              x={role.x}
+              y={role.y + 1.5}
+              fontSize="5"
+              fill={role.label === "LEAD" ? "#7cf4d8" : "rgba(165, 175, 188, 0.7)"}
+              textAnchor="middle"
+              fontFamily="monospace"
+            >
+              {role.label}
+            </text>
+          </motion.g>
         ))}
 
-        {/* Vertical ellipses */}
-        {[0, 1, 2].map((i) => (
-          <motion.div
-            key={`v-${i}`}
-            animate={{ rotateY: 360 }}
+        {/* Data flow */}
+        {[0, 1].map((i) => (
+          <motion.circle
+            key={`flow-${i}`}
+            r="1.5"
+            fill="#7cf4d8"
+            animate={{
+              opacity: [0, 1, 0],
+              cx: [roles[0].x, roles[5].x, roles[8].x],
+              cy: [roles[0].y, roles[5].y, roles[8].y],
+            }}
             transition={{
-              duration: 15 + i * 5,
+              duration: 2,
               repeat: Infinity,
+              delay: i * 0.8,
               ease: "linear",
             }}
-            className="absolute inset-0 rounded-full border border-white/10"
-            style={{
-              transform: `rotateY(${60 * i}deg)`,
-              transformStyle: "preserve-3d",
-            }}
+          />
+        ))}
+      </svg>
+
+      {/* Team stats */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1 }}
+        className="absolute bottom-2 left-3 flex items-center gap-3"
+      >
+        <div className="flex items-center gap-1">
+          <div className="w-1 h-1 rounded-full bg-accent" />
+          <span className="text-[8px] text-muted-dark font-mono">9 ROLES</span>
+        </div>
+        <div className="flex items-center gap-1">
+          <div className="w-1 h-1 rounded-full bg-accent-dim" />
+          <span className="text-[8px] text-muted-dark font-mono">14 LINKS</span>
+        </div>
+      </motion.div>
+    </div>
+  );
+}
+
+// Events - Attendance Analytics
+function EventsVisualization() {
+  return (
+    <div className="relative w-full h-36 overflow-hidden p-3">
+      <div className="h-full flex gap-4">
+        {/* Attendance chart */}
+        <div className="flex-1">
+          <div className="text-[7px] text-muted-dark font-mono uppercase tracking-wider mb-2">
+            Attendance
+          </div>
+          <div className="h-16 flex items-end gap-1">
+            {[35, 52, 68, 45, 82, 91, 78, 95, 88, 72, 85, 92].map((h, i) => (
+              <motion.div
+                key={i}
+                initial={{ scaleY: 0 }}
+                animate={{ scaleY: 1 }}
+                transition={{ delay: i * 0.04, duration: 0.3 }}
+                className="flex-1 rounded-sm origin-bottom"
+                style={{
+                  height: `${h}%`,
+                  background:
+                    h > 80
+                      ? "rgba(124, 244, 216, 0.6)"
+                      : h > 60
+                        ? "rgba(124, 244, 216, 0.4)"
+                        : "rgba(255,255,255,0.15)",
+                }}
+              />
+            ))}
+          </div>
+          <div className="flex justify-between mt-1">
+            <span className="text-[6px] text-muted-dark font-mono">JAN</span>
+            <span className="text-[6px] text-muted-dark font-mono">DEC</span>
+          </div>
+        </div>
+
+        {/* Event metrics */}
+        <div className="w-20 flex flex-col justify-center gap-2 border-l border-white/[0.06] pl-3">
+          {[
+            { label: "Events", value: "12", unit: "/yr" },
+            { label: "Avg", value: "156", unit: "pax" },
+            { label: "NPS", value: "72", unit: "" },
+          ].map((metric, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, x: 10 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.5 + i * 0.1 }}
+            >
+              <div className="text-[6px] text-muted-dark font-mono uppercase">
+                {metric.label}
+              </div>
+              <div className="flex items-baseline gap-0.5">
+                <span className="text-sm text-foreground font-mono">{metric.value}</span>
+                <span className="text-[7px] text-muted-dark font-mono">{metric.unit}</span>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+
+      {/* Next event indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1 }}
+        className="absolute top-2 right-2 flex items-center gap-1.5 px-2 py-0.5 bg-accent/10 border border-accent/20 rounded"
+      >
+        <motion.div
+          animate={{ opacity: [0.4, 1, 0.4] }}
+          transition={{ duration: 1.5, repeat: Infinity }}
+          className="w-1.5 h-1.5 rounded-full bg-accent"
+        />
+        <span className="text-[7px] text-accent font-mono">NEXT: MAR 15</span>
+      </motion.div>
+    </div>
+  );
+}
+
+// Silicon Valley - Global Network
+function SiliconValleyVisualization() {
+  const locations = [
+    { x: 25, y: 35, label: "SF", primary: true },
+    { x: 60, y: 65, label: "CDMX", primary: false },
+    { x: 100, y: 45, label: "NYC", primary: false },
+    { x: 140, y: 70, label: "SAO", primary: false },
+    { x: 170, y: 30, label: "LON", primary: false },
+  ];
+
+  const connections = [
+    [0, 1], [0, 2], [0, 4], [1, 3], [2, 4],
+  ];
+
+  return (
+    <div className="relative w-full h-36 overflow-hidden">
+      <svg className="absolute inset-0 w-full h-full" viewBox="0 0 200 100">
+        {/* Grid background */}
+        <defs>
+          <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+            <path
+              d="M 20 0 L 0 0 0 20"
+              fill="none"
+              stroke="rgba(124, 244, 216, 0.05)"
+              strokeWidth="0.5"
+            />
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#grid)" />
+
+        {/* Connection arcs */}
+        {connections.map(([from, to], i) => (
+          <motion.path
+            key={i}
+            d={`M ${locations[from].x} ${locations[from].y} Q ${(locations[from].x + locations[to].x) / 2} ${Math.min(locations[from].y, locations[to].y) - 15} ${locations[to].x} ${locations[to].y}`}
+            fill="none"
+            stroke="rgba(124, 244, 216, 0.2)"
+            strokeWidth="0.5"
+            strokeDasharray="2 2"
+            initial={{ pathLength: 0 }}
+            animate={{ pathLength: 1 }}
+            transition={{ delay: 0.5 + i * 0.15, duration: 0.8 }}
           />
         ))}
 
-        {/* Connection points */}
-        <motion.div
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          transition={{ delay: 0.3 }}
-          className="absolute top-4 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-emerald-400 shadow-lg shadow-emerald-400/50"
-        >
-          <div className="absolute inset-0 rounded-full bg-emerald-400 animate-ping opacity-30" />
-        </motion.div>
-
-        <motion.div
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          transition={{ delay: 0.5 }}
-          className="absolute top-1/3 right-2 w-2 h-2 rounded-full bg-blue-400 shadow-lg shadow-blue-400/50"
-        />
-
-        <motion.div
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          transition={{ delay: 0.7 }}
-          className="absolute bottom-1/3 left-4 w-2 h-2 rounded-full bg-amber-400 shadow-lg shadow-amber-400/50"
-        />
-
-        <motion.div
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          transition={{ delay: 0.9 }}
-          className="absolute bottom-6 right-1/4 w-2.5 h-2.5 rounded-full bg-violet-400 shadow-lg shadow-violet-400/50"
-        />
-
-        {/* Animated arc */}
-        <svg
-          className="absolute inset-0 w-full h-full"
-          viewBox="0 0 144 144"
-          style={{ overflow: "visible" }}
-        >
-          <motion.path
-            d="M 72 15 Q 120 50 85 120"
-            fill="none"
-            stroke="url(#arc-gradient)"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            initial={{ pathLength: 0, opacity: 0 }}
-            animate={{ pathLength: 1, opacity: 1 }}
-            transition={{ delay: 1, duration: 1.5 }}
-          />
-          <motion.path
-            d="M 72 15 Q 24 60 50 100"
-            fill="none"
-            stroke="url(#arc-gradient-2)"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            initial={{ pathLength: 0, opacity: 0 }}
-            animate={{ pathLength: 1, opacity: 1 }}
-            transition={{ delay: 1.3, duration: 1.5 }}
-          />
-          <defs>
-            <linearGradient
-              id="arc-gradient"
-              x1="0%"
-              y1="0%"
-              x2="100%"
-              y2="100%"
+        {/* Location nodes */}
+        {locations.map((loc, i) => (
+          <motion.g
+            key={i}
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ delay: 0.3 + i * 0.1, type: "spring" }}
+          >
+            {loc.primary && (
+              <motion.circle
+                cx={loc.x}
+                cy={loc.y}
+                r="12"
+                fill="none"
+                stroke="rgba(124, 244, 216, 0.2)"
+                strokeWidth="0.5"
+                animate={{ scale: [1, 1.2, 1], opacity: [0.5, 0.2, 0.5] }}
+                transition={{ duration: 2, repeat: Infinity }}
+              />
+            )}
+            <circle
+              cx={loc.x}
+              cy={loc.y}
+              r={loc.primary ? 6 : 4}
+              fill={loc.primary ? "rgba(124, 244, 216, 0.3)" : "rgba(255,255,255,0.05)"}
+              stroke={loc.primary ? "#7cf4d8" : "rgba(255,255,255,0.2)"}
+              strokeWidth="1"
+            />
+            <text
+              x={loc.x}
+              y={loc.y + (loc.primary ? 16 : 12)}
+              fontSize="5"
+              fill={loc.primary ? "#7cf4d8" : "rgba(165, 175, 188, 0.6)"}
+              textAnchor="middle"
+              fontFamily="monospace"
             >
-              <stop offset="0%" stopColor="#34d399" />
-              <stop offset="100%" stopColor="#8b5cf6" />
-            </linearGradient>
-            <linearGradient
-              id="arc-gradient-2"
-              x1="0%"
-              y1="0%"
-              x2="100%"
-              y2="100%"
-            >
-              <stop offset="0%" stopColor="#34d399" />
-              <stop offset="100%" stopColor="#fbbf24" />
-            </linearGradient>
-          </defs>
-        </svg>
-      </div>
+              {loc.label}
+            </text>
+          </motion.g>
+        ))}
 
-      {/* Location labels */}
+        {/* Data transfer animation */}
+        {[0, 1, 2].map((i) => (
+          <motion.circle
+            key={`transfer-${i}`}
+            r="2"
+            fill="#7cf4d8"
+            animate={{
+              opacity: [0, 1, 0],
+              cx: [locations[0].x, locations[i + 1].x],
+              cy: [locations[0].y, locations[i + 1].y],
+            }}
+            transition={{
+              duration: 1.5,
+              repeat: Infinity,
+              delay: i * 0.5,
+              ease: "easeInOut",
+            }}
+          />
+        ))}
+      </svg>
+
+      {/* Network status */}
       <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
         transition={{ delay: 1.5 }}
-        className="absolute top-2 left-1/2 -translate-x-1/2 flex items-center gap-1.5 px-2 py-1 bg-emerald-500/10 border border-emerald-500/20 rounded-full"
+        className="absolute bottom-2 left-3 flex items-center gap-3"
       >
-        <div className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-        <span className="text-[10px] text-emerald-300">San Francisco</span>
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.8 }}
-        className="absolute bottom-2 left-4 text-[9px] text-muted flex items-center gap-1"
-      >
-        <div className="w-1 h-1 rounded-full bg-amber-400" />
-        CDMX
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2 }}
-        className="absolute bottom-2 right-4 text-[9px] text-muted flex items-center gap-1"
-      >
-        <div className="w-1 h-1 rounded-full bg-violet-400" />
-        São Paulo
+        <div className="flex items-center gap-1">
+          <div className="w-1 h-1 rounded-full bg-accent" />
+          <span className="text-[8px] text-muted-dark font-mono">5 HUBS</span>
+        </div>
+        <div className="flex items-center gap-1">
+          <div className="w-1 h-1 rounded-full bg-accent-dim" />
+          <span className="text-[8px] text-muted-dark font-mono">LATAM + US + EU</span>
+        </div>
       </motion.div>
     </div>
   );
@@ -642,10 +708,7 @@ const services = [
     subtitle: "Hecha a la medida",
     description:
       "Automatización de procesos y asistentes internos integrados con tus herramientas existentes.",
-    highlights: ["Automatización", "Asistentes IA", "Integraciones"],
     visualization: AutomationVisualization,
-    gradient: "from-blue-500/20 via-violet-500/10 to-transparent",
-    accentColor: "blue",
   },
   {
     id: 2,
@@ -655,10 +718,7 @@ const services = [
     subtitle: "Entrenamiento aplicado",
     description:
       "Sesiones y talleres para líderes sobre qué es real, qué priorizar y cómo decidir.",
-    highlights: ["Ejecutivos", "Talleres", "Decisiones"],
     visualization: TrainingVisualization,
-    gradient: "from-emerald-500/20 via-teal-500/10 to-transparent",
-    accentColor: "emerald",
   },
   {
     id: 3,
@@ -668,10 +728,7 @@ const services = [
     subtitle: "Eficiencia operativa",
     description:
       "Diagnóstico, priorización por impacto y lineamientos para una adopción sostenible.",
-    highlights: ["Diagnóstico", "Roadmap", "Priorización"],
     visualization: StrategyVisualization,
-    gradient: "from-violet-500/20 via-purple-500/10 to-transparent",
-    accentColor: "violet",
   },
   {
     id: 4,
@@ -681,10 +738,7 @@ const services = [
     subtitle: "Ejecución ágil",
     description:
       "Talento de alto potencial en Latam y equipos por proyecto sin inflar estructura.",
-    highlights: ["Latam", "Pods", "Selección"],
     visualization: TalentVisualization,
-    gradient: "from-rose-500/20 via-pink-500/10 to-transparent",
-    accentColor: "rose",
   },
   {
     id: 5,
@@ -694,10 +748,7 @@ const services = [
     subtitle: "Activaciones estratégicas",
     description:
       "Eventos con retorno real, curación de agenda y conexión con el ecosistema.",
-    highlights: ["Eventos", "Networking", "ROI"],
     visualization: EventsVisualization,
-    gradient: "from-amber-500/20 via-orange-500/10 to-transparent",
-    accentColor: "amber",
   },
   {
     id: 6,
@@ -707,10 +758,7 @@ const services = [
     subtitle: "Silicon Valley",
     description:
       "Agenda curada para ejecutivos con conexiones estratégicas y aprendizaje aplicado.",
-    highlights: ["Silicon Valley", "Conexiones", "Inmersión"],
     visualization: SiliconValleyVisualization,
-    gradient: "from-cyan-500/20 via-blue-500/10 to-transparent",
-    accentColor: "cyan",
   },
 ];
 
@@ -727,35 +775,32 @@ function ServiceCard({
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 24 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{
-        duration: 0.8,
+        duration: 0.6,
         delay: 0.2 + index * 0.1,
         ease: [0.16, 1, 0.3, 1],
       }}
       className="group"
     >
-      <div className="h-full border border-border rounded-lg overflow-hidden hover:border-white/20 transition-colors">
+      <div className="surface-card h-full">
         {/* Visualization */}
-        <div className="relative bg-white/[0.02]">
+        <div className="border-b border-white/[0.06]">
           <Visualization />
         </div>
 
         {/* Content */}
-        <div className="p-5 sm:p-6">
-          {/* Number */}
-          <span className="text-sm text-muted-dark font-light">
-            {service.number}
-          </span>
+        <div className="p-5">
+          <div className="flex items-center gap-3 mb-3">
+            <span className="text-[10px] text-muted-dark font-mono">{service.number}</span>
+            <span className="h-px flex-1 bg-white/[0.06]" />
+          </div>
 
-          {/* Title */}
-          <h3 className="text-base sm:text-lg font-light text-foreground mt-2 group-hover:text-white transition-colors">
+          <h3 className="text-base font-semibold text-foreground mb-1 group-hover:text-white transition-colors">
             {service.title}
           </h3>
-          <p className="text-sm text-muted-dark mb-3">{service.subtitle}</p>
-
-          {/* Description */}
+          <p className="text-[11px] text-muted-dark mb-3 font-mono">{service.subtitle}</p>
           <p className="text-sm text-muted-light leading-relaxed">
             {service.description}
           </p>
@@ -810,14 +855,14 @@ export default function Servicios() {
         {/* Services Grid */}
         <div className="space-y-12">
           <div>
-            <p className="text-xs text-muted uppercase tracking-widest mb-2">
+            <p className="text-[10px] text-muted uppercase tracking-widest mb-2 font-mono">
               Servicios core
             </p>
             <p className="text-sm text-muted mb-6 max-w-2xl">
               Lo que siempre ejecutamos para asegurar implementación y adopción
               real.
             </p>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
               {coreServices.map((service, index) => (
                 <ServiceCard
                   key={service.id}
@@ -830,13 +875,13 @@ export default function Servicios() {
           </div>
 
           <div>
-            <p className="text-xs text-muted uppercase tracking-widest mb-2">
+            <p className="text-[10px] text-muted uppercase tracking-widest mb-2 font-mono">
               Complementarios
             </p>
             <p className="text-sm text-muted mb-6 max-w-2xl">
               Activaciones y soporte adicional cuando el proyecto lo requiere.
             </p>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
               {complementaryServices.map((service, index) => (
                 <ServiceCard
                   key={service.id}
