@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import ParticleField from "./ParticleField";
@@ -10,18 +9,6 @@ const bullets = [
   "Integramos la solución a tu operación y a tus herramientas actuales",
   "Acompañamos la adopción para que se vuelva parte del día a día",
 ];
-
-const logos = [
-  { src: "/hero_logos_slider/anthropic.png", alt: "Anthropic" },
-  { src: "/hero_logos_slider/bbva.png", alt: "BBVA" },
-  { src: "/hero_logos_slider/davivienda.png", alt: "Davivienda" },
-  { src: "/hero_logos_slider/itam.png", alt: "ITAM" },
-  { src: "/hero_logos_slider/javeriana.png", alt: "Universidad Javeriana" },
-  { src: "/hero_logos_slider/lovable.svg", alt: "Lovable" },
-  { src: "/hero_logos_slider/supabase.png", alt: "Supabase" },
-  { src: "/hero_logos_slider/stanford.webp", alt: "Stanford" },
-];
-const logoTrack = [...logos, ...logos];
 
 export default function Hero() {
   return (
@@ -108,39 +95,6 @@ export default function Hero() {
             </a>
           </motion.div>
 
-          {/* Social Proof */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-10 text-center"
-          >
-            <p className="text-sm text-white">
-              Hemos colaborado con las siguientes empresas
-            </p>
-            <div
-              className="mt-6 logo-marquee"
-              aria-label="Empresas colaboradoras"
-            >
-              <div className="logo-track">
-                {logoTrack.map((logo, index) => (
-                  <div
-                    key={`${logo.alt}-${index}`}
-                    className="logo-item"
-                    aria-hidden={index >= logos.length}
-                  >
-                    <Image
-                      src={logo.src}
-                      alt={logo.alt}
-                      width={200}
-                      height={64}
-                      className="logo-image"
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
-          </motion.div>
         </div>
       </div>
     </section>

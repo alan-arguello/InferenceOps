@@ -13,7 +13,19 @@ const cities = [
   { src: "/cities/lima.png", name: "Lima" },
 ];
 
+const logos = [
+  { src: "/hero_logos_slider/anthropic.png", alt: "Anthropic" },
+  { src: "/hero_logos_slider/bbva.png", alt: "BBVA" },
+  { src: "/hero_logos_slider/davivienda.png", alt: "Davivienda" },
+  { src: "/hero_logos_slider/itam.png", alt: "ITAM" },
+  { src: "/hero_logos_slider/javeriana.png", alt: "Universidad Javeriana" },
+  { src: "/hero_logos_slider/lovable.svg", alt: "Lovable" },
+  { src: "/hero_logos_slider/supabase.png", alt: "Supabase" },
+  { src: "/hero_logos_slider/stanford.webp", alt: "Stanford" },
+];
+
 const track = [...cities, ...cities];
+const logoTrack = [...logos, ...logos];
 
 export default function CitiesCarousel() {
   return (
@@ -46,8 +58,8 @@ export default function CitiesCarousel() {
           transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
           className="text-base sm:text-lg text-muted max-w-2xl mb-10"
         >
-          Conectamos a líderes con tecnología aplicada y comunidad de clase
-          mundial.
+          Eventos y encuentros donde conectamos líderes, tecnología aplicada y
+          comunidad global.
         </motion.p>
 
         <motion.div
@@ -79,6 +91,37 @@ export default function CitiesCarousel() {
                 </div>
               </div>
             ))}
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-120px" }}
+          transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+          className="mt-10 text-center"
+        >
+          <div
+            className="mt-6 logo-marquee"
+            aria-label="Empresas colaboradoras"
+          >
+            <div className="logo-track">
+              {logoTrack.map((logo, index) => (
+                <div
+                  key={`${logo.alt}-${index}`}
+                  className="logo-item"
+                  aria-hidden={index >= logos.length}
+                >
+                  <Image
+                    src={logo.src}
+                    alt={logo.alt}
+                    width={200}
+                    height={64}
+                    className="logo-image"
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         </motion.div>
       </div>
