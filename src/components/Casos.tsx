@@ -19,11 +19,11 @@ const cases = [
     company: "Cerebro Labs",
     industry: "EdTech, México y España",
     context:
-      "Necesidad de fortalecer ejecución comercial y prospección a instituciones educativas.",
+      "Fortalecer ejecución comercial y prospección con procesos más claros.",
     action:
-      "Acompañamiento en mejoras de proceso comercial, prospección y apoyo estratégico en alianzas.",
+      "Acompañamos el orden del pipeline, la prospección y alianzas para sostener la operación comercial.",
     result:
-      "Mayor orden y consistencia en la operación comercial, con enfoque de mejora continua.",
+      "Operación comercial más consistente y con seguimiento visible para el equipo.",
   },
   {
     company: "CloudSeguro",
@@ -33,13 +33,13 @@ const cases = [
     action:
       "Acompañamiento en mejora de prospección, operación interna y alianzas estratégicas.",
     result:
-      "Mejor estructura comercial y operativa para crecer con mayor claridad.",
+      "Estructura comercial y operativa más clara para crecer con control.",
   },
   {
     company: "Blind Creator",
     industry: "Software para agencias de influencers, México",
     context:
-      "Necesidad de sumar talento técnico sin perder costo-beneficio ni velocidad de ejecución.",
+      "Necesidad de sumar talento técnico para ejecutar automatizaciones con alto costo-beneficio.",
     action:
       "Conectamos a un Data Analyst en Perú y a una Product Designer en Argentina listos para integrarse.",
     result:
@@ -53,16 +53,16 @@ const cases = [
     action:
       "Investigación de mercado y relacionamiento en San Francisco con actores relevantes para validación real.",
     result:
-      "Aprendizajes accionables para definir enfoque y siguientes pasos con información de primera mano.",
+      "Aprendizajes accionables para definir enfoque operativo y siguientes pasos con información de primera mano.",
   },
   {
     company: "Universidad Continental",
     industry: "Educación superior, Perú",
     context: "Evento de innovación y formación técnica con estudiantes.",
     action:
-      "Participamos como ponentes y jueces, y apoyamos con asesoría para iniciativas posteriores.",
+      "Participamos como ponentes y jueces, y diseñamos dinámicas para activar proyectos posteriores.",
     result:
-      "Mejor diseño de experiencia y mayor claridad para nuevas iniciativas.",
+      "Experiencia más clara y un pipeline de iniciativas con foco aplicado.",
   },
 ];
 
@@ -100,8 +100,8 @@ export default function Casos() {
           transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           className="text-2xl sm:text-3xl md:text-4xl font-light leading-[1.15] mb-6 text-center"
         >
-          <span className="text-foreground">Algunos de nuestros</span>
-          <span className="text-elegant text-muted"> clientes.</span>
+          <span className="text-foreground">Casos reales</span>
+          <span className="text-elegant text-muted"> en operación.</span>
         </motion.h2>
 
         <motion.p
@@ -110,7 +110,7 @@ export default function Casos() {
           transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
           className="text-base text-muted mb-12 text-center max-w-2xl mx-auto"
         >
-          Somos los mejores en conseguir un retorno tangible.
+          Implementación con resultados visibles y adopción por el equipo.
         </motion.p>
 
         {/* Cases Grid */}

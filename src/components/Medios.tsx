@@ -8,17 +8,17 @@ import { useRef } from "react";
 const pressLinks = [
   {
     name: "Bloomberg Línea",
-    logo: "/press/bloomberg.png",
+    logo: "/Press/bloomberg.png",
     url: "https://www.bloomberglinea.com/latinoamerica/en-que-emprender-en-latam-en-2026-la-ia-seguira-liderando-pero-tenga-en-cuenta-estos-tips/",
   },
   {
     name: "Forbes México",
-    logo: "/press/forbes.webp",
+    logo: "/Press/forbes.webp",
     url: "https://forbes.com.mx/la-sequia-de-inversiones-amenaza-a-las-startups/",
   },
   {
     name: "Davivienda, Social Skin",
-    logo: "/press/davivienda.png",
+    logo: "/Press/davivienda.png",
     url: "https://open.spotify.com/episode/0OkBKUaO6d6XbQM1R8vJR7",
   },
 ];
@@ -44,9 +44,19 @@ export default function Medios() {
           transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           className="text-2xl sm:text-3xl md:text-4xl font-light leading-[1.15] mb-12"
         >
-          <span className="text-foreground">Participaciones en </span>
-          <span className="text-elegant text-muted">medios.</span>
+          <span className="text-foreground">Medios y </span>
+          <span className="text-elegant text-muted">comunidades.</span>
         </motion.h2>
+
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+          className="text-base text-muted mb-10 max-w-2xl"
+        >
+          Conversaciones públicas y colaboraciones con medios y comunidades
+          relevantes para la región.
+        </motion.p>
 
         {/* Press Logos */}
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 sm:gap-8 items-center">

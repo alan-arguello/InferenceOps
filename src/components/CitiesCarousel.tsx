@@ -58,8 +58,7 @@ export default function CitiesCarousel() {
           transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
           className="text-base sm:text-lg text-muted max-w-2xl mb-10"
         >
-          Eventos y encuentros donde conectamos líderes, tecnología aplicada y
-          comunidad global.
+          Conectamos líderes de tecnología.
         </motion.p>
 
         <motion.div
@@ -103,7 +102,7 @@ export default function CitiesCarousel() {
         >
           <div
             className="mt-6 logo-marquee"
-            aria-label="Empresas colaboradoras"
+            aria-label="Organizaciones colaboradoras"
           >
             <div className="logo-track">
               {logoTrack.map((logo, index) => (

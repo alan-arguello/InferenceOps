@@ -50,9 +50,9 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             className="text-base sm:text-lg md:text-xl text-muted leading-relaxed mb-10 max-w-3xl font-light"
           >
-            Ayudamos a directores generales y equipos ejecutivos en corporativos
-            y pymes de latinoamérica a mejorar eficiencia, ventas y operación
-            con soluciones que se integran al trabajo real de sus equipos.
+            Ayudamos a equipos ejecutivos a mejorar eficiencia, ventas y
+            operación con soluciones que se integran al trabajo real de sus
+            equipos.
           </motion.p>
 
           {/* Bullet Points */}
@@ -94,7 +94,6 @@ export default function Hero() {
               />
             </a>
           </motion.div>
-
         </div>
       </div>
     </section>

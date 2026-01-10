@@ -19,8 +19,6 @@ export default function Home() {
         <Hero />
         <Oportunidad />
         <CitiesCarousel />
-        <QueHacemos />
-        <ComoTrabajamos />
         <Servicios />
         <Casos />
         <Equipo />

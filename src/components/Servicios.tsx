@@ -9,6 +9,7 @@ const services = [
   {
     id: 1,
     number: "01",
+    group: "core",
     title: "Implementación aplicada, hecha a la medida",
     includes: [
       "Automatización de procesos en operación, ventas, soporte y backoffice",
@@ -25,6 +26,7 @@ const services = [
   {
     id: 2,
     number: "02",
+    group: "core",
     title: "Adopción ejecutiva y entrenamiento aplicado",
     includes: [
       "Sesiones para líderes y ejecutivos sobre qué es real, qué es moda y qué priorizar",
@@ -40,6 +42,7 @@ const services = [
   {
     id: 3,
     number: "03",
+    group: "core",
     title: "Estrategia de adopción y eficiencia operativa",
     includes: [
       "Diagnóstico de fricciones operativas y oportunidades de automatización",
@@ -55,9 +58,10 @@ const services = [
   {
     id: 4,
     number: "04",
+    group: "complementary",
     title: "Talento y pods para ejecución",
     includes: [
-      "Apoyo para encontrar talento joven de alto potencial en latinoamérica",
+      "Apoyo para encontrar talento joven de alto potencial en Latinoamérica",
       "Armado de equipos por proyecto según necesidad, sin inflar estructura",
       "Soporte en evaluación y entrevistas con criterios claros",
     ],
@@ -69,6 +73,7 @@ const services = [
   {
     id: 5,
     number: "05",
+    group: "complementary",
     title: "Eventos empresariales y activaciones estratégicas",
     includes: [
       "Diseño y ejecución de eventos con retorno, no solo branding",
@@ -84,6 +89,7 @@ const services = [
   {
     id: 6,
     number: "06",
+    group: "complementary",
     title: "Inmersiones y conexiones con Silicon Valley",
     includes: [
       "Agenda curada para ejecutivos con aprendizaje aplicado",
@@ -193,6 +199,10 @@ function ServiceCard({
 export default function Servicios() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const coreServices = services.filter((service) => service.group === "core");
+  const complementaryServices = services.filter(
+    (service) => service.group === "complementary"
+  );
 
   return (
     <section
@@ -215,10 +225,8 @@ export default function Servicios() {
           transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           className="text-2xl sm:text-3xl md:text-4xl font-light leading-[1.15] mb-6 max-w-3xl"
         >
-          <span className="text-foreground">
-            Puedes llegar por cualquiera de estos{" "}
-          </span>
-          <span className="text-elegant text-foreground">caminos.</span>
+          <span className="text-foreground">Nuestros </span>
+          <span className="text-elegant text-foreground">servicios.</span>
         </motion.h2>
 
         <motion.p
@@ -231,15 +239,45 @@ export default function Servicios() {
         </motion.p>
 
         {/* Services List */}
-        <div className="border-t border-border">
-          {services.map((service, index) => (
-            <ServiceCard
-              key={service.id}
-              service={service}
-              index={index}
-              isInView={isInView}
-            />
-          ))}
+        <div className="space-y-12">
+          <div>
+            <p className="text-xs text-muted uppercase tracking-widest mb-2">
+              Servicios core
+            </p>
+            <p className="text-sm text-muted mb-6 max-w-2xl">
+              Lo que siempre ejecutamos para asegurar implementación y adopción
+              real.
+            </p>
+            <div className="border-t border-border">
+              {coreServices.map((service, index) => (
+                <ServiceCard
+                  key={service.id}
+                  service={service}
+                  index={index}
+                  isInView={isInView}
+                />
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <p className="text-xs text-muted uppercase tracking-widest mb-2">
+              Complementarios
+            </p>
+            <p className="text-sm text-muted mb-6 max-w-2xl">
+              Activaciones y soporte adicional cuando el proyecto lo requiere.
+            </p>
+            <div className="border-t border-border">
+              {complementaryServices.map((service, index) => (
+                <ServiceCard
+                  key={service.id}
+                  service={service}
+                  index={index + coreServices.length}
+                  isInView={isInView}
+                />
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>
