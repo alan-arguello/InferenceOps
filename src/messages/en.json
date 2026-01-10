@@ -1,7 +1,7 @@
 {
   "Metadata": {
     "title": "Operational Inference | Applied AI for Operations",
-    "description": "We implement AI in Latin American companies with a focus on operations, efficiency, and revenue. From intention to operations with results.",
+    "description": "We implement AI for Latin American SMEs, corporates, and governments with a focus on operations, efficiency, and revenue. From intention to operations with results.",
     "keywords": [
       "applied AI",
       "AI implementation",
@@ -45,7 +45,7 @@
       "line1": "We implement <accent>artificial</accent>",
       "line2": "<accent>intelligence</accent> for your <accent>company.</accent>"
     },
-    "subtitle": "We help executive teams improve efficiency, revenue, and operations with solutions that integrate into real workflows.",
+    "subtitle": "We help executive teams across SMEs, corporates, and governments improve efficiency, revenue, and operations with solutions that integrate into real workflows.",
     "bullets": [
       "We bring order and clarity on what is worth implementing and what is not",
       "We prioritize what moves the P&L and cut what does not",
@@ -411,7 +411,7 @@
   },
   "ParaQuien": {
     "title": "This is for companies that have not <accent>adopted</accent> this technology yet, or are using it in a <muted>superficial</muted> way.",
-    "subtitle": "We work with leaders who feel pressure to implement, but lack clarity on where to start, what to prioritize, and how to get the team to use it without friction.",
+    "subtitle": "We work with leaders across SMEs, corporates, and governments who feel pressure to implement, but lack clarity on where to start, what to prioritize, and how to get the team to use it without friction.",
     "signalsLabel": "Typical signals",
     "signals": [
       "The team uses ChatGPT in basic ways, but there are no visible operational improvements",

@@ -1,7 +1,7 @@
 {
   "Metadata": {
     "title": "Operational Inference | IA aplicada a la operación",
-    "description": "Implementamos IA en empresas de Latinoamérica con foco en operación, eficiencia y ventas. De la intención a la operación con resultados.",
+    "description": "Implementamos IA en PyMEs, corporativos y gobiernos de Latinoamérica con foco en operación, eficiencia y ventas. De la intención a la operación con resultados.",
     "keywords": [
       "inteligencia artificial",
       "IA aplicada",
@@ -45,7 +45,7 @@
       "line1": "Implementamos <accent>inteligencia</accent>",
       "line2": "<accent>artificial</accent> en tu <accent>empresa.</accent>"
     },
-    "subtitle": "Ayudamos a equipos ejecutivos a mejorar eficiencia, ventas y operación con soluciones que se integran al trabajo real de sus equipos.",
+    "subtitle": "Ayudamos a equipos ejecutivos en PyMEs, corporativos y gobiernos a mejorar eficiencia, ventas y operación con soluciones que se integran al trabajo real de sus equipos.",
     "bullets": [
       "Ponemos orden y claridad sobre qué sí vale la pena implementar y qué no",
       "Priorizamos lo que sí mueve el P&L y descartamos lo que no",
@@ -411,7 +411,7 @@
   },
   "ParaQuien": {
     "title": "Esto es para empresas que aún no han <accent>adoptado</accent> esta tecnología, o la están usando de forma <muted>superficial.</muted>",
-    "subtitle": "Trabajamos con líderes que sienten presión por implementar, pero no tienen claridad de por dónde empezar, qué priorizar y cómo lograr que el equipo lo use sin fricción.",
+    "subtitle": "Trabajamos con líderes en PyMEs, corporativos y gobiernos que sienten presión por implementar, pero no tienen claridad de por dónde empezar, qué priorizar y cómo lograr que el equipo lo use sin fricción.",
     "signalsLabel": "Señales típicas",
     "signals": [
       "El equipo usa ChatGPT de forma básica, pero no hay mejoras visibles en la operación",
