@@ -2,15 +2,24 @@
 
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import { useTranslations } from "next-intl";
 import ParticleField from "./ParticleField";
-
-const bullets = [
-  "Ponemos orden y claridad sobre qué sí vale la pena implementar y qué no",
-  "Priorizamos lo que sí mueve el P&L y descartamos lo que no)",
-  "Acompañamos la adopción para que se vuelva parte del día a día",
-];
+import { SCHEDULE_CALL_URL } from "@/lib/links";
 
 export default function Hero() {
+  const t = useTranslations("Hero");
+  const bullets = t.raw("bullets") as string[];
+  const titleLine1 = t.rich("title.line1", {
+    accent: (chunks) => (
+      <span className="text-elegant text-foreground">{chunks}</span>
+    ),
+  });
+  const titleLine2 = t.rich("title.line2", {
+    accent: (chunks) => (
+      <span className="text-elegant text-foreground">{chunks}</span>
+    ),
+  });
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Effects */}
@@ -33,13 +42,10 @@ export default function Hero() {
             className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light leading-[1.05] tracking-tight mb-8 max-w-[20ch] sm:max-w-none mx-auto sm:mx-0"
           >
             <span className="block sm:whitespace-nowrap">
-              <span className="text-foreground">Implementamos </span>
-              <span className="text-elegant text-foreground">inteligencia</span>
+              {titleLine1}
             </span>
             <span className="block sm:whitespace-nowrap">
-              <span className="text-elegant text-foreground">artificial</span>
-              <span className="text-foreground"> en tu </span>
-              <span className="text-elegant text-foreground">empresa.</span>
+              {titleLine2}
             </span>
           </motion.h1>
 
@@ -50,9 +56,7 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             className="text-base sm:text-lg md:text-xl text-muted leading-relaxed mb-8 sm:mb-10 max-w-3xl mx-auto sm:mx-0 font-light"
           >
-            Ayudamos a equipos ejecutivos a mejorar eficiencia, ventas y
-            operación con soluciones que se integran al trabajo real de sus
-            equipos.
+            {t("subtitle")}
           </motion.p>
 
           {/* Bullet Points */}
@@ -79,15 +83,15 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
             className="flex flex-col items-center sm:flex-row sm:justify-center gap-4"
           >
-            <a href="#contacto" className="group btn btn-primary">
-              Agendar llamada
+            <a href={SCHEDULE_CALL_URL} className="group btn btn-primary">
+              {t("cta.primary")}
               <ArrowRight
                 size={18}
                 className="group-hover:translate-x-1 transition-transform duration-300"
               />
             </a>
             <a href="#casos" className="group btn btn-secondary">
-              Ver casos
+              {t("cta.secondary")}
               <ArrowRight
                 size={18}
                 className="group-hover:translate-x-1 transition-transform duration-300"

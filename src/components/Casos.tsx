@@ -2,13 +2,42 @@
 
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
-import { useRef, useCallback, MouseEvent } from "react";
+import { useRef, useCallback, MouseEvent, type ComponentType } from "react";
 import { ArrowUpRight } from "lucide-react";
+import { useTranslations } from "next-intl";
+
+type AndeVisualizationProps = {
+  liveLabel: string;
+};
+
+type CerebroVisualizationProps = {
+  nodesLabel: string;
+  edgesLabel: string;
+};
+
+type CloudSeguroVisualizationProps = {
+  securedLabel: string;
+};
+
+type BlindCreatorVisualizationProps = {
+  engagementLabel: string;
+  metricLabels: string[];
+};
+
+type BunnyVisualizationProps = {
+  inputLabel: string;
+  processLabel: string;
+  outputLabel: string;
+};
+
+type UniversidadVisualizationProps = {
+  labels: string[];
+};
 
 // Premium industry-specific visualizations
 
 // ANDE - Voice/Audio Waveform (Digital interaction)
-function AndeVisualization() {
+function AndeVisualization({ liveLabel }: AndeVisualizationProps) {
   return (
     <div className="relative w-full h-32 overflow-hidden flex items-center justify-center">
       {/* Audio waveform */}
@@ -57,14 +86,19 @@ function AndeVisualization() {
           transition={{ duration: 2, repeat: Infinity }}
           className="w-1.5 h-1.5 rounded-full bg-accent"
         />
-        <span className="text-[9px] text-muted-dark font-mono">LIVE</span>
+        <span className="text-[9px] text-muted-dark font-mono">
+          {liveLabel}
+        </span>
       </div>
     </div>
   );
 }
 
 // Cerebro Labs - Neural Network Graph
-function CerebroVisualization() {
+function CerebroVisualization({
+  nodesLabel,
+  edgesLabel,
+}: CerebroVisualizationProps) {
   const nodes = [
     { x: 20, y: 20 },
     { x: 50, y: 12 },
@@ -147,11 +181,15 @@ function CerebroVisualization() {
       <div className="absolute bottom-3 left-3 flex items-center gap-3">
         <div className="flex items-center gap-1">
           <div className="w-1 h-1 rounded-full bg-accent/60" />
-          <span className="text-[9px] text-muted-dark font-mono">10 nodes</span>
+          <span className="text-[9px] text-muted-dark font-mono">
+            {nodesLabel}
+          </span>
         </div>
         <div className="flex items-center gap-1">
           <div className="w-1 h-1 rounded-full bg-accent-dim/60" />
-          <span className="text-[9px] text-muted-dark font-mono">16 edges</span>
+          <span className="text-[9px] text-muted-dark font-mono">
+            {edgesLabel}
+          </span>
         </div>
       </div>
     </div>
@@ -159,7 +197,7 @@ function CerebroVisualization() {
 }
 
 // CloudSeguro - Encrypted Data Stream
-function CloudSeguroVisualization() {
+function CloudSeguroVisualization({ securedLabel }: CloudSeguroVisualizationProps) {
   return (
     <div className="relative w-full h-32 overflow-hidden flex items-center justify-center">
       {/* Hex grid pattern */}
@@ -217,7 +255,7 @@ function CloudSeguroVisualization() {
           transition={{ delay: 1.2 }}
           className="mt-2 text-[9px] text-accent font-mono tracking-wider"
         >
-          SECURED
+          {securedLabel}
         </motion.div>
       </div>
 
@@ -236,14 +274,25 @@ function CloudSeguroVisualization() {
 }
 
 // Blind Creator - Analytics Dashboard
-function BlindCreatorVisualization() {
+function BlindCreatorVisualization({
+  engagementLabel,
+  metricLabels,
+}: BlindCreatorVisualizationProps) {
+  const metricValues = ["2.4M", "4.8%", "1.2K"];
+  const metricChanges = ["+12%", "+0.6%", "+23%"];
+  const metrics = metricValues.map((value, index) => ({
+    label: metricLabels[index] ?? "",
+    value,
+    change: metricChanges[index] ?? "",
+  }));
+
   return (
     <div className="relative w-full h-32 overflow-hidden p-4">
       <div className="h-full flex gap-3">
         {/* Engagement chart */}
         <div className="flex-1 flex flex-col">
           <div className="text-[8px] text-muted-dark font-mono mb-2 uppercase tracking-wider">
-            Engagement
+            {engagementLabel}
           </div>
           <div className="flex-1 flex items-end gap-1">
             {[45, 62, 38, 71, 55, 83, 67, 91, 76, 88].map((h, i) => (
@@ -267,11 +316,7 @@ function BlindCreatorVisualization() {
 
         {/* Metrics */}
         <div className="w-20 flex flex-col justify-between py-1">
-          {[
-            { label: "Reach", value: "2.4M", change: "+12%" },
-            { label: "CTR", value: "4.8%", change: "+0.6%" },
-            { label: "Conv", value: "1.2K", change: "+23%" },
-          ].map((metric, i) => (
+          {metrics.map((metric, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, x: 10 }}
@@ -315,7 +360,11 @@ function BlindCreatorVisualization() {
 }
 
 // Bunny Inc - Data Pipeline
-function BunnyVisualization() {
+function BunnyVisualization({
+  inputLabel,
+  processLabel,
+  outputLabel,
+}: BunnyVisualizationProps) {
   return (
     <div className="relative w-full h-32 overflow-hidden">
       <svg className="absolute inset-0 w-full h-full" viewBox="0 0 200 80">
@@ -399,14 +448,35 @@ function BunnyVisualization() {
         ))}
 
         {/* Labels */}
-        <text x="20" y="55" fontSize="6" fill="rgba(165, 175, 188, 0.6)" textAnchor="middle" fontFamily="monospace">
-          INPUT
+        <text
+          x="20"
+          y="55"
+          fontSize="6"
+          fill="rgba(165, 175, 188, 0.6)"
+          textAnchor="middle"
+          fontFamily="monospace"
+        >
+          {inputLabel}
         </text>
-        <text x="100" y="75" fontSize="6" fill="rgba(165, 175, 188, 0.6)" textAnchor="middle" fontFamily="monospace">
-          PROCESS
+        <text
+          x="100"
+          y="75"
+          fontSize="6"
+          fill="rgba(165, 175, 188, 0.6)"
+          textAnchor="middle"
+          fontFamily="monospace"
+        >
+          {processLabel}
         </text>
-        <text x="180" y="55" fontSize="6" fill="rgba(165, 175, 188, 0.6)" textAnchor="middle" fontFamily="monospace">
-          OUTPUT
+        <text
+          x="180"
+          y="55"
+          fontSize="6"
+          fill="rgba(165, 175, 188, 0.6)"
+          textAnchor="middle"
+          fontFamily="monospace"
+        >
+          {outputLabel}
         </text>
       </svg>
     </div>
@@ -414,16 +484,18 @@ function BunnyVisualization() {
 }
 
 // Universidad Continental - Innovation Metrics
-function UniversidadVisualization() {
+function UniversidadVisualization({ labels }: UniversidadVisualizationProps) {
+  const items = [
+    { label: labels[0] ?? "", value: 24, max: 30 },
+    { label: labels[1] ?? "", value: 8, max: 10 },
+    { label: labels[2] ?? "", value: 92, max: 100, accent: true },
+  ];
+
   return (
     <div className="relative w-full h-32 overflow-hidden p-4">
       <div className="h-full flex items-center justify-center gap-6">
         {/* Radial progress indicators */}
-        {[
-          { label: "Proyectos", value: 24, max: 30 },
-          { label: "Equipos", value: 8, max: 10 },
-          { label: "Impacto", value: 92, max: 100, accent: true },
-        ].map((item, i) => (
+        {items.map((item, i) => (
           <motion.div
             key={i}
             initial={{ opacity: 0, scale: 0.8 }}
@@ -490,88 +562,35 @@ function UniversidadVisualization() {
   );
 }
 
-const cases = [
-  {
-    company: "ANDE",
-    industry: "Sindicato de educación, Costa Rica",
-    context:
-      "Congreso anual con necesidad de una experiencia innovadora y participativa.",
-    action:
-      "Desarrollamos un avatar digital interactivo en vivo de Emma Gamboa para interacción directa durante el evento.",
-    result:
-      "Más de 150 asistentes interactuaron con el avatar y se logró una experiencia memorable durante el congreso.",
-    url: "https://ande.cr/",
-    visualization: AndeVisualization,
-  },
-  {
-    company: "Cerebro Labs",
-    industry: "EdTech, México y España",
-    context:
-      "Fortalecer ejecución comercial y prospección con procesos más claros.",
-    action:
-      "Acompañamos el orden del pipeline, la prospección y alianzas para sostener la operación comercial.",
-    result:
-      "Operación comercial más consistente y con seguimiento visible para el equipo.",
-    url: "https://cerebro-labs.ai/",
-    visualization: CerebroVisualization,
-  },
-  {
-    company: "CloudSeguro",
-    industry: "Ciberseguridad, Colombia",
-    context:
-      "Fortalecer operación, ventas y posicionamiento para crecimiento sostenible.",
-    action:
-      "Acompañamiento en mejora de prospección, operación interna y alianzas estratégicas.",
-    result:
-      "Estructura comercial y operativa más clara para crecer con control.",
-    url: "https://www.cloudseguro.co/",
-    visualization: CloudSeguroVisualization,
-  },
-  {
-    company: "Blind Creator",
-    industry: "Software para agencias de influencers, México",
-    context:
-      "Necesidad de sumar talento técnico para ejecutar automatizaciones con alto costo-beneficio.",
-    action:
-      "Conectamos a un Data Analyst en Perú y a una Product Designer en Argentina listos para integrarse.",
-    result:
-      "Talento incorporado en menos de 10 días hábiles, con alta motivación y excelente costo-beneficio.",
-    url: "https://www.blindcreator.com/",
-    visualization: BlindCreatorVisualization,
-  },
-  {
-    company: "Bunny Inc",
-    industry: "Datos para laboratorios, Estados Unidos",
-    context:
-      "Explorar factibilidad y estrategia para entrar a un mercado de alta exigencia en datos.",
-    action:
-      "Investigación de mercado y relacionamiento en San Francisco con actores relevantes.",
-    result:
-      "Aprendizajes accionables para definir enfoque operativo y siguientes pasos.",
-    url: "https://bunnyinc.com/",
-    visualization: BunnyVisualization,
-  },
-  {
-    company: "Universidad Continental",
-    industry: "Educación superior, Perú",
-    context: "Evento de innovación y formación técnica con estudiantes.",
-    action:
-      "Participamos como ponentes y jueces, y diseñamos dinámicas para activar proyectos.",
-    result:
-      "Experiencia más clara y un pipeline de iniciativas con foco aplicado.",
-    url: "https://fablab.ucontinental.edu.pe/",
-    visualization: UniversidadVisualization,
-  },
-];
+type CaseEntry = {
+  company: string;
+  industry: string;
+  context: string;
+  action: string;
+  result: string;
+  url: string;
+};
+
+type CaseItem = CaseEntry & {
+  visualization: ComponentType<any>;
+  visualizationProps?: Record<string, unknown>;
+};
 
 function CaseCard({
   caseItem,
   index,
   isInView,
+  labels,
 }: {
-  caseItem: (typeof cases)[0];
+  caseItem: CaseItem;
   index: number;
   isInView: boolean;
+  labels: {
+    context: string;
+    action: string;
+    result: string;
+    visit: string;
+  };
 }) {
   const Visualization = caseItem.visualization;
   const cardRef = useRef<HTMLDivElement>(null);
@@ -612,7 +631,7 @@ function CaseCard({
 
         {/* Visualization */}
         <div className="viz-container relative">
-          <Visualization />
+          <Visualization {...(caseItem.visualizationProps ?? {})} />
         </div>
 
         {/* Content */}
@@ -661,7 +680,7 @@ function CaseCard({
               <div className="flex items-center gap-2 mb-1">
                 <div className="w-3 h-px bg-white/20" />
                 <span className="text-[9px] text-muted-dark uppercase tracking-widest font-mono">
-                  Contexto
+                  {labels.context}
                 </span>
               </div>
               <p className="text-sm text-muted-light leading-relaxed line-clamp-2">
@@ -677,7 +696,7 @@ function CaseCard({
               <div className="flex items-center gap-2 mb-1">
                 <div className="w-3 h-px bg-accent/40" />
                 <span className="text-[9px] text-muted-dark uppercase tracking-widest font-mono">
-                  Qué hicimos
+                  {labels.action}
                 </span>
               </div>
               <p className="text-sm text-muted-light leading-relaxed line-clamp-2">
@@ -693,7 +712,7 @@ function CaseCard({
               <div className="flex items-center gap-2 mb-1">
                 <div className="w-3 h-px bg-accent" />
                 <span className="text-[9px] text-accent uppercase tracking-widest font-mono">
-                  Resultado
+                  {labels.result}
                 </span>
               </div>
               <p className="text-sm text-foreground leading-relaxed line-clamp-2">
@@ -710,7 +729,7 @@ function CaseCard({
             className="mt-4 pt-4 border-t border-white/[0.06] flex items-center justify-between"
           >
             <span className="text-[10px] text-muted-dark group-hover:text-muted transition-colors duration-300 font-mono">
-              Visitar sitio
+              {labels.visit}
             </span>
             <div className="icon-btn-premium w-6 h-6 rounded">
               <ArrowUpRight
@@ -728,6 +747,53 @@ function CaseCard({
 export default function Casos() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const t = useTranslations("Casos");
+  const title = t.rich("title", {
+    muted: (chunks) => <span className="text-elegant text-muted">{chunks}</span>,
+  });
+  const labels = t.raw("labels") as {
+    context: string;
+    action: string;
+    result: string;
+    visit: string;
+  };
+  const visuals = t.raw("visuals") as {
+    ande: { live: string };
+    cerebro: { nodes: string; edges: string };
+    cloud: { secured: string };
+    blind: { engagement: string; metrics: string[] };
+    bunny: { input: string; process: string; output: string };
+    universidad: { labels: string[] };
+  };
+  const casesData = t.raw("cases") as CaseEntry[];
+  const caseVisualizations = [
+    AndeVisualization,
+    CerebroVisualization,
+    CloudSeguroVisualization,
+    BlindCreatorVisualization,
+    BunnyVisualization,
+    UniversidadVisualization,
+  ];
+  const caseVisualizationProps = [
+    { liveLabel: visuals.ande.live },
+    { nodesLabel: visuals.cerebro.nodes, edgesLabel: visuals.cerebro.edges },
+    { securedLabel: visuals.cloud.secured },
+    {
+      engagementLabel: visuals.blind.engagement,
+      metricLabels: visuals.blind.metrics,
+    },
+    {
+      inputLabel: visuals.bunny.input,
+      processLabel: visuals.bunny.process,
+      outputLabel: visuals.bunny.output,
+    },
+    { labels: visuals.universidad.labels },
+  ];
+  const cases = casesData.map((caseItem, index) => ({
+    ...caseItem,
+    visualization: caseVisualizations[index],
+    visualizationProps: caseVisualizationProps[index],
+  }));
 
   return (
     <section
@@ -749,8 +815,7 @@ export default function Casos() {
           transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           className="text-2xl sm:text-3xl md:text-4xl font-light leading-[1.15] mb-5 sm:mb-6 max-w-3xl text-center sm:text-left mx-auto sm:mx-0"
         >
-          <span className="text-foreground">Casos reales</span>
-          <span className="text-elegant text-muted"> en operación.</span>
+          {title}
         </motion.h2>
 
         <motion.p
@@ -759,7 +824,7 @@ export default function Casos() {
           transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
           className="text-base sm:text-lg text-muted mb-10 sm:mb-12 max-w-2xl text-center sm:text-left mx-auto sm:mx-0 font-light"
         >
-          Implementación con resultados visibles y adopción por el equipo.
+          {t("subtitle")}
         </motion.p>
 
         {/* Cases Grid */}
@@ -770,6 +835,7 @@ export default function Casos() {
               caseItem={caseItem}
               index={index}
               isInView={isInView}
+              labels={labels}
             />
           ))}
         </div>

@@ -1,0 +1,432 @@
+{
+  "Metadata": {
+    "title": "Operational Inference | IA aplicada a la operación",
+    "description": "Implementamos IA en empresas de Latinoamérica con foco en operación, eficiencia y ventas. De la intención a la operación con resultados.",
+    "keywords": [
+      "inteligencia artificial",
+      "IA aplicada",
+      "implementación de IA",
+      "consultoría IA",
+      "operación",
+      "automatización",
+      "eficiencia operativa",
+      "integración de IA",
+      "adopción de IA",
+      "Latinoamérica",
+      "automatización de procesos",
+      "IA empresarial"
+    ],
+    "ogAlt": "Operational Inference en San Francisco",
+    "blogTitle": "Blog | Operational Inference",
+    "blogDescription": "Notas y ensayos sobre IA, infraestructura y operación en Latinoamérica.",
+    "blogOgAlt": "Operational Inference en San Francisco",
+    "blogNotFoundTitle": "Post no encontrado | Operational Inference",
+    "blogNotFoundDescription": "El post solicitado no existe."
+  },
+  "Navigation": {
+    "links": {
+      "services": "Servicios",
+      "cases": "Casos",
+      "team": "Equipo",
+      "blog": "Blog",
+      "faq": "FAQ"
+    },
+    "cta": "Agendar llamada",
+    "mobileCta": "Agendar llamada ->",
+    "toggleLabel": "Cambiar idioma",
+    "menuToggle": "Abrir menú",
+    "locale": {
+      "es": "ES",
+      "en": "EN"
+    }
+  },
+  "Hero": {
+    "title": {
+      "line1": "Implementamos <accent>inteligencia</accent>",
+      "line2": "<accent>artificial</accent> en tu <accent>empresa.</accent>"
+    },
+    "subtitle": "Ayudamos a equipos ejecutivos a mejorar eficiencia, ventas y operación con soluciones que se integran al trabajo real de sus equipos.",
+    "bullets": [
+      "Ponemos orden y claridad sobre qué sí vale la pena implementar y qué no",
+      "Priorizamos lo que sí mueve el P&L y descartamos lo que no",
+      "Acompañamos la adopción para que se vuelva parte del día a día"
+    ],
+    "cta": {
+      "primary": "Agendar llamada",
+      "secondary": "Ver casos"
+    }
+  },
+  "Oportunidad": {
+    "title": {
+      "line1": "Implementamos en <accent>Latinoamérica</accent>",
+      "line2": "lo que en <muted>Silicon Valley</muted> ya funciona en <accent>producción.</accent>"
+    },
+    "paragraphs": [
+      "En los últimos meses, al hablar con ejecutivos y líderes corporativos de la región, vimos el mismo patrón: <highlight>interés real por IA</highlight>, pero <highlight>poca claridad</highlight> para convertirlo en <highlight>resultados</highlight>.",
+      "Muchos esfuerzos fallan no por la tecnología, sino por <highlight>priorización incorrecta</highlight>, <highlight>falta de integración</highlight> y <highlight>cero adopción</highlight>.",
+      "<strong>Por eso existimos:</strong> implementamos lo que sí mueve la operación.<br></br>Empezamos por el <highlight>caso con mayor impacto</highlight>, lo integramos a tus herramientas actuales y acompañamos hasta que el equipo lo use en el día a día, con <highlight>métricas claras</highlight>."
+    ]
+  },
+  "Cities": {
+    "title": "Desde <accent>Silicon Valley</accent> a <muted>Latinoamérica.</muted>",
+    "subtitle": "Conectamos líderes de tecnología.",
+    "eventsLabel": "Eventos en distintas ciudades",
+    "logosLabel": "Organizaciones colaboradoras",
+    "cities": [
+      "San Francisco",
+      "Napa Valley",
+      "Bogotá",
+      "Medellín",
+      "Ciudad de México",
+      "Guadalajara",
+      "Lima"
+    ]
+  },
+  "Servicios": {
+    "title": "Nuestros <accent>servicios.</accent>",
+    "subtitle": "Nuestra prioridad: impacto medible, implementación en producción y adopción por el equipo.",
+    "coreLabel": "Servicios core",
+    "coreDescription": "Lo que siempre ejecutamos para asegurar implementación y adopción real.",
+    "complementaryLabel": "Complementarios",
+    "complementaryDescription": "Activaciones y soporte adicional cuando el proyecto lo requiere.",
+    "coreServices": [
+      {
+        "number": "01",
+        "title": "Implementación aplicada",
+        "subtitle": "Hecha a la medida",
+        "description": "Automatización de procesos y asistentes internos integrados con tus herramientas existentes."
+      },
+      {
+        "number": "02",
+        "title": "Adopción ejecutiva",
+        "subtitle": "Entrenamiento aplicado",
+        "description": "Sesiones y talleres para líderes sobre qué es real, qué priorizar y cómo decidir."
+      },
+      {
+        "number": "03",
+        "title": "Estrategia de adopción",
+        "subtitle": "Eficiencia operativa",
+        "description": "Diagnóstico, priorización por impacto y lineamientos para una adopción sostenible."
+      }
+    ],
+    "complementaryServices": [
+      {
+        "number": "04",
+        "title": "Talento técnico",
+        "subtitle": "Ejecución ágil",
+        "description": "Talento de alto potencial en Latam y equipos por proyecto sin inflar estructura."
+      },
+      {
+        "number": "05",
+        "title": "Eventos empresariales",
+        "subtitle": "Activaciones estratégicas",
+        "description": "Eventos con retorno real, curación de agenda y conexión con el ecosistema."
+      },
+      {
+        "number": "06",
+        "title": "Inmersiones",
+        "subtitle": "Silicon Valley",
+        "description": "Agenda curada para ejecutivos con conexiones estratégicas y aprendizaje aplicado."
+      }
+    ],
+    "visuals": {
+      "automation": {
+        "status": "3 FLUJOS ACTIVOS"
+      },
+      "training": {
+        "title": "Tasa de adopción",
+        "skills": [
+          "Prompting",
+          "Herramientas",
+          "Workflows",
+          "Análisis"
+        ],
+        "metrics": [
+          "Sesiones",
+          "Horas",
+          "Equipos"
+        ],
+        "completion": "81.5% COMPLETO"
+      },
+      "strategy": {
+        "milestones": [
+          "Diagnóstico",
+          "Diseño",
+          "Ejecución"
+        ],
+        "phases": [
+          "Q1",
+          "Q2",
+          "Q3",
+          "Q4",
+          "ESCALA"
+        ],
+        "progress": "FASE 3 DE 5"
+      },
+      "talent": {
+        "roles": "9 ROLES",
+        "links": "14 ENLACES"
+      },
+      "events": {
+        "title": "Asistencia",
+        "months": [
+          "ENE",
+          "DIC"
+        ],
+        "metrics": [
+          "Eventos",
+          "Prom.",
+          "NPS"
+        ],
+        "units": [
+          "/año",
+          "pax",
+          ""
+        ],
+        "next": "SIG: 15 MAR"
+      },
+      "siliconValley": {
+        "hubs": "5 HUBS",
+        "regions": "LATAM + US + EU"
+      }
+    }
+  },
+  "Casos": {
+    "title": "Casos reales <muted>en operación.</muted>",
+    "subtitle": "Implementación con resultados visibles y adopción por el equipo.",
+    "labels": {
+      "context": "Contexto",
+      "action": "Qué hicimos",
+      "result": "Resultado",
+      "visit": "Visitar sitio"
+    },
+    "visuals": {
+      "ande": {
+        "live": "EN VIVO"
+      },
+      "cerebro": {
+        "nodes": "10 nodos",
+        "edges": "16 enlaces"
+      },
+      "cloud": {
+        "secured": "SEGURO"
+      },
+      "blind": {
+        "engagement": "Interacción",
+        "metrics": [
+          "Alcance",
+          "CTR",
+          "Conv."
+        ]
+      },
+      "bunny": {
+        "input": "ENTRADA",
+        "process": "PROCESO",
+        "output": "SALIDA"
+      },
+      "universidad": {
+        "labels": [
+          "Proyectos",
+          "Equipos",
+          "Impacto"
+        ]
+      }
+    },
+    "cases": [
+      {
+        "company": "ANDE",
+        "industry": "Sindicato de educación, Costa Rica",
+        "context": "Congreso anual con necesidad de una experiencia innovadora y participativa.",
+        "action": "Desarrollamos un avatar digital interactivo en vivo de Emma Gamboa para interacción directa durante el evento.",
+        "result": "Más de 150 asistentes interactuaron con el avatar y se logró una experiencia memorable durante el congreso.",
+        "url": "https://ande.cr/"
+      },
+      {
+        "company": "Cerebro Labs",
+        "industry": "EdTech, México y España",
+        "context": "Fortalecer ejecución comercial y prospección con procesos más claros.",
+        "action": "Acompañamos el orden del pipeline, la prospección y alianzas para sostener la operación comercial.",
+        "result": "Operación comercial más consistente y con seguimiento visible para el equipo.",
+        "url": "https://cerebro-labs.ai/"
+      },
+      {
+        "company": "CloudSeguro",
+        "industry": "Ciberseguridad, Colombia",
+        "context": "Fortalecer operación, ventas y posicionamiento para crecimiento sostenible.",
+        "action": "Acompañamiento en mejora de prospección, operación interna y alianzas estratégicas.",
+        "result": "Estructura comercial y operativa más clara para crecer con control.",
+        "url": "https://www.cloudseguro.co/"
+      },
+      {
+        "company": "Blind Creator",
+        "industry": "Software para agencias de influencers, México",
+        "context": "Necesidad de sumar talento técnico para ejecutar automatizaciones con alto costo-beneficio.",
+        "action": "Conectamos a un Data Analyst en Perú y a una Product Designer en Argentina listos para integrarse.",
+        "result": "Talento incorporado en menos de 10 días hábiles, con alta motivación y excelente costo-beneficio.",
+        "url": "https://www.blindcreator.com/"
+      },
+      {
+        "company": "Bunny Inc",
+        "industry": "Datos para laboratorios, Estados Unidos",
+        "context": "Explorar factibilidad y estrategia para entrar a un mercado de alta exigencia en datos.",
+        "action": "Investigación de mercado y relacionamiento en San Francisco con actores relevantes.",
+        "result": "Aprendizajes accionables para definir enfoque operativo y siguientes pasos.",
+        "url": "https://bunnyinc.com/"
+      },
+      {
+        "company": "Universidad Continental",
+        "industry": "Educación superior, Perú",
+        "context": "Evento de innovación y formación técnica con estudiantes.",
+        "action": "Participamos como ponentes y jueces, y diseñamos dinámicas para activar proyectos.",
+        "result": "Experiencia más clara y un pipeline de iniciativas con foco aplicado.",
+        "url": "https://fablab.ucontinental.edu.pe/"
+      }
+    ]
+  },
+  "Equipo": {
+    "title": "Equipo core y <muted>red de especialistas.</muted>",
+    "subtitle": "Somos un equipo compacto. Según el tipo de proyecto, sumamos perfiles técnicos y de integración bajo un modelo de colaboración por proyecto, con responsables claros y entregables definidos.",
+    "experienceLabel": "Experiencia previa",
+    "linkedinLabel": "LinkedIn de {name}",
+    "team": [
+      {
+        "name": "Alan Arguello",
+        "role": "CEO, Software Engineer & MBA",
+        "image": "/alan.png",
+        "bio": [
+          "Cofundó Torrenegra Organization junto al inversor de Shark Tank, Alex Torrenegra, apoyando a más de 100 empresas en ejecución, operación y expansión.",
+          "Parte del equipo de Makers Fellowship con Andrés Bilbao, cofundador de Rappi en donde apoyó a empresas a conseguir talento.",
+          "Invertido por Platanus Ventures. Miembro de Latitud, On Deck y AI Circle."
+        ],
+        "logos": [
+          { "src": "/alan_logos/Group 2.svg", "alt": "Torrenegra Organization" },
+          { "src": "/alan_logos/buny.svg", "alt": "Bunny" }
+        ],
+        "linkedin": "https://www.linkedin.com/in/alan-arguello/"
+      },
+      {
+        "name": "Michelle Arguello",
+        "role": "CFO, Venture Capital Specialist",
+        "image": "/michelle.jpeg",
+        "bio": [
+          "Contadora especializada en operación y finanzas.",
+          "Fue Administration Manager en IGNIA Partners, liderando reportes a inversionistas, capital calls y soporte financiero del fondo.",
+          "Ha dirigido procesos de control operativo y gobierno financiero para compañías en crecimiento, con foco en claridad, cumplimiento y continuidad."
+        ],
+        "logos": [
+          { "src": "/michelle_logos/ignia.webp", "alt": "IGNIA Partners" },
+          { "src": "/michelle_logos/derevo.svg", "alt": "Derevo" }
+        ],
+        "linkedin": "https://www.linkedin.com/in/michelleargoroz/"
+      }
+    ]
+  },
+  "Medios": {
+    "title": "Medios y <muted>comunidades.</muted>",
+    "subtitle": "Conversaciones públicas y colaboraciones con medios y comunidades relevantes para la región."
+  },
+  "FAQ": {
+    "title": "Preguntas <muted>frecuentes.</muted>",
+    "items": [
+      {
+        "question": "¿Esto es para empresas que no han usado nada de esto?",
+        "answer": "Sí. De hecho, ahí suele haber más oportunidad, porque se puede avanzar con claridad y sin confusión interna."
+      },
+      {
+        "question": "¿Esto es un curso?",
+        "answer": "No. Podemos entrenar al equipo, pero el enfoque principal es implementación y uso real dentro de la empresa."
+      },
+      {
+        "question": "¿Necesito un equipo técnico interno?",
+        "answer": "No es obligatorio. Sí necesitamos acceso a responsables internos, procesos reales y sistemas relevantes para que lo implementado se mantenga."
+      },
+      {
+        "question": "¿Qué tipos de casos suelen funcionar mejor?",
+        "answer": "Casos donde hay volumen, retrabajo, coordinación manual, respuestas repetitivas o reportes que consumen tiempo, como ventas, atención, operaciones y backoffice."
+      },
+      {
+        "question": "¿Cómo manejan seguridad y datos?",
+        "answer": "Se define desde el inicio qué datos se usan, dónde corre la solución, quién accede, qué se registra y cómo se controla el riesgo. Si no se puede hacer bien, no se hace."
+      },
+      {
+        "question": "¿Trabajan con cualquier industria?",
+        "answer": "Sí, siempre que exista un proceso claro donde esto pueda aportar valor concreto."
+      },
+      {
+        "question": "¿Qué no hacen?",
+        "answer": "No vendemos chatbots genéricos sin dueño ni métricas. No prometemos resultados sin baseline. No implementamos IA cuando un flujo simple o reglas resuelven mejor."
+      }
+    ]
+  },
+  "Footer": {
+    "title": "De la intención a la <accent>operación.</accent><br></br>Con <muted>resultados.</muted>",
+    "subtitle": "Agendemos una llamada gratuita para mapear tu operación y detectar casos con retorno claro.",
+    "cta": "Agendar llamada",
+    "imageAlt": "Estación de trabajo retro"
+  },
+  "QueHacemos": {
+    "title": "Hacemos que esto <accent>funcione</accent> en la <muted>operación.</muted>",
+    "subtitle": "Nos integramos con tu equipo para identificar dónde hay valor, diseñar la solución correcta, implementarla en herramientas reales y asegurar adopción.",
+    "results": [
+      {
+        "title": "Carga operativa más ligera",
+        "description": "Automatizamos tareas repetitivas y liberamos horas para decisiones críticas."
+      },
+      {
+        "title": "Atención y seguimiento más rápidos",
+        "description": "Menos fricción entre ventas, soporte y operación con flujos conectados."
+      },
+      {
+        "title": "Respuestas y reportes consistentes",
+        "description": "Calidad uniforme en comunicaciones, reportes y decisiones internas."
+      },
+      {
+        "title": "Operación menos dependiente",
+        "description": "Procesos documentados que siguen funcionando aunque cambie el equipo."
+      }
+    ]
+  },
+  "ComoTrabajamos": {
+    "title": "Un método simple y práctico: <accent>entender, construir, integrar</accent> y <muted>adoptar.</muted>",
+    "subtitle": "Cada paso se construye sobre el anterior para asegurar adopción, no solo implementación.",
+    "stepLabel": "Paso {number}",
+    "steps": [
+      {
+        "title": "Entender tu realidad",
+        "description": "Entramos al proceso con tu equipo. Observamos cómo operan, qué se hace manualmente, dónde hay retrabajo, qué datos existen y qué sistemas usan."
+      },
+      {
+        "title": "Elegir un caso con valor claro",
+        "description": "Priorizamos un caso donde el impacto sea evidente para el negocio. Evitamos casos de \"demo\" que nadie usa."
+      },
+      {
+        "title": "Implementar en sistemas reales",
+        "description": "Conectamos la solución al flujo de trabajo real. Trabajamos sobre tus herramientas actuales, como CRM, correo, WhatsApp, ERP, formularios y bases internas."
+      },
+      {
+        "title": "Asegurar adopción",
+        "description": "Acompañamos el uso, iteramos con usuarios reales y dejamos responsables internos, documentación y una forma clara de mantenerlo."
+      }
+    ]
+  },
+  "ParaQuien": {
+    "title": "Esto es para empresas que aún no han <accent>adoptado</accent> esta tecnología, o la están usando de forma <muted>superficial.</muted>",
+    "subtitle": "Trabajamos con líderes que sienten presión por implementar, pero no tienen claridad de por dónde empezar, qué priorizar y cómo lograr que el equipo lo use sin fricción.",
+    "signalsLabel": "Señales típicas",
+    "signals": [
+      "El equipo usa ChatGPT de forma básica, pero no hay mejoras visibles en la operación",
+      "Hay interés del liderazgo, pero no existe una iniciativa que se sostenga en el tiempo",
+      "Existen procesos manuales, retrabajo, cuellos de botella y reportes que consumen tiempo",
+      "La conversación está llena de herramientas, pero vacía de resultados"
+    ]
+  },
+  "Blog": {
+    "title": "Blog <muted>/ Notas</muted>",
+    "tag": "Ensayo",
+    "readMore": "Leer ensayo"
+  },
+  "BlogPost": {
+    "label": "Blog",
+    "back": "Volver al blog"
+  }
+}

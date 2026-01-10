@@ -2,34 +2,20 @@
 
 import { motion, useInView, useScroll, useSpring } from "framer-motion";
 import { useRef } from "react";
-
-const steps = [
-  {
-    title: "Entender tu realidad",
-    description:
-      "Entramos al proceso con tu equipo. Observamos cómo operan, qué se hace manualmente, dónde hay retrabajo, qué datos existen y qué sistemas usan.",
-  },
-  {
-    title: "Elegir un caso con valor claro",
-    description:
-      'Priorizamos un caso donde el impacto sea evidente para el negocio. Evitamos casos de "demo" que nadie usa.',
-  },
-  {
-    title: "Implementar en sistemas reales",
-    description:
-      "Conectamos la solución al flujo de trabajo real. Trabajamos sobre tus herramientas actuales, como CRM, correo, WhatsApp, ERP, formularios y bases internas.",
-  },
-  {
-    title: "Asegurar adopción",
-    description:
-      "Acompañamos el uso, iteramos con usuarios reales y dejamos responsables internos, documentación y una forma clara de mantenerlo.",
-  },
-];
+import { useTranslations } from "next-intl";
 
 export default function ComoTrabajamos() {
   const ref = useRef(null);
   const timelineRef = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const t = useTranslations("ComoTrabajamos");
+  const title = t.rich("title", {
+    accent: (chunks) => (
+      <span className="text-elegant text-foreground">{chunks}</span>
+    ),
+    muted: (chunks) => <span className="text-elegant text-muted">{chunks}</span>,
+  });
+  const steps = t.raw("steps") as { title: string; description: string }[];
   const { scrollYProgress } = useScroll({
     target: timelineRef,
     offset: ["start 0.15", "end 0.85"],
@@ -64,14 +50,7 @@ export default function ComoTrabajamos() {
               }}
               className="text-2xl sm:text-3xl md:text-4xl font-light leading-[1.15] mb-5 max-w-md mx-auto lg:mx-0"
             >
-              <span className="text-foreground">
-                Un método simple y práctico:{" "}
-              </span>
-              <span className="text-elegant text-foreground">
-                entender, construir, integrar
-              </span>
-              <span className="text-foreground"> y </span>
-              <span className="text-elegant text-muted">adoptar.</span>
+              {title}
             </motion.h2>
 
             <motion.p
@@ -84,8 +63,7 @@ export default function ComoTrabajamos() {
               }}
               className="text-base sm:text-lg text-muted leading-relaxed max-w-md mx-auto lg:mx-0"
             >
-              Cada paso se construye sobre el anterior para asegurar adopción,
-              no solo implementación.
+              {t("subtitle")}
             </motion.p>
           </div>
 
@@ -115,7 +93,7 @@ export default function ComoTrabajamos() {
                   />
                   <div className="flex items-center gap-3 mb-2">
                     <span className="text-xs text-muted-dark uppercase tracking-[0.3em]">
-                      Paso {index + 1}
+                      {t("stepLabel", { number: index + 1 })}
                     </span>
                     <span className="h-px flex-1 bg-white/10" />
                   </div>

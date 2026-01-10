@@ -5,10 +5,22 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
+import { useLocale, useTranslations } from "next-intl";
+import { SCHEDULE_CALL_URL } from "@/lib/links";
 
 export default function Footer() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const t = useTranslations("Footer");
+  const locale = useLocale();
+  const homeHref = locale === "es" ? "/" : `/${locale}`;
+  const title = t.rich("title", {
+    accent: (chunks) => (
+      <span className="text-elegant text-foreground">{chunks}</span>
+    ),
+    muted: (chunks) => <span className="text-elegant text-muted">{chunks}</span>,
+    br: () => <br className="hidden sm:block" />,
+  });
 
   return (
     <>
@@ -27,7 +39,7 @@ export default function Footer() {
             <div className="absolute bottom-0 left-1/2 -translate-x-1/2">
               <Image
                 src="/retro-computer.jpg"
-                alt="Retro computer workstation"
+                alt={t("imageAlt")}
                 width={1400}
                 height={1000}
                 sizes="(max-width: 640px) 520px, (max-width: 1024px) 760px, 1100px"
@@ -58,11 +70,7 @@ export default function Footer() {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="text-2xl sm:text-4xl md:text-5xl font-light leading-[1.1] mb-6 sm:mb-8"
           >
-            <span className="text-foreground">De la intención a la </span>
-            <span className="text-elegant text-foreground">operación.</span>
-            <br className="hidden sm:block" />
-            <span className="text-foreground"> Con </span>
-            <span className="text-elegant text-muted">resultados.</span>
+            {title}
           </motion.h2>
 
           <motion.p
@@ -71,8 +79,7 @@ export default function Footer() {
             transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
             className="text-base sm:text-lg text-muted leading-relaxed mb-8 sm:mb-10 max-w-2xl mx-auto font-light"
           >
-            Agendemos una llamada gratuita para mapear tu operación y detectar
-            casos con retorno claro.
+            {t("subtitle")}
           </motion.p>
 
           <motion.div
@@ -81,10 +88,10 @@ export default function Footer() {
             transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
           >
             <a
-              href="mailto:contacto@operationalinference.com"
+              href={SCHEDULE_CALL_URL}
               className="group btn btn-primary w-full sm:w-auto"
             >
-              Agendar llamada
+              {t("cta")}
               <ArrowRight
                 size={20}
                 className="group-hover:translate-x-1 transition-transform duration-300"
@@ -101,7 +108,7 @@ export default function Footer() {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-8">
             {/* Logo */}
-            <a href="/" className="flex items-center gap-3 group">
+            <a href={homeHref} className="flex items-center gap-3 group">
               <div className="w-6 h-6 relative">
                 <div className="absolute inset-0 bg-white rounded-[2px] transform rotate-45 group-hover:rotate-[135deg] transition-transform duration-700 ease-out" />
                 <div className="absolute inset-[2px] bg-background rounded-[1px] transform rotate-45" />

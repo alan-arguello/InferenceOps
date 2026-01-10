@@ -3,33 +3,22 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-
-const results = [
-  {
-    title: "Carga operativa más ligera",
-    description:
-      "Automatizamos tareas repetitivas y liberamos horas para decisiones críticas.",
-  },
-  {
-    title: "Atención y seguimiento más rápidos",
-    description:
-      "Menos fricción entre ventas, soporte y operación con flujos conectados.",
-  },
-  {
-    title: "Respuestas y reportes consistentes",
-    description:
-      "Calidad uniforme en comunicaciones, reportes y decisiones internas.",
-  },
-  {
-    title: "Operación menos dependiente",
-    description:
-      "Procesos documentados que siguen funcionando aunque cambie el equipo.",
-  },
-];
+import { useTranslations } from "next-intl";
 
 export default function QueHacemos() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const t = useTranslations("QueHacemos");
+  const title = t.rich("title", {
+    accent: (chunks) => (
+      <span className="text-elegant text-foreground">{chunks}</span>
+    ),
+    muted: (chunks) => <span className="text-elegant text-muted">{chunks}</span>,
+  });
+  const results = t.raw("results") as {
+    title: string;
+    description: string;
+  }[];
 
   return (
     <section className="relative py-20 sm:py-24 lg:py-32 overflow-hidden">
@@ -50,17 +39,14 @@ export default function QueHacemos() {
             <motion.h2
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{
-                duration: 0.8,
-                delay: 0.1,
-                ease: [0.16, 1, 0.3, 1],
-              }}
-              className="text-2xl sm:text-3xl md:text-4xl font-light leading-[1.15] mb-5 max-w-xl mx-auto lg:mx-0"
-            >
-              <span className="text-foreground">Hacemos que esto </span>
-              <span className="text-elegant text-foreground">funcione</span>
-              <span className="text-foreground"> en la </span>
-              <span className="text-elegant text-muted">operación.</span>
+            transition={{
+              duration: 0.8,
+              delay: 0.1,
+              ease: [0.16, 1, 0.3, 1],
+            }}
+            className="text-2xl sm:text-3xl md:text-4xl font-light leading-[1.15] mb-5 max-w-xl mx-auto lg:mx-0"
+          >
+              {title}
             </motion.h2>
 
             <motion.p
@@ -73,9 +59,7 @@ export default function QueHacemos() {
               }}
               className="text-base sm:text-lg text-muted leading-relaxed font-light max-w-xl mx-auto lg:mx-0"
             >
-              Nos integramos con tu equipo para identificar dónde hay valor,
-              diseñar la solución correcta, implementarla en herramientas reales
-              y asegurar adopción.
+              {t("subtitle")}
             </motion.p>
           </div>
 

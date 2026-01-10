@@ -1,39 +1,48 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { blogPosts } from "@/content/blogPosts";
+import { getBlogPost } from "@/content/blogPosts";
 import BlogPostBody from "@/components/BlogPostBody";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import { getTranslations } from "next-intl/server";
 
 type BlogPostPageProps = {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ locale: string; slug: string }>;
 };
 
 export async function generateMetadata({
   params,
 }: BlogPostPageProps): Promise<Metadata> {
-  const { slug } = await params;
-  const post = blogPosts.find((item) => item.slug === slug);
+  const { locale, slug } = await params;
+  const post = getBlogPost(locale, slug);
+  const t = await getTranslations({ locale, namespace: "Metadata" });
 
   if (!post) {
     return {
-      title: "Post no encontrado | Operational Inference",
-      description: "El post solicitado no existe.",
+      title: t("blogNotFoundTitle"),
+      description: t("blogNotFoundDescription"),
     };
   }
+
+  const canonical =
+    locale === "es" ? `/blog/${post.slug}` : `/${locale}/blog/${post.slug}`;
 
   return {
     title: `${post.title} | Operational Inference`,
     description: post.summary,
     alternates: {
-      canonical: `/blog/${post.slug}`,
+      canonical,
+      languages: {
+        es: `/blog/${post.slug}`,
+        en: `/en/blog/${post.slug}`,
+      },
     },
     openGraph: {
       title: post.title,
       description: post.summary,
       type: "article",
-      url: `https://operationalinference.com/blog/${post.slug}`,
+      url: `https://operationalinference.com${canonical}`,
       authors: [post.author],
       publishedTime: post.dateISO,
       images: [
@@ -41,7 +50,7 @@ export async function generateMetadata({
           url: "/ogsf.png",
           width: 2052,
           height: 1006,
-          alt: "Operational Inference en San Francisco",
+          alt: t("blogOgAlt"),
         },
       ],
     },
@@ -55,8 +64,12 @@ export async function generateMetadata({
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
-  const { slug } = await params;
-  const post = blogPosts.find((item) => item.slug === slug);
+  const { locale, slug } = await params;
+  const post = getBlogPost(locale, slug);
+  const t = await getTranslations({ locale, namespace: "BlogPost" });
+  const inLanguage = locale === "en" ? "en-US" : "es-MX";
+  const canonical =
+    locale === "es" ? `/blog/${slug}` : `/${locale}/blog/${slug}`;
 
   if (!post) {
     notFound();
@@ -73,12 +86,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       name: post.author,
     },
     image: "https://operationalinference.com/ogsf.png",
-    inLanguage: "es-MX",
+    inLanguage,
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `https://operationalinference.com/blog/${post.slug}`,
+      "@id": `https://operationalinference.com${canonical}`,
     },
-    url: `https://operationalinference.com/blog/${post.slug}`,
+    url: `https://operationalinference.com${canonical}`,
   };
 
   return (
@@ -97,12 +110,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-10 flex items-center justify-between gap-4 text-xs uppercase tracking-[0.24em] text-muted-dark">
-            <span>Blog</span>
+            <span>{t("label")}</span>
             <Link
               href="/blog"
               className="text-foreground underline decoration-white/20 underline-offset-4 hover:decoration-white transition-colors"
             >
-              Volver al blog
+              {t("back")}
             </Link>
           </div>
 

@@ -4,6 +4,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
+import { useTranslations } from "next-intl";
 
 const pressLinks = [
   {
@@ -26,6 +27,10 @@ const pressLinks = [
 export default function Medios() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const t = useTranslations("Medios");
+  const title = t.rich("title", {
+    muted: (chunks) => <span className="text-elegant text-muted">{chunks}</span>,
+  });
 
   return (
     <section className="relative py-20 sm:py-24 lg:py-32 overflow-hidden">
@@ -44,8 +49,7 @@ export default function Medios() {
           transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           className="text-2xl sm:text-3xl md:text-4xl font-light leading-[1.15] mb-8 sm:mb-12 text-center sm:text-left"
         >
-          <span className="text-foreground">Medios y </span>
-          <span className="text-elegant text-muted">comunidades.</span>
+          {title}
         </motion.h2>
 
         <motion.p
@@ -54,8 +58,7 @@ export default function Medios() {
           transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
           className="text-base text-muted mb-10 max-w-2xl mx-auto sm:mx-0 text-center sm:text-left"
         >
-          Conversaciones públicas y colaboraciones con medios y comunidades
-          relevantes para la región.
+          {t("subtitle")}
         </motion.p>
 
         {/* Press Logos */}

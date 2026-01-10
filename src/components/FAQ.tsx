@@ -3,51 +3,19 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
+import { useTranslations } from "next-intl";
 
-const faqs = [
-  {
-    question: "¿Esto es para empresas que no han usado nada de esto?",
-    answer:
-      "Sí. De hecho, ahí suele haber más oportunidad, porque se puede avanzar con claridad y sin confusión interna.",
-  },
-  {
-    question: "¿Esto es un curso?",
-    answer:
-      "No. Podemos entrenar al equipo, pero el enfoque principal es implementación y uso real dentro de la empresa.",
-  },
-  {
-    question: "¿Necesito un equipo técnico interno?",
-    answer:
-      "No es obligatorio. Sí necesitamos acceso a responsables internos, procesos reales y sistemas relevantes para que lo implementado se mantenga.",
-  },
-  {
-    question: "¿Qué tipos de casos suelen funcionar mejor?",
-    answer:
-      "Casos donde hay volumen, retrabajo, coordinación manual, respuestas repetitivas o reportes que consumen tiempo, como ventas, atención, operaciones y backoffice.",
-  },
-  {
-    question: "¿Cómo manejan seguridad y datos?",
-    answer:
-      "Se define desde el inicio qué datos se usan, dónde corre la solución, quién accede, qué se registra y cómo se controla el riesgo. Si no se puede hacer bien, no se hace.",
-  },
-  {
-    question: "¿Trabajan con cualquier industria?",
-    answer:
-      "Sí, siempre que exista un proceso claro donde esto pueda aportar valor concreto.",
-  },
-  {
-    question: "¿Qué no hacen?",
-    answer:
-      "No vendemos chatbots genéricos sin dueño ni métricas. No prometemos resultados sin baseline. No implementamos IA cuando un flujo simple o reglas resuelven mejor.",
-  },
-];
+type FaqItem = {
+  question: string;
+  answer: string;
+};
 
 function FAQItem({
   faq,
   isOpen,
   onToggle,
 }: {
-  faq: (typeof faqs)[0];
+  faq: FaqItem;
   isOpen: boolean;
   onToggle: () => void;
 }) {
@@ -89,6 +57,11 @@ export default function FAQ() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const t = useTranslations("FAQ");
+  const title = t.rich("title", {
+    muted: (chunks) => <span className="text-elegant text-muted">{chunks}</span>,
+  });
+  const faqs = t.raw("items") as { question: string; answer: string }[];
 
   return (
     <section
@@ -111,8 +84,7 @@ export default function FAQ() {
           transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           className="text-2xl sm:text-3xl md:text-4xl font-light leading-[1.15] mb-8 sm:mb-12 text-center"
         >
-          <span className="text-foreground">Preguntas </span>
-          <span className="text-elegant text-muted">frecuentes.</span>
+          {title}
         </motion.h2>
 
         {/* FAQ List */}

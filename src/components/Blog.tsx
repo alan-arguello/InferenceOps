@@ -3,12 +3,19 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { blogPosts } from "@/content/blogPosts";
-import Link from "next/link";
+import { useLocale, useTranslations } from "next-intl";
+import { getBlogPosts } from "@/content/blogPosts";
+import { Link } from "@/i18n/navigation";
 
 export default function Blog() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-120px" });
+  const t = useTranslations("Blog");
+  const locale = useLocale();
+  const title = t.rich("title", {
+    muted: (chunks) => <span className="text-elegant text-muted">{chunks}</span>,
+  });
+  const posts = getBlogPosts(locale);
 
   return (
     <section id="blog" className="relative py-20 sm:py-24 lg:py-32">
@@ -27,12 +34,11 @@ export default function Blog() {
           transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           className="text-2xl sm:text-3xl md:text-4xl font-light leading-[1.15] text-center sm:text-left"
         >
-          <span className="text-foreground">Blog </span>
-          <span className="text-elegant text-muted">/ Notas</span>
+          {title}
         </motion.h2>
 
         <div className="mt-10 sm:mt-14 space-y-10">
-          {blogPosts.map((post, index) => (
+          {posts.map((post, index) => (
             <motion.article
               key={post.slug}
               id={post.slug}
@@ -47,7 +53,7 @@ export default function Blog() {
             >
               <header className="space-y-4">
                 <div className="flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.24em] text-muted-dark">
-                  <span>Ensayo</span>
+                  <span>{t("tag")}</span>
                   <span className="h-px flex-1 min-w-[120px] bg-gradient-to-r from-white/15 via-white/5 to-transparent" />
                 </div>
 
@@ -78,7 +84,7 @@ export default function Blog() {
                   href={`/blog/${post.slug}`}
                   className="inline-flex items-center gap-2 text-sm uppercase tracking-[0.2em] text-foreground underline decoration-white/20 underline-offset-4 hover:decoration-white transition-colors"
                 >
-                  Leer ensayo
+                  {t("readMore")}
                 </Link>
               </div>
             </motion.article>

@@ -2,15 +2,16 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 
-const cities = [
-  { src: "/cities/san%20francisco.jpeg", name: "San Francisco" },
-  { src: "/cities/napa.jpeg", name: "Napa Valley" },
-  { src: "/cities/bogota.jpg", name: "Bogotá" },
-  { src: "/cities/medellin.jpeg", name: "Medellín" },
-  { src: "/cities/ciudad%20mexico.jpg", name: "Ciudad de México" },
-  { src: "/cities/guadalajara.png", name: "Guadalajara" },
-  { src: "/cities/lima.png", name: "Lima" },
+const cityImages = [
+  "/cities/san%20francisco.jpeg",
+  "/cities/napa.jpeg",
+  "/cities/bogota.jpg",
+  "/cities/medellin.jpeg",
+  "/cities/ciudad%20mexico.jpg",
+  "/cities/guadalajara.png",
+  "/cities/lima.png",
 ];
 
 const logos = [
@@ -24,10 +25,22 @@ const logos = [
   { src: "/hero_logos_slider/stanford.webp", alt: "Stanford" },
 ];
 
-const track = [...cities, ...cities];
-const logoTrack = [...logos, ...logos];
-
 export default function CitiesCarousel() {
+  const t = useTranslations("Cities");
+  const cityNames = t.raw("cities") as string[];
+  const cities = cityImages.map((src, index) => ({
+    src,
+    name: cityNames[index] ?? "",
+  }));
+  const track = [...cities, ...cities];
+  const logoTrack = [...logos, ...logos];
+  const title = t.rich("title", {
+    accent: (chunks) => (
+      <span className="text-elegant text-foreground">{chunks}</span>
+    ),
+    muted: (chunks) => <span className="text-elegant text-muted">{chunks}</span>,
+  });
+
   return (
     <section
       id="ciudades"
@@ -45,10 +58,7 @@ export default function CitiesCarousel() {
           transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           className="text-2xl sm:text-3xl md:text-4xl font-light leading-[1.15] mb-4 text-center sm:text-left"
         >
-          <span className="text-foreground">Desde </span>
-          <span className="text-elegant text-foreground">Silicon Valley</span>
-          <span className="text-foreground"> a </span>
-          <span className="text-elegant text-muted">Latinoamérica.</span>
+          {title}
         </motion.h2>
 
         <motion.p
@@ -58,7 +68,7 @@ export default function CitiesCarousel() {
           transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
           className="text-base sm:text-lg text-muted max-w-2xl mb-10 mx-auto sm:mx-0 text-center sm:text-left"
         >
-          Conectamos líderes de tecnología.
+          {t("subtitle")}
         </motion.p>
 
         <motion.div
@@ -67,7 +77,7 @@ export default function CitiesCarousel() {
           viewport={{ once: true, margin: "-120px" }}
           transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
           className="city-carousel"
-          aria-label="Eventos en distintas ciudades"
+          aria-label={t("eventsLabel")}
         >
           <div className="city-track">
             {track.map((city, index) => (
@@ -102,7 +112,7 @@ export default function CitiesCarousel() {
         >
           <div
             className="mt-6 logo-marquee"
-            aria-label="Organizaciones colaboradoras"
+            aria-label={t("logosLabel")}
           >
             <div className="logo-track">
               {logoTrack.map((logo, index) => (

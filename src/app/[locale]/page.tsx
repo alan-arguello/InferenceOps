@@ -10,17 +10,25 @@ import Equipo from "@/components/Equipo";
 import Medios from "@/components/Medios";
 import FAQ from "@/components/FAQ";
 import Footer from "@/components/Footer";
+import { getTranslations } from "next-intl/server";
 
-export default function Home() {
+type HomePageProps = {
+  params: Promise<{ locale: string }>;
+};
+
+export default async function Home({ params }: HomePageProps) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "Metadata" });
+  const canonical = locale === "es" ? "/" : `/${locale}`;
+  const inLanguage = locale === "en" ? "en-US" : "es-MX";
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "Organization",
         name: "Operational Inference",
-        url: "https://operationalinference.com",
-        description:
-          "Ayudamos a equipos ejecutivos a mejorar eficiencia, ventas y operación con soluciones de IA que se integran al trabajo real.",
+        url: `https://operationalinference.com${canonical}`,
+        description: t("description"),
         email: "contacto@operationalinference.com",
         logo: "https://operationalinference.com/ogsf.png",
         image: "https://operationalinference.com/ogsf.png",
@@ -28,8 +36,8 @@ export default function Home() {
       {
         "@type": "WebSite",
         name: "Operational Inference",
-        url: "https://operationalinference.com",
-        inLanguage: "es-MX",
+        url: `https://operationalinference.com${canonical}`,
+        inLanguage,
       },
     ],
   };

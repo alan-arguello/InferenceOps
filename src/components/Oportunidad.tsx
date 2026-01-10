@@ -4,10 +4,34 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 export default function Oportunidad() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const t = useTranslations("Oportunidad");
+  const titleLine1 = t.rich("title.line1", {
+    accent: (chunks) => (
+      <span className="text-elegant text-foreground">{chunks}</span>
+    ),
+  });
+  const titleLine2 = t.rich("title.line2", {
+    accent: (chunks) => (
+      <span className="text-elegant text-foreground">{chunks}</span>
+    ),
+    muted: (chunks) => <span className="text-elegant text-muted">{chunks}</span>,
+  });
+  const paragraphOne = t.rich("paragraphs.0", {
+    highlight: (chunks) => <span className="text-foreground">{chunks}</span>,
+  });
+  const paragraphTwo = t.rich("paragraphs.1", {
+    highlight: (chunks) => <span className="text-foreground">{chunks}</span>,
+  });
+  const paragraphThree = t.rich("paragraphs.2", {
+    highlight: (chunks) => <span className="text-foreground">{chunks}</span>,
+    strong: (chunks) => <span className="text-foreground">{chunks}</span>,
+    br: () => <br className="hidden sm:block" />,
+  });
 
   return (
     <section
@@ -58,20 +82,8 @@ export default function Oportunidad() {
               }}
               className="mt-5 text-2xl sm:text-3xl md:text-4xl font-light leading-[1.15] mb-5"
             >
-              <span className="block">
-                <span className="text-foreground">Implementamos en </span>
-                <span className="text-elegant text-foreground">
-                  Latinoamérica
-                </span>
-              </span>
-              <span className="block">
-                <span className="text-foreground">lo que en </span>
-                <span className="text-elegant text-muted">Silicon Valley</span>
-                <span className="text-foreground"> ya funciona en </span>
-                <span className="text-elegant text-foreground">
-                  producción.
-                </span>
-              </span>
+              <span className="block">{titleLine1}</span>
+              <span className="block">{titleLine2}</span>
             </motion.h2>
 
             <motion.div
@@ -85,28 +97,13 @@ export default function Oportunidad() {
               className="space-y-5 sm:space-y-6 max-w-3xl"
             >
               <p className="text-base sm:text-lg text-muted leading-relaxed font-light">
-                En los últimos meses, al hablar con ejecutivos y líderes
-                corporativos de la región, vimos el mismo patrón:{" "}
-                <span className="text-foreground">interés real por IA</span>,
-                pero <span className="text-foreground">poca claridad</span> para
-                convertirlo en{" "}
-                <span className="text-foreground">resultados</span>.
+                {paragraphOne}
               </p>
               <p className="text-base sm:text-lg text-muted leading-relaxed font-light">
-                Muchos esfuerzos fallan no por la tecnología, sino por{" "}
-                <span className="text-foreground">priorización incorrecta</span>,{" "}
-                <span className="text-foreground">falta de integración</span> y{" "}
-                <span className="text-foreground">cero adopción</span>.
+                {paragraphTwo}
               </p>
               <p className="text-base sm:text-lg text-muted leading-relaxed font-light">
-                <span className="text-foreground">Por eso existimos:</span>{" "}
-                implementamos lo que sí mueve la operación.
-                <br className="hidden sm:block" />
-                Empezamos por el{" "}
-                <span className="text-foreground">caso con mayor impacto</span>,
-                lo integramos a tus herramientas actuales y acompañamos hasta
-                que el equipo lo use en el día a día, con{" "}
-                <span className="text-foreground">métricas claras</span>.
+                {paragraphThree}
               </p>
             </motion.div>
           </div>

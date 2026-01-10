@@ -5,49 +5,30 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useCallback, MouseEvent } from "react";
 import { Linkedin } from "lucide-react";
+import { useTranslations } from "next-intl";
 
-const team = [
-  {
-    name: "Alan Arguello",
-    role: "CEO, Software Engineer & MBA",
-    image: "/alan.png",
-    bio: [
-      "Cofundó Torrenegra Organization junto al inversor de Shark Tank, Alex Torrenegra, apoyando a más de 100 empresas en ejecución, operación y expansión.",
-      "Parte del equipo de Makers Fellowship con Andrés Bilbao, cofundador de Rappi en donde apoyó a empresas a conseguir talento.",
-      "Invertido por Platanus Ventures. Miembro de Latitud, On Deck y AI Circle.",
-    ],
-    logos: [
-      { src: "/alan_logos/Group 2.svg", alt: "Torrenegra Organization" },
-      { src: "/alan_logos/buny.svg", alt: "Bunny" },
-    ],
-    linkedin: "https://www.linkedin.com/in/alan-arguello/",
-  },
-  {
-    name: "Michelle Arguello",
-    role: "CFO, Venture Capital Specialist",
-    image: "/michelle.jpeg",
-    bio: [
-      "Contadora especializada en operación y finanzas.",
-      "Fue Administration Manager en IGNIA Partners, liderando reportes a inversionistas, capital calls y soporte financiero del fondo.",
-      "Ha dirigido procesos de control operativo y gobierno financiero para compañías en crecimiento, con foco en claridad, cumplimiento y continuidad.",
-    ],
-    logos: [
-      { src: "/michelle_logos/ignia.webp", alt: "IGNIA Partners" },
-      { src: "/michelle_logos/derevo.svg", alt: "Derevo" },
-    ],
-    linkedin: "https://www.linkedin.com/in/michelleargoroz/",
-  },
-];
+type TeamMember = {
+  name: string;
+  role: string;
+  image: string;
+  bio: string[];
+  logos: { src: string; alt: string }[];
+  linkedin: string;
+};
 
 // Team member card component with premium animations
 function MemberCard({
   member,
   index,
   isInView,
+  experienceLabel,
+  linkedinLabel,
 }: {
-  member: (typeof team)[0];
+  member: TeamMember;
   index: number;
   isInView: boolean;
+  experienceLabel: string;
+  linkedinLabel: string;
 }) {
   const cardRef = useRef<HTMLDivElement>(null);
 
@@ -127,7 +108,7 @@ function MemberCard({
             target="_blank"
             rel="noopener noreferrer"
             className="icon-btn-premium"
-            aria-label={`LinkedIn de ${member.name}`}
+            aria-label={linkedinLabel.replace("{name}", member.name)}
           >
             <Linkedin size={16} />
           </motion.a>
@@ -156,7 +137,7 @@ function MemberCard({
         >
           <div className="card-divider mb-4" />
           <p className="text-[10px] text-muted uppercase tracking-widest font-mono">
-            Experiencia previa
+            {experienceLabel}
           </p>
           <div className="mt-3 flex flex-wrap items-center gap-4">
             {member.logos.map((logo, logoIndex) => (
@@ -186,6 +167,13 @@ function MemberCard({
 export default function Equipo() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const t = useTranslations("Equipo");
+  const title = t.rich("title", {
+    muted: (chunks) => <span className="text-elegant text-muted">{chunks}</span>,
+  });
+  const team = t.raw("team") as TeamMember[];
+  const experienceLabel = t("experienceLabel");
+  const linkedinLabel = t("linkedinLabel", { name: "{name}" });
 
   return (
     <section
@@ -208,8 +196,7 @@ export default function Equipo() {
           transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           className="text-2xl sm:text-3xl md:text-4xl font-light leading-[1.15] mb-5 sm:mb-6 text-center sm:text-left"
         >
-          <span className="text-foreground">Equipo core y </span>
-          <span className="text-elegant text-muted">red de especialistas.</span>
+          {title}
         </motion.h2>
 
         <motion.p
@@ -218,9 +205,7 @@ export default function Equipo() {
           transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
           className="text-base text-muted mb-10 sm:mb-12 max-w-2xl mx-auto sm:mx-0 text-center sm:text-left"
         >
-          Somos un equipo compacto. Según el tipo de proyecto, sumamos perfiles
-          técnicos y de integración bajo un modelo de colaboración por proyecto,
-          con responsables claros y entregables definidos.
+          {t("subtitle")}
         </motion.p>
 
         {/* Team Grid */}
@@ -231,6 +216,8 @@ export default function Equipo() {
               member={member}
               index={index}
               isInView={isInView}
+              experienceLabel={experienceLabel}
+              linkedinLabel={linkedinLabel}
             />
           ))}
         </div>

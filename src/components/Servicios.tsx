@@ -2,12 +2,48 @@
 
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
-import { useRef, useCallback, MouseEvent } from "react";
+import { useRef, useCallback, MouseEvent, type ComponentType } from "react";
+import { useTranslations } from "next-intl";
+
+type AutomationVisualizationProps = {
+  statusLabel: string;
+};
+
+type TrainingVisualizationProps = {
+  title: string;
+  skills: string[];
+  metrics: string[];
+  completion: string;
+};
+
+type StrategyVisualizationProps = {
+  milestones: string[];
+  phases: string[];
+  progress: string;
+};
+
+type TalentVisualizationProps = {
+  rolesLabel: string;
+  linksLabel: string;
+};
+
+type EventsVisualizationProps = {
+  title: string;
+  months: string[];
+  metrics: string[];
+  units: string[];
+  nextLabel: string;
+};
+
+type SiliconValleyVisualizationProps = {
+  hubsLabel: string;
+  regionsLabel: string;
+};
 
 // Premium service visualizations
 
 // Implementation - API/Integration Flow
-function AutomationVisualization() {
+function AutomationVisualization({ statusLabel }: AutomationVisualizationProps) {
   return (
     <div className="relative w-full h-32 sm:h-36 overflow-hidden">
       <svg className="absolute inset-0 w-full h-full" viewBox="0 0 200 100">
@@ -155,7 +191,7 @@ function AutomationVisualization() {
             className="w-1.5 h-1.5 rounded-full bg-accent"
           />
           <span className="text-[8px] text-muted-dark font-mono">
-            3 FLOWS ACTIVE
+            {statusLabel}
           </span>
         </div>
       </div>
@@ -164,22 +200,33 @@ function AutomationVisualization() {
 }
 
 // Training - Learning Progress Dashboard
-function TrainingVisualization() {
+function TrainingVisualization({
+  title,
+  skills,
+  metrics,
+  completion,
+}: TrainingVisualizationProps) {
+  const skillValues = [92, 78, 85, 71];
+  const skillItems = skillValues.map((value, index) => ({
+    label: skills[index] ?? "",
+    value,
+  }));
+  const metricValues = ["24", "48", "6"];
+  const metricItems = metricValues.map((value, index) => ({
+    label: metrics[index] ?? "",
+    value,
+  }));
+
   return (
     <div className="relative w-full h-32 sm:h-36 overflow-hidden p-3">
       <div className="h-full flex gap-4">
         {/* Skills matrix */}
         <div className="flex-1">
           <div className="text-[7px] text-muted-dark font-mono uppercase tracking-wider mb-2">
-            Adoption Rate
+            {title}
           </div>
           <div className="space-y-2">
-            {[
-              { label: "Prompting", value: 92 },
-              { label: "Tools", value: 78 },
-              { label: "Workflows", value: 85 },
-              { label: "Analysis", value: 71 },
-            ].map((skill, i) => (
+            {skillItems.map((skill, i) => (
               <div key={i} className="flex items-center gap-2">
                 <span className="text-[7px] text-muted-dark font-mono w-14 truncate">
                   {skill.label}
@@ -208,11 +255,7 @@ function TrainingVisualization() {
 
         {/* Session metrics */}
         <div className="w-16 flex flex-col justify-between border-l border-white/[0.06] pl-3">
-          {[
-            { label: "Sessions", value: "24" },
-            { label: "Hours", value: "48" },
-            { label: "Teams", value: "6" },
-          ].map((metric, i) => (
+          {metricItems.map((metric, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, x: 10 }}
@@ -237,14 +280,31 @@ function TrainingVisualization() {
         transition={{ delay: 1 }}
         className="absolute top-2 right-2 flex items-center gap-1"
       >
-        <span className="text-[8px] text-accent font-mono">81.5% COMPLETE</span>
+        <span className="text-[8px] text-accent font-mono">{completion}</span>
       </motion.div>
     </div>
   );
 }
 
 // Strategy - Roadmap Timeline
-function StrategyVisualization() {
+function StrategyVisualization({
+  milestones,
+  phases,
+  progress,
+}: StrategyVisualizationProps) {
+  const phaseItems = [
+    { label: phases[0] ?? "Q1", status: "done" },
+    { label: phases[1] ?? "Q2", status: "done" },
+    { label: phases[2] ?? "Q3", status: "current" },
+    { label: phases[3] ?? "Q4", status: "pending" },
+    { label: phases[4] ?? "SCALE", status: "pending" },
+  ];
+  const milestoneItems = [
+    { label: milestones[0] ?? "", x: 40, y: 25 },
+    { label: milestones[1] ?? "", x: 80, y: 25 },
+    { label: milestones[2] ?? "", x: 120, y: 25 },
+  ];
+
   return (
     <div className="relative w-full h-32 sm:h-36 overflow-hidden">
       <svg className="absolute inset-0 w-full h-full" viewBox="0 0 200 100">
@@ -277,11 +337,11 @@ function StrategyVisualization() {
 
         {/* Phase markers */}
         {[
-          { x: 20, label: "Q1", status: "done" },
-          { x: 60, label: "Q2", status: "done" },
-          { x: 100, label: "Q3", status: "current" },
-          { x: 140, label: "Q4", status: "pending" },
-          { x: 180, label: "SCALE", status: "pending" },
+          { x: 20, ...phaseItems[0] },
+          { x: 60, ...phaseItems[1] },
+          { x: 100, ...phaseItems[2] },
+          { x: 140, ...phaseItems[3] },
+          { x: 180, ...phaseItems[4] },
         ].map((phase, i) => (
           <g key={i}>
             <motion.circle
@@ -329,11 +389,7 @@ function StrategyVisualization() {
         ))}
 
         {/* Milestone cards */}
-        {[
-          { x: 40, y: 25, label: "Diagnóstico" },
-          { x: 80, y: 25, label: "Diseño" },
-          { x: 120, y: 25, label: "Ejecución" },
-        ].map((milestone, i) => (
+        {milestoneItems.map((milestone, i) => (
           <motion.g
             key={i}
             initial={{ opacity: 0, y: 5 }}
@@ -384,14 +440,17 @@ function StrategyVisualization() {
         transition={{ delay: 1.5 }}
         className="absolute bottom-2 left-3 text-[8px] text-muted-dark font-mono"
       >
-        PHASE 3 OF 5
+        {progress}
       </motion.div>
     </div>
   );
 }
 
 // Talent - Team Network Matrix
-function TalentVisualization() {
+function TalentVisualization({
+  rolesLabel,
+  linksLabel,
+}: TalentVisualizationProps) {
   const roles = [
     { x: 30, y: 25, label: "ML", size: 4 },
     { x: 70, y: 20, label: "FE", size: 3 },
@@ -509,11 +568,15 @@ function TalentVisualization() {
       >
         <div className="flex items-center gap-1">
           <div className="w-1 h-1 rounded-full bg-accent" />
-          <span className="text-[8px] text-muted-dark font-mono">9 ROLES</span>
+          <span className="text-[8px] text-muted-dark font-mono">
+            {rolesLabel}
+          </span>
         </div>
         <div className="flex items-center gap-1">
           <div className="w-1 h-1 rounded-full bg-accent-dim" />
-          <span className="text-[8px] text-muted-dark font-mono">14 LINKS</span>
+          <span className="text-[8px] text-muted-dark font-mono">
+            {linksLabel}
+          </span>
         </div>
       </motion.div>
     </div>
@@ -521,14 +584,27 @@ function TalentVisualization() {
 }
 
 // Events - Attendance Analytics
-function EventsVisualization() {
+function EventsVisualization({
+  title,
+  months,
+  metrics,
+  units,
+  nextLabel,
+}: EventsVisualizationProps) {
+  const metricValues = ["12", "156", "72"];
+  const metricItems = metricValues.map((value, index) => ({
+    label: metrics[index] ?? "",
+    value,
+    unit: units[index] ?? "",
+  }));
+
   return (
     <div className="relative w-full h-32 sm:h-36 overflow-hidden p-3">
       <div className="h-full flex gap-4">
         {/* Attendance chart */}
         <div className="flex-1">
           <div className="text-[7px] text-muted-dark font-mono uppercase tracking-wider mb-2">
-            Attendance
+            {title}
           </div>
           <div className="h-16 flex items-end gap-1">
             {[35, 52, 68, 45, 82, 91, 78, 95, 88, 72, 85, 92].map((h, i) => (
@@ -551,18 +627,18 @@ function EventsVisualization() {
             ))}
           </div>
           <div className="flex justify-between mt-1">
-            <span className="text-[6px] text-muted-dark font-mono">JAN</span>
-            <span className="text-[6px] text-muted-dark font-mono">DEC</span>
+            <span className="text-[6px] text-muted-dark font-mono">
+              {months[0]}
+            </span>
+            <span className="text-[6px] text-muted-dark font-mono">
+              {months[1]}
+            </span>
           </div>
         </div>
 
         {/* Event metrics */}
         <div className="w-20 flex flex-col justify-center gap-2 border-l border-white/[0.06] pl-3">
-          {[
-            { label: "Events", value: "12", unit: "/yr" },
-            { label: "Avg", value: "156", unit: "pax" },
-            { label: "NPS", value: "72", unit: "" },
-          ].map((metric, i) => (
+          {metricItems.map((metric, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, x: 10 }}
@@ -597,14 +673,17 @@ function EventsVisualization() {
           transition={{ duration: 1.5, repeat: Infinity }}
           className="w-1.5 h-1.5 rounded-full bg-accent"
         />
-        <span className="text-[7px] text-accent font-mono">NEXT: MAR 15</span>
+        <span className="text-[7px] text-accent font-mono">{nextLabel}</span>
       </motion.div>
     </div>
   );
 }
 
 // Silicon Valley - Global Network
-function SiliconValleyVisualization() {
+function SiliconValleyVisualization({
+  hubsLabel,
+  regionsLabel,
+}: SiliconValleyVisualizationProps) {
   const locations = [
     { x: 25, y: 35, label: "SF", primary: true },
     { x: 60, y: 65, label: "CDMX", primary: false },
@@ -736,12 +815,14 @@ function SiliconValleyVisualization() {
       >
         <div className="flex items-center gap-1">
           <div className="w-1 h-1 rounded-full bg-accent" />
-          <span className="text-[8px] text-muted-dark font-mono">5 HUBS</span>
+          <span className="text-[8px] text-muted-dark font-mono">
+            {hubsLabel}
+          </span>
         </div>
         <div className="flex items-center gap-1">
           <div className="w-1 h-1 rounded-full bg-accent-dim" />
           <span className="text-[8px] text-muted-dark font-mono">
-            LATAM + US + EU
+            {regionsLabel}
           </span>
         </div>
       </motion.div>
@@ -749,75 +830,24 @@ function SiliconValleyVisualization() {
   );
 }
 
-const services = [
-  {
-    id: 1,
-    number: "01",
-    group: "core",
-    title: "Implementación aplicada",
-    subtitle: "Hecha a la medida",
-    description:
-      "Automatización de procesos y asistentes internos integrados con tus herramientas existentes.",
-    visualization: AutomationVisualization,
-  },
-  {
-    id: 2,
-    number: "02",
-    group: "core",
-    title: "Adopción ejecutiva",
-    subtitle: "Entrenamiento aplicado",
-    description:
-      "Sesiones y talleres para líderes sobre qué es real, qué priorizar y cómo decidir.",
-    visualization: TrainingVisualization,
-  },
-  {
-    id: 3,
-    number: "03",
-    group: "core",
-    title: "Estrategia de adopción",
-    subtitle: "Eficiencia operativa",
-    description:
-      "Diagnóstico, priorización por impacto y lineamientos para una adopción sostenible.",
-    visualization: StrategyVisualization,
-  },
-  {
-    id: 4,
-    number: "04",
-    group: "complementary",
-    title: "Talento técnico",
-    subtitle: "Ejecución ágil",
-    description:
-      "Talento de alto potencial en Latam y equipos por proyecto sin inflar estructura.",
-    visualization: TalentVisualization,
-  },
-  {
-    id: 5,
-    number: "05",
-    group: "complementary",
-    title: "Eventos empresariales",
-    subtitle: "Activaciones estratégicas",
-    description:
-      "Eventos con retorno real, curación de agenda y conexión con el ecosistema.",
-    visualization: EventsVisualization,
-  },
-  {
-    id: 6,
-    number: "06",
-    group: "complementary",
-    title: "Inmersiones",
-    subtitle: "Silicon Valley",
-    description:
-      "Agenda curada para ejecutivos con conexiones estratégicas y aprendizaje aplicado.",
-    visualization: SiliconValleyVisualization,
-  },
-];
+type ServiceEntry = {
+  number: string;
+  title: string;
+  subtitle: string;
+  description: string;
+};
+
+type ServiceItem = ServiceEntry & {
+  visualization: ComponentType<any>;
+  visualizationProps?: Record<string, unknown>;
+};
 
 function ServiceCard({
   service,
   index,
   isInView,
 }: {
-  service: (typeof services)[0];
+  service: ServiceItem;
   index: number;
   isInView: boolean;
 }) {
@@ -859,7 +889,7 @@ function ServiceCard({
 
         {/* Visualization */}
         <div className="viz-container relative">
-          <Visualization />
+          <Visualization {...(service.visualizationProps ?? {})} />
         </div>
 
         {/* Content */}
@@ -913,9 +943,84 @@ function ServiceCard({
 export default function Servicios() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const coreServices = services.filter((service) => service.group === "core");
-  const complementaryServices = services.filter(
-    (service) => service.group === "complementary"
+  const t = useTranslations("Servicios");
+  const title = t.rich("title", {
+    accent: (chunks) => (
+      <span className="text-elegant text-foreground">{chunks}</span>
+    ),
+  });
+  const visuals = t.raw("visuals") as {
+    automation: { status: string };
+    training: {
+      title: string;
+      skills: string[];
+      metrics: string[];
+      completion: string;
+    };
+    strategy: { milestones: string[]; phases: string[]; progress: string };
+    talent: { roles: string; links: string };
+    events: {
+      title: string;
+      months: string[];
+      metrics: string[];
+      units: string[];
+      next: string;
+    };
+    siliconValley: { hubs: string; regions: string };
+  };
+  const coreServicesData = t.raw("coreServices") as ServiceEntry[];
+  const complementaryServicesData = t.raw(
+    "complementaryServices"
+  ) as ServiceEntry[];
+  const coreVisualizations = [
+    AutomationVisualization,
+    TrainingVisualization,
+    StrategyVisualization,
+  ];
+  const coreVisualizationProps = [
+    { statusLabel: visuals.automation.status },
+    {
+      title: visuals.training.title,
+      skills: visuals.training.skills,
+      metrics: visuals.training.metrics,
+      completion: visuals.training.completion,
+    },
+    {
+      milestones: visuals.strategy.milestones,
+      phases: visuals.strategy.phases,
+      progress: visuals.strategy.progress,
+    },
+  ];
+  const complementaryVisualizations = [
+    TalentVisualization,
+    EventsVisualization,
+    SiliconValleyVisualization,
+  ];
+  const complementaryVisualizationProps = [
+    { rolesLabel: visuals.talent.roles, linksLabel: visuals.talent.links },
+    {
+      title: visuals.events.title,
+      months: visuals.events.months,
+      metrics: visuals.events.metrics,
+      units: visuals.events.units,
+      nextLabel: visuals.events.next,
+    },
+    {
+      hubsLabel: visuals.siliconValley.hubs,
+      regionsLabel: visuals.siliconValley.regions,
+    },
+  ];
+  const coreServices = coreServicesData.map((service, index) => ({
+    ...service,
+    visualization: coreVisualizations[index],
+    visualizationProps: coreVisualizationProps[index],
+  }));
+  const complementaryServices = complementaryServicesData.map(
+    (service, index) => ({
+      ...service,
+      visualization: complementaryVisualizations[index],
+      visualizationProps: complementaryVisualizationProps[index],
+    })
   );
 
   return (
@@ -939,8 +1044,7 @@ export default function Servicios() {
           transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           className="text-2xl sm:text-3xl md:text-4xl font-light leading-[1.15] mb-5 max-w-3xl mx-auto sm:mx-0 text-center sm:text-left"
         >
-          <span className="text-foreground">Nuestros </span>
-          <span className="text-elegant text-foreground">servicios.</span>
+          {title}
         </motion.h2>
 
         <motion.p
@@ -949,24 +1053,22 @@ export default function Servicios() {
           transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
           className="text-base sm:text-lg text-muted mb-10 sm:mb-12 max-w-2xl mx-auto sm:mx-0 text-center sm:text-left font-light"
         >
-          Nuestra prioridad: impacto medible, implementación en producción y
-          adopción por el equipo.
+          {t("subtitle")}
         </motion.p>
 
         {/* Services Grid */}
         <div className="space-y-12">
           <div>
             <p className="text-[10px] text-muted uppercase tracking-widest mb-2 font-mono text-center sm:text-left">
-              Servicios core
+              {t("coreLabel")}
             </p>
             <p className="text-sm text-muted mb-6 max-w-2xl mx-auto sm:mx-0 text-center sm:text-left">
-              Lo que siempre ejecutamos para asegurar implementación y adopción
-              real.
+              {t("coreDescription")}
             </p>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
               {coreServices.map((service, index) => (
                 <ServiceCard
-                  key={service.id}
+                  key={service.number}
                   service={service}
                   index={index}
                   isInView={isInView}
@@ -977,15 +1079,15 @@ export default function Servicios() {
 
           <div>
             <p className="text-[10px] text-muted uppercase tracking-widest mb-2 font-mono text-center sm:text-left">
-              Complementarios
+              {t("complementaryLabel")}
             </p>
             <p className="text-sm text-muted mb-6 max-w-2xl mx-auto sm:mx-0 text-center sm:text-left">
-              Activaciones y soporte adicional cuando el proyecto lo requiere.
+              {t("complementaryDescription")}
             </p>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
               {complementaryServices.map((service, index) => (
                 <ServiceCard
-                  key={service.id}
+                  key={service.number}
                   service={service}
                   index={index + coreServices.length}
                   isInView={isInView}

@@ -3,17 +3,17 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
-
-const signals = [
-  'El equipo usa ChatGPT de forma básica, pero no hay mejoras visibles en la operación',
-  'Hay interés del liderazgo, pero no existe una iniciativa que se sostenga en el tiempo',
-  'Existen procesos manuales, retrabajo, cuellos de botella y reportes que consumen tiempo',
-  'La conversación está llena de herramientas, pero vacía de resultados',
-];
+import { useTranslations } from 'next-intl';
 
 export default function ParaQuien() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const t = useTranslations('ParaQuien');
+  const title = t.rich('title', {
+    accent: (chunks) => <span className="text-elegant text-foreground">{chunks}</span>,
+    muted: (chunks) => <span className="text-elegant text-muted">{chunks}</span>,
+  });
+  const signals = t.raw('signals') as string[];
 
   return (
     <section id="para-quien" className="relative py-20 sm:py-24 lg:py-32 overflow-hidden">
@@ -33,10 +33,7 @@ export default function ParaQuien() {
               transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
               className="text-2xl sm:text-3xl md:text-4xl font-light leading-[1.15] mb-6"
             >
-              <span className="text-foreground">Esto es para empresas que aún no han </span>
-              <span className="text-elegant text-foreground">adoptado</span>
-              <span className="text-foreground"> esta tecnología, o la están usando de forma </span>
-              <span className="text-elegant text-muted">superficial.</span>
+              {title}
             </motion.h2>
 
             <motion.p
@@ -45,9 +42,7 @@ export default function ParaQuien() {
               transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
               className="text-base sm:text-lg text-muted leading-relaxed font-light"
             >
-              Trabajamos con líderes que sienten presión por implementar, pero no tienen
-              claridad de por dónde empezar, qué priorizar y cómo lograr que el equipo
-              lo use sin fricción.
+              {t('subtitle')}
             </motion.p>
           </div>
 
@@ -59,7 +54,7 @@ export default function ParaQuien() {
               transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
               className="text-sm text-muted uppercase tracking-widest mb-6"
             >
-              Señales típicas
+              {t('signalsLabel')}
             </motion.h3>
 
             <div className="space-y-1">
