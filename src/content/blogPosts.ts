@@ -11,6 +11,200 @@ export type BlogPost = {
 
 const blogPostsEs: BlogPost[] = [
   {
+    slug: "ai-first-casos-de-uso",
+    title: "Tu empresa no necesita \"AI first\", necesita buenos casos de uso",
+    subtitle: "Por qué la IA falla por implementación y cómo escoger casos de uso reales",
+    date: "11 de enero de 2026",
+    dateISO: "2026-01-11",
+    author: "Alan Arguello",
+    summary:
+      "Una guía práctica para convertir hype en utilidad: elegir el caso correcto, diseñar el proceso y liderar la adopción.",
+    content: `Hace meses se viralizó un dato atribuido a un reporte del MIT: que la gran mayoría de proyectos de Inteligencia Artificial no logra traducirse en retorno medible en el estado de resultados (P&L). Ese número se compartió tantas veces que terminó consolidando una idea cómoda: que la IA es puro humo.
+
+Mi conclusión, después de meses co-construyendo una compañía de agentes, dialogando con fondos de Venture Capital y asesorando empresas, es diferente: la IA sí falla con frecuencia, pero casi siempre falla por implementación, no por tecnología.
+
+El problema no es que "los modelos no sirvan". El problema es que muchas organizaciones están intentando meter una tecnología probabilística en procesos que exigen confiabilidad, sin rediseñar el sistema alrededor.
+
+A continuación desgloso dónde se rompe la adopción y cómo convertir hype en utilidad real.
+
+---
+
+## La idea central: la IA es probabilística, tu operación no
+
+Un LLM no es una calculadora. Es un modelo que produce la salida más probable dado un contexto. Eso lo hace excelente para lenguaje, ambigüedad y casos variables. También lo hace riesgoso para procesos donde "casi siempre" no alcanza.
+
+Cuando las empresas no entienden esta diferencia, pasan dos cosas:
+
+- Diseñan soluciones costosas para problemas simples.
+- Montan pilotos que se ven bien en demo, pero mueren al tocar producción.
+
+**Esa es la raíz del 80% del "fracaso".**
+
+---
+
+## 1) El síndrome de la lámpara de Aladino
+
+El error más común empieza con una frase: "Hay que ponerle IA".
+Ese lenguaje genérico crea expectativas irreales y arquitecturas ineficientes. Se trata a APIs como GPT o Claude como si fueran una lámpara mágica que concede deseos ilimitados.
+
+Pero aquí cada deseo tiene costos reales:
+
+- **Costo variable:** Cada llamada cuesta.
+- **Costo de integración:** Sistemas, permisos, autenticación, datos.
+- **Costo de control:** Evaluación, monitoreo, guardrails, auditoría.
+- **Costo de cambio:** Rediseñar procesos y hábitos del equipo.
+
+### Un ejemplo típico
+
+"Voy a ponerle IA a mi marketplace para conectar oferta y demanda automáticamente".
+
+Muchas veces eso se resuelve mejor con software determinístico:
+
+- Consultas SQL.
+- Filtros lógicos.
+- Reglas simples.
+- Scoring básico.
+
+Usar un LLM para esto suele ser como usar un lanzallamas para encender una vela:
+
+- **Es más lento:** La latencia de un modelo suele ser mayor que una consulta o un cálculo.
+- **Es más caro:** Cada consulta tiene costo incremental.
+- **Es menos confiable:** Los modelos pueden inventar. La lógica matemática no.
+
+**Discernimiento es adopción.** No uses un modelo complejo para un problema de ingeniería básica.
+
+---
+
+## 2) La trampa de la mano de obra barata en Latinoamérica
+
+En Latinoamérica hay una barrera adicional, y es estructural: la economía laboral distorsiona el incentivo a automatizar.
+En muchos contextos, roles operativos que son altamente automatizables pueden pagarse a 250 a 400 dólares mensuales. Eso empuja a la empresa a una comparación equivocada:
+
+- **Opción A:** Invertir tiempo y capital en una solución escalable.
+- **Opción B:** Sobrecargar al equipo o contratar a alguien más barato.
+
+En el corto plazo, la opción B "gana". En el largo plazo, condena la escalabilidad.
+
+Porque hay dos economías distintas:
+
+- **La tecnología** tiene costo inicial alto y costo marginal bajo.
+- **La mano de obra operativa** tiene costo lineal y crece con el volumen.
+
+Si tu operación crece, la "solución humana barata" se vuelve una pared. La empresa termina con más gente, más coordinación, más errores y más fricción.
+
+### La resistencia ética como mecanismo de defensa
+
+Del lado del trabajador aparece la preocupación: "Esto me va a quitar el trabajo, hay que prohibirlo".
+Es válido tener miedo. Lo que no sirve es quedarse en una visión estática. La historia tecnológica sugiere un patrón constante: la sociedad adopta lo que aumenta comodidad y eficiencia, incluso si desplaza tareas.
+
+La pregunta útil no es "si debería existir", sino:
+
+- **Qué tareas se comoditizan.**
+- **Qué habilidades suben de valor.**
+- **Cómo migra el rol hacia trabajo de mayor criterio y supervisión.**
+
+En práctica, la IA reemplaza primero la tarea repetitiva, no la capacidad humana completa.
+
+---
+
+## 3) Implementación: volver a primeros principios
+
+Muchas empresas están repitiendo el pecado clásico del emprendimiento: tienen una solución y salen a buscar un problema.
+Se escucha:
+
+- "Necesitamos ser AI First."
+- "Necesitamos ser AI Native."
+
+La pregunta correcta es: qué significa eso en métricas.
+
+He visto demasiadas conversaciones como esta:
+
+> "Queremos ser más eficientes."
+> "¿Eficientes en qué proceso?"
+> "Automatizar reportes."
+> "¿Por qué IA y no un dashboard, una automatización o un cambio de proceso?"
+> "No sé, mi jefe lo vio en un video."
+
+Ese camino garantiza fracaso.
+
+Antes de abrir ChatGPT, define el problema con precisión:
+
+- **Cuál es el cuello de botella real.**
+- **Qué métrica debe mover.**
+- **Qué riesgo tiene fallar.**
+- **Qué parte es determinística y qué parte es ambigua.**
+
+Si la respuesta no es clara, no necesitas IA. Necesitas orden.
+
+### Un marco de decisión en 60 segundos
+
+Antes de "agentes", decide entre tres opciones:
+
+1. **Reglas:** Si el problema es estable, repetible y con pocas excepciones.
+2. **Automatización clásica:** Si el flujo es claro y el input está estructurado.
+3. **IA:** Si el input es no estructurado, el dominio es lingüístico o hay demasiadas variaciones.
+
+---
+
+## 4) Prompt engineering: lógica y contexto, no magia
+
+Se ha mistificado el prompt engineering como si fuera alquimia. En la mayoría de empresas, es simplemente comunicación clara.
+El error fundamental es asumir que el modelo "entiende" tu contexto. No lo entiende. Un LLM es un predictor de texto, no un lector de mentes.
+
+Si le pides a un diseñador humano: "Haz esto más premium", te hará preguntas. Con un modelo, si no das contexto, te devuelve una respuesta genérica, convincente y a veces incorrecta.
+
+Trata a la IA como un pasante brillante sin contexto:
+
+- **Delimita el alcance:** Qué sí y qué no.
+- **Define el formato:** Qué estructura debe devolver.
+- **Aporta contexto real:** Audiencia, objetivo, restricciones.
+- **Da ejemplos:** Uno bueno y uno malo, aunque sean cortos.
+
+**"Garbage in, garbage out"** aplica, pero con un detalle peligroso: el "garbage" puede sonar muy convincente.
+
+---
+
+## 5) Liderazgo: no hay generales de escritorio
+
+La adopción real no ocurre por decreto. Ocurre por ósmosis cultural. Si el liderazgo no usa herramientas, el resto de la organización termina haciendo teatro.
+Hoy ya no es válido excusarse con "es muy técnico". No necesitas ser experto, pero sí necesitas ser usuario. La diferencia entre equipos top y equipos obsoletos suele ser un liderazgo que prueba, falla y aprende en público.
+
+### El stack mínimo del líder moderno
+
+No para automatizar todo el día uno, sino para construir criterio:
+
+- **Para construir MVP:** Lovable, v0, Replit.
+- **Para crear contenido:** HeyGen, ElevenLabs, Gemini (imagen).
+- **Para pensar y analizar:** ChatGPT, Claude, Perplexity.
+- **Para operar:** n8n, Zapier.
+
+---
+
+## Cierre: cómo se ve la adopción real
+
+Si quieres una frase que evite meses de humo:
+
+> **La IA no arregla procesos rotos. Amplifica procesos buenos.**
+
+Una implementación seria casi siempre cumple esto:
+
+- Tiene una métrica clara.
+- Está embebida en el flujo de trabajo.
+- Tiene guardrails y fallback.
+- Se evalúa con casos reales.
+- Tiene un dueño responsable.
+- Reduce fricción, no la aumenta.
+
+Y aquí está lo más importante, porque conecta con la idea central de adopción:
+
+La realidad es que con el simple hecho de usar estas herramientas en el día a día, desde los líderes hasta los colaboradores, cada uno va viendo qué cosas sí le ayudan y qué cosas no.
+
+Más que hacer que todos tengan que usar una herramienta, cada persona va descubriendo cuáles sí le aplican y cuáles no.
+
+Eso, para mí, es la manera más eficaz de realmente hacer más eficiente una empresa.
+`,
+  },
+  {
     slug: "ai-2026",
     title: "Estado de la IA 2026",
     subtitle: "Notas para ponerme al día con la capa fundacional",
