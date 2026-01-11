@@ -431,5 +431,255 @@
   "BlogPost": {
     "label": "Blog",
     "back": "Volver al blog"
+  },
+  "Overview": {
+    "meta": {
+      "title": "Overview | Operational Inference",
+      "description": "Presentación rápida de Operational Inference: IA aplicada a la operación con enfoque en adopción y resultados."
+    },
+    "navLabel": "Navegación de la presentación",
+    "nav": [
+      {
+        "id": "intro",
+        "label": "Intro"
+      },
+      {
+        "id": "oportunidad",
+        "label": "Oportunidad"
+      },
+      {
+        "id": "oferta",
+        "label": "Oferta"
+      },
+      {
+        "id": "validacion",
+        "label": "Validación"
+      },
+      {
+        "id": "equipo",
+        "label": "Equipo"
+      },
+      {
+        "id": "latam",
+        "label": "LatAm"
+      },
+      {
+        "id": "contacto",
+        "label": "Contacto"
+      }
+    ],
+    "hero": {
+      "eyebrow": "Operational Inference",
+      "title": "Implementamos <accent>IA</accent> en tu <accent>operación</accent>.",
+      "subtitle": "De la intención a la operación con resultados medibles. Priorizamos casos con retorno claro y los integramos a tu flujo real.",
+      "highlights": [
+        "Priorizamos casos con retorno claro desde la primera semana",
+        "Integramos IA en CRM, ERP, email y herramientas existentes",
+        "Acompañamos la adopción con métricas, entrenamiento y ownership interno"
+      ],
+      "cta": {
+        "primary": "Agendar llamada",
+        "secondary": "Ver presentación"
+      },
+      "metrics": [
+        {
+          "value": "3 pilares",
+          "label": "Implementación, adopción, estrategia"
+        },
+        {
+          "value": "4 etapas",
+          "label": "Diagnóstico, diseño, ejecución, adopción"
+        },
+        {
+          "value": "LatAm + SV",
+          "label": "Ejecución local con visión global"
+        }
+      ],
+      "imageAlt": "Skyline de San Francisco",
+      "mockupAlt": "Mockup de tablero operativo",
+      "mockupLabel": "Mockup operativo"
+    },
+    "about": {
+      "eyebrow": "Sobre nosotros",
+      "title": "Equipo con experiencia operando de verdad.",
+      "subtitle": "Implementamos lo que sí mueve la operación y tu P&L.",
+      "paragraphs": [
+        "En la región vemos el mismo patrón: interés real por IA, pero poca claridad para convertirlo en resultados.",
+        "Los esfuerzos fallan no por la tecnología, sino por priorización incorrecta, falta de integración y cero adopción.",
+        "Empezamos por el caso con mayor impacto, lo integramos con tus herramientas actuales y acompañamos hasta que el equipo lo use en el día a día."
+      ],
+      "callout": "No es un demo. Es operación con métricas claras.",
+      "imageAlt": "Sesión de trabajo con líderes",
+      "imageLabel": "Operación en acción",
+      "secondaryAlt": "Eventos con líderes de tecnología"
+    },
+    "services": {
+      "eyebrow": "Qué ofrecemos",
+      "title": "Acompañamos a PyMEs, corporativos y gobiernos en la adopción estratégica de IA.",
+      "subtitle": "Servicios diseñados para impacto medible, implementación en producción y adopción real.",
+      "items": [
+        {
+          "number": "01",
+          "title": "Implementación aplicada",
+          "subtitle": "Automatización a la medida",
+          "description": "Automatización de procesos y asistentes internos integrados con tus herramientas existentes.",
+          "bullets": [
+            "Integraciones con CRM, ERP y bases internas",
+            "Automatización de reportes y flujos críticos",
+            "Agentes internos con reglas claras"
+          ]
+        },
+        {
+          "number": "02",
+          "title": "Adopción ejecutiva",
+          "subtitle": "Entrenamiento aplicado",
+          "description": "Sesiones y talleres para líderes sobre qué es real, qué priorizar y cómo decidir.",
+          "bullets": [
+            "Workshops con líderes y equipos clave",
+            "Casos reales y métricas de uso",
+            "Plan de comunicación y cambio"
+          ]
+        },
+        {
+          "number": "03",
+          "title": "Estrategia de adopción",
+          "subtitle": "Eficiencia operativa",
+          "description": "Diagnóstico, priorización por impacto y roadmap de ejecución.",
+          "bullets": [
+            "Mapeo de procesos con ROI",
+            "Priorización por impacto y esfuerzo",
+            "Dueños internos y gobernanza"
+          ]
+        }
+      ],
+      "complementaryLabel": "Complementarios",
+      "complementary": [
+        {
+          "title": "Talento técnico",
+          "description": "Equipos flexibles de ingeniería IA en LatAm."
+        },
+        {
+          "title": "Eventos empresariales",
+          "description": "Agenda curada para liderazgo y conexión con ecosistema."
+        },
+        {
+          "title": "Inmersiones",
+          "description": "Experiencias en Silicon Valley con aprendizaje aplicado."
+        }
+      ]
+    },
+    "proof": {
+      "eyebrow": "Validación social",
+      "title": "Confían en nosotros para mover la operación.",
+      "subtitle": "Experiencia en banca, tecnología, educación, retail y sector público.",
+      "stats": [
+        {
+          "value": "Producción real",
+          "label": "Casos integrados al día a día"
+        },
+        {
+          "value": "Ejecución senior",
+          "label": "Ingeniería + negocio"
+        },
+        {
+          "value": "Enfoque ROI",
+          "label": "Priorización por impacto"
+        }
+      ],
+      "logosLabel": "Alianzas, clientes y medios",
+      "cases": [
+        {
+          "tag": "Operación",
+          "title": "Automatización de procesos críticos",
+          "description": "Flujos conectados a sistemas internos que reducen tiempos y errores."
+        },
+        {
+          "tag": "Adopción",
+          "title": "Entrenamiento ejecutivo con métricas",
+          "description": "Workshops que convierten pilotos en uso recurrente."
+        },
+        {
+          "tag": "Ventas",
+          "title": "Asistentes comerciales",
+          "description": "Seguimiento y reporting que acelera la respuesta a clientes."
+        }
+      ],
+      "caseMockupAlt": "Mockup de caso {index}"
+    },
+    "team": {
+      "eyebrow": "Equipo",
+      "title": "Equipo con experiencia operando de verdad.",
+      "subtitle": "Operadores con experiencia en ingeniería, finanzas y venture.",
+      "experienceLabel": "Experiencia previa",
+      "members": [
+        {
+          "name": "Alan Arguello",
+          "role": "CEO, Engineer & MBA",
+          "tags": [
+            "Ingeniería",
+            "MBA",
+            "YC",
+            "Startups"
+          ],
+          "experience": [
+            "Beek (YC)",
+            "Citi",
+            "NWL",
+            "Platanus"
+          ],
+          "bullets": [
+            "Cofundó Torrenegra Organization junto a Alex Torrenegra.",
+            "Parte del equipo inicial de Makers Fellowship con Andrés Bilbao.",
+            "Software Engineer en Beek (YC), Citi y NWL.",
+            "Invertido por Platanus Ventures."
+          ]
+        },
+        {
+          "name": "Michelle Arguello",
+          "role": "CFO, VC Specialist",
+          "tags": [
+            "Finanzas",
+            "VC",
+            "Operación"
+          ],
+          "experience": [
+            "IGNIA",
+            "Derevo",
+            "VC Ops"
+          ],
+          "bullets": [
+            "Fue Administration Manager en IGNIA Partners, liderando reportes a inversionistas.",
+            "Ha dirigido procesos de control operativo y gobierno financiero para compañías en crecimiento.",
+            "Experiencia en capital calls y soporte financiero de fondos."
+          ]
+        }
+      ]
+    },
+    "latam": {
+      "eyebrow": "Comunidad",
+      "title": "Estamos trayendo Silicon Valley a Latinoamérica.",
+      "subtitle": "Eventos, talleres e inmersiones con líderes regionales.",
+      "cities": [
+        "Bogotá, Colombia",
+        "Medellín, Colombia",
+        "Guadalajara, México",
+        "Ciudad de México, México",
+        "Lima, Perú",
+        "San Francisco, US"
+      ]
+    },
+    "contact": {
+      "eyebrow": "Siguiente paso",
+      "title": "De la intención a la operación. Con resultados.",
+      "subtitle": "Agendemos una llamada para mapear tu operación y detectar casos con retorno claro.",
+      "cta": "Agendar llamada",
+      "calendarLabel": "Calendario",
+      "calendarValue": "cal.com/inference-ops/discovery",
+      "emailLabel": "Email",
+      "email": "contacto@operationalinference.com",
+      "siteLabel": "Sitio",
+      "site": "operationalinference.com",
+      "imageAlt": "Computadora retro con pantalla"
+    }
   }
 }

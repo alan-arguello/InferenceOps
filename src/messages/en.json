@@ -431,5 +431,255 @@
   "BlogPost": {
     "label": "Blog",
     "back": "Back to blog"
+  },
+  "Overview": {
+    "meta": {
+      "title": "Overview | Operational Inference",
+      "description": "Quick overview of Operational Inference: AI applied to operations with adoption and outcomes."
+    },
+    "navLabel": "Overview navigation",
+    "nav": [
+      {
+        "id": "intro",
+        "label": "Intro"
+      },
+      {
+        "id": "oportunidad",
+        "label": "Context"
+      },
+      {
+        "id": "oferta",
+        "label": "Offer"
+      },
+      {
+        "id": "validacion",
+        "label": "Proof"
+      },
+      {
+        "id": "equipo",
+        "label": "Team"
+      },
+      {
+        "id": "latam",
+        "label": "LatAm"
+      },
+      {
+        "id": "contacto",
+        "label": "Contact"
+      }
+    ],
+    "hero": {
+      "eyebrow": "Operational Inference",
+      "title": "We implement <accent>AI</accent> in your <accent>operations</accent>.",
+      "subtitle": "From intent to production with measurable results. We prioritize clear-ROI cases and integrate with your real workflows.",
+      "highlights": [
+        "We prioritize clear-ROI cases from week one",
+        "We integrate AI into CRM, ERP, email, and existing tools",
+        "We drive adoption with metrics, training, and internal ownership"
+      ],
+      "cta": {
+        "primary": "Schedule a call",
+        "secondary": "View deck"
+      },
+      "metrics": [
+        {
+          "value": "3 pillars",
+          "label": "Implementation, adoption, strategy"
+        },
+        {
+          "value": "4 stages",
+          "label": "Diagnosis, design, execution, adoption"
+        },
+        {
+          "value": "LatAm + SV",
+          "label": "Local execution with global perspective"
+        }
+      ],
+      "imageAlt": "San Francisco skyline",
+      "mockupAlt": "Operational dashboard mockup",
+      "mockupLabel": "Operational mockup"
+    },
+    "about": {
+      "eyebrow": "About us",
+      "title": "A team with real operating experience.",
+      "subtitle": "We implement what actually moves operations and P&L.",
+      "paragraphs": [
+        "Across the region we see the same pattern: real interest in AI, but little clarity on turning it into results.",
+        "Efforts fail not because of the tech, but due to wrong prioritization, lack of integration, and zero adoption.",
+        "We start with the highest-impact case, integrate with your existing tools, and stay until the team uses it daily."
+      ],
+      "callout": "Not a demo. Real operations with clear metrics.",
+      "imageAlt": "Work session with leaders",
+      "imageLabel": "Operations in action",
+      "secondaryAlt": "Tech leadership events"
+    },
+    "services": {
+      "eyebrow": "What we offer",
+      "title": "We support SMEs, corporates, and governments in strategic AI adoption.",
+      "subtitle": "Services built for measurable impact, production rollout, and real adoption.",
+      "items": [
+        {
+          "number": "01",
+          "title": "Applied implementation",
+          "subtitle": "Tailored automation",
+          "description": "Automation of processes and internal assistants integrated with your existing tools.",
+          "bullets": [
+            "Integrations with CRM, ERP, and internal data",
+            "Automation of reporting and critical workflows",
+            "Internal agents with clear rules"
+          ]
+        },
+        {
+          "number": "02",
+          "title": "Executive adoption",
+          "subtitle": "Applied training",
+          "description": "Sessions and workshops for leaders on what is real, what to prioritize, and how to decide.",
+          "bullets": [
+            "Workshops with leaders and key teams",
+            "Real cases and usage metrics",
+            "Change communication plan"
+          ]
+        },
+        {
+          "number": "03",
+          "title": "Adoption strategy",
+          "subtitle": "Operational efficiency",
+          "description": "Diagnosis, impact-based prioritization, and execution roadmap.",
+          "bullets": [
+            "Process mapping with ROI",
+            "Impact vs effort prioritization",
+            "Internal owners and governance"
+          ]
+        }
+      ],
+      "complementaryLabel": "Complementary",
+      "complementary": [
+        {
+          "title": "Technical talent",
+          "description": "Flexible AI engineering teams across LatAm."
+        },
+        {
+          "title": "Business events",
+          "description": "Curated agenda for leadership and ecosystem connections."
+        },
+        {
+          "title": "Immersions",
+          "description": "Silicon Valley experiences with applied learning."
+        }
+      ]
+    },
+    "proof": {
+      "eyebrow": "Social proof",
+      "title": "Trusted to move the operation.",
+      "subtitle": "Experience across banking, tech, education, retail, and public sector.",
+      "stats": [
+        {
+          "value": "Production-ready",
+          "label": "Cases integrated into daily workflows"
+        },
+        {
+          "value": "Senior execution",
+          "label": "Engineering + business"
+        },
+        {
+          "value": "ROI focus",
+          "label": "Impact-first prioritization"
+        }
+      ],
+      "logosLabel": "Alliances, clients, and media",
+      "cases": [
+        {
+          "tag": "Operations",
+          "title": "Critical process automation",
+          "description": "Connected workflows that reduce time and errors."
+        },
+        {
+          "tag": "Adoption",
+          "title": "Executive training with metrics",
+          "description": "Workshops that turn pilots into recurring usage."
+        },
+        {
+          "tag": "Sales",
+          "title": "Commercial assistants",
+          "description": "Follow-up and reporting that accelerates response."
+        }
+      ],
+      "caseMockupAlt": "Case mockup {index}"
+    },
+    "team": {
+      "eyebrow": "Team",
+      "title": "A team with real operating experience.",
+      "subtitle": "Operators with experience in engineering, finance, and venture.",
+      "experienceLabel": "Prior experience",
+      "members": [
+        {
+          "name": "Alan Arguello",
+          "role": "CEO, Engineer & MBA",
+          "tags": [
+            "Engineering",
+            "MBA",
+            "YC",
+            "Startups"
+          ],
+          "experience": [
+            "Beek (YC)",
+            "Citi",
+            "NWL",
+            "Platanus"
+          ],
+          "bullets": [
+            "Co-founded Torrenegra Organization alongside Alex Torrenegra.",
+            "Part of the founding team of Makers Fellowship with Andres Bilbao.",
+            "Software Engineer at Beek (YC), Citi, and NWL.",
+            "Backed by Platanus Ventures."
+          ]
+        },
+        {
+          "name": "Michelle Arguello",
+          "role": "CFO, VC Specialist",
+          "tags": [
+            "Finance",
+            "VC",
+            "Operations"
+          ],
+          "experience": [
+            "IGNIA",
+            "Derevo",
+            "VC Ops"
+          ],
+          "bullets": [
+            "Administration Manager at IGNIA Partners, leading investor reporting.",
+            "Led operational control and financial governance processes for growing companies.",
+            "Experience with capital calls and fund financial support."
+          ]
+        }
+      ]
+    },
+    "latam": {
+      "eyebrow": "Community",
+      "title": "Bringing Silicon Valley to Latin America.",
+      "subtitle": "Events, workshops, and immersions with regional leaders.",
+      "cities": [
+        "Bogota, Colombia",
+        "Medellin, Colombia",
+        "Guadalajara, Mexico",
+        "Mexico City, Mexico",
+        "Lima, Peru",
+        "San Francisco, US"
+      ]
+    },
+    "contact": {
+      "eyebrow": "Next step",
+      "title": "From intent to operations. With results.",
+      "subtitle": "Let's schedule a call to map your operations and identify clear-ROI cases.",
+      "cta": "Schedule a call",
+      "calendarLabel": "Calendar",
+      "calendarValue": "cal.com/inference-ops/discovery",
+      "emailLabel": "Email",
+      "email": "contacto@operationalinference.com",
+      "siteLabel": "Site",
+      "site": "operationalinference.com",
+      "imageAlt": "Retro computer with screen"
+    }
   }
 }
