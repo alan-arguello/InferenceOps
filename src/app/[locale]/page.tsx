@@ -8,6 +8,7 @@ import Casos from "@/components/Casos";
 import CitiesCarousel from "@/components/CitiesCarousel";
 import Equipo from "@/components/Equipo";
 import Medios from "@/components/Medios";
+import LatestBlogPosts from "@/components/LatestBlogPosts";
 import FAQ from "@/components/FAQ";
 import Footer from "@/components/Footer";
 import { getTranslations } from "next-intl/server";
@@ -57,6 +58,7 @@ export default async function Home({ params }: HomePageProps) {
         <Casos />
         <Equipo />
         <Medios />
+        <LatestBlogPosts locale={locale} />
         <FAQ />
       </main>
       <Footer />

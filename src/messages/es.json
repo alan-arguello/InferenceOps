@@ -325,6 +325,9 @@
     "title": "Medios y <muted>comunidades.</muted>",
     "subtitle": "Conversaciones públicas y colaboraciones con medios y comunidades relevantes para la región."
   },
+  "LatestBlog": {
+    "title": "Lo último en el <muted>ecosistema.</muted>"
+  },
   "FAQ": {
     "title": "Preguntas <muted>frecuentes.</muted>",
     "items": [

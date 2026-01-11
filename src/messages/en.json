@@ -325,6 +325,9 @@
     "title": "Media and <muted>communities.</muted>",
     "subtitle": "Public conversations and collaborations with media and communities relevant to the region."
   },
+  "LatestBlog": {
+    "title": "Latest in the <muted>ecosystem.</muted>"
+  },
   "FAQ": {
     "title": "Frequently <muted>asked questions.</muted>",
     "items": [
