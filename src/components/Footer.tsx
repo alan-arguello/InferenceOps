@@ -8,7 +8,11 @@ import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import { SCHEDULE_CALL_URL } from "@/lib/links";
 
-export default function Footer() {
+type FooterProps = {
+  showCta?: boolean;
+};
+
+export default function Footer({ showCta = true }: FooterProps) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const t = useTranslations("Footer");
@@ -25,81 +29,91 @@ export default function Footer() {
   return (
     <>
       {/* CTA Section */}
-      <section
-        id="contacto"
-        className="relative pt-8 pb-20 sm:pt-12 sm:pb-24 lg:pt-16 lg:pb-28 overflow-hidden"
-      >
-        {/* Background */}
-        <div className="absolute inset-0 bg-background-alt">
-          <div className="absolute inset-0 dot-pattern opacity-20" />
-          {/* Subtle glow */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-white/[0.02] rounded-full blur-3xl" />
-          {/* Retro CTA Image */}
-          <div className="absolute inset-0 pointer-events-none">
-            <div className="absolute bottom-0 left-1/2 -translate-x-1/2">
-              <Image
-                src="/retro-computer.jpg"
-                alt={t("imageAlt")}
-                width={1400}
-                height={1000}
-                sizes="(max-width: 640px) 520px, (max-width: 1024px) 760px, 1100px"
-                className="w-[520px] sm:w-[760px] lg:w-[1100px] max-w-[92vw] h-auto opacity-70"
-                style={{
-                  maskImage:
-                    "linear-gradient(to right, transparent 0%, black 20%, black 100%), linear-gradient(to top, black 80%, transparent 100%)",
-                  WebkitMaskImage:
-                    "linear-gradient(to right, transparent 0%, black 20%, black 100%), linear-gradient(to top, black 80%, transparent 100%)",
-                  maskComposite: "intersect",
-                  WebkitMaskComposite: "source-in",
-                  filter: "saturate(1.1) contrast(1.05) brightness(0.95)",
-                }}
-              />
-            </div>
-            <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/40 to-transparent" />
-            <div className="absolute inset-0 bg-gradient-to-b from-background/75 via-transparent to-transparent" />
-          </div>
-        </div>
-
-        <div
-          ref={ref}
-          className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
+      {showCta && (
+        <section
+          id="contacto"
+          className="relative pt-8 pb-20 sm:pt-12 sm:pb-24 lg:pt-16 lg:pb-28 overflow-hidden"
         >
-          <motion.h2
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="text-2xl sm:text-4xl md:text-5xl font-light leading-[1.1] mb-6 sm:mb-8"
-          >
-            {title}
-          </motion.h2>
+          {/* Background */}
+          <div className="absolute inset-0 bg-background-alt">
+            <div className="absolute inset-0 dot-pattern opacity-20" />
+            {/* Subtle glow */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-white/[0.02] rounded-full blur-3xl" />
+            {/* Retro CTA Image */}
+            <div className="absolute inset-0 pointer-events-none">
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2">
+                <Image
+                  src="/retro-computer.jpg"
+                  alt={t("imageAlt")}
+                  width={1400}
+                  height={1000}
+                  sizes="(max-width: 640px) 520px, (max-width: 1024px) 760px, 1100px"
+                  className="w-[520px] sm:w-[760px] lg:w-[1100px] max-w-[92vw] h-auto opacity-70"
+                  style={{
+                    maskImage:
+                      "linear-gradient(to right, transparent 0%, black 20%, black 100%), linear-gradient(to top, black 80%, transparent 100%)",
+                    WebkitMaskImage:
+                      "linear-gradient(to right, transparent 0%, black 20%, black 100%), linear-gradient(to top, black 80%, transparent 100%)",
+                    maskComposite: "intersect",
+                    WebkitMaskComposite: "source-in",
+                    filter: "saturate(1.1) contrast(1.05) brightness(0.95)",
+                  }}
+                />
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/40 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-b from-background/75 via-transparent to-transparent" />
+            </div>
+          </div>
 
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="text-base sm:text-lg text-muted leading-relaxed mb-8 sm:mb-10 max-w-2xl mx-auto font-light"
+          <div
+            ref={ref}
+            className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
           >
-            {t("subtitle")}
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <a
-              href={SCHEDULE_CALL_URL}
-              className="group btn btn-primary w-full sm:w-auto"
+            <motion.h2
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className="text-2xl sm:text-4xl md:text-5xl font-light leading-[1.1] mb-6 sm:mb-8"
             >
-              {t("cta")}
-              <ArrowRight
-                size={20}
-                className="group-hover:translate-x-1 transition-transform duration-300"
-              />
-            </a>
-          </motion.div>
-        </div>
-      </section>
+              {title}
+            </motion.h2>
+
+            <motion.p
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{
+                duration: 0.8,
+                delay: 0.1,
+                ease: [0.16, 1, 0.3, 1],
+              }}
+              className="text-base sm:text-lg text-muted leading-relaxed mb-8 sm:mb-10 max-w-2xl mx-auto font-light"
+            >
+              {t("subtitle")}
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{
+                duration: 0.8,
+                delay: 0.2,
+                ease: [0.16, 1, 0.3, 1],
+              }}
+            >
+              <a
+                href={SCHEDULE_CALL_URL}
+                className="group btn btn-primary w-full sm:w-auto"
+              >
+                {t("cta")}
+                <ArrowRight
+                  size={20}
+                  className="group-hover:translate-x-1 transition-transform duration-300"
+                />
+              </a>
+            </motion.div>
+          </div>
+        </section>
+      )}
 
       {/* Footer */}
       <footer className="relative py-12 sm:py-16 border-t border-border">
