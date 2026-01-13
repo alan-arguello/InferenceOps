@@ -185,6 +185,11 @@ const contextCards = [
 
 const faqs = [
   {
+    question: "¿El curso es online o presencial?",
+    answer:
+      "Es 100% online en vivo, con sesiones semanales y práctica guiada. No hay encuentros presenciales.",
+  },
+  {
     question: "No sé programar, ¿puedo tomar este curso?",
     answer:
       "Sí. El programa está diseñado para personas sin conocimientos de programación.",
@@ -353,7 +358,7 @@ export default async function CoursePage() {
             <div className="grid gap-12 lg:grid-cols-[1.15fr_0.85fr] items-start">
               <div className="space-y-6">
                 <span className="premium-chip">
-                  Curso intensivo · 3 semanas · Febrero 2026
+                  Curso online intensivo · 3 semanas · Febrero 2026
                 </span>
                 <h1 className="text-3xl sm:text-4xl lg:text-5xl font-light leading-[1.05]">
                   Comienza a implementar inteligencia artificial{" "}
@@ -364,7 +369,8 @@ export default async function CoursePage() {
                 </h1>
                 <p className="text-base sm:text-lg text-muted leading-relaxed max-w-2xl">
                   Aprende cómo funcionan los modelos y conviértelo en
-                  automatizaciones con retorno real, sin programar.
+                  automatizaciones con retorno real, sin programar, en un curso
+                  online con sesiones en vivo.
                 </p>
                 <ul className="space-y-3 text-sm sm:text-base text-muted-light">
                   {[
@@ -424,7 +430,7 @@ export default async function CoursePage() {
                       },
                       {
                         label: "Formato",
-                        value: "Sesiones en vivo + práctica",
+                        value: "Online en vivo + práctica",
                         icon: BadgeCheck,
                       },
                       {
