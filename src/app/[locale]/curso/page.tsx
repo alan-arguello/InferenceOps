@@ -14,6 +14,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 
 const WHATSAPP_URL = "https://wa.me/525544702523";
+const STRIPE_URL = "https://buy.stripe.com/3cIdRa6sB2Qv3bkd6Q6Zy02";
 
 const trustLogos = [
   { src: "/hero_logos_slider/anthropic.png", alt: "Anthropic" },
@@ -389,19 +390,16 @@ export default async function CoursePage() {
 
                 <div className="flex flex-col sm:flex-row gap-4">
                   <a
-                    href={WHATSAPP_URL}
+                    href={STRIPE_URL}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="group btn btn-primary"
                   >
-                    Reservar por WhatsApp
+                    Inscribirte ahora
                     <ArrowRight
                       size={18}
                       className="group-hover:translate-x-1 transition-transform duration-300"
                     />
-                  </a>
-                  <a href="#temario" className="btn btn-secondary">
-                    Ver temario
                   </a>
                 </div>
               </div>
@@ -568,6 +566,17 @@ export default async function CoursePage() {
                 </div>
               ))}
             </div>
+            <div className="mt-10 flex justify-center">
+              <a
+                href={STRIPE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-primary"
+              >
+                Inscribirte ahora
+                <ArrowRight size={16} />
+              </a>
+            </div>
           </div>
         </section>
 
@@ -692,6 +701,17 @@ export default async function CoursePage() {
                   </ul>
                 </div>
               ))}
+            </div>
+            <div className="mt-10 flex justify-center">
+              <a
+                href={STRIPE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-secondary"
+              >
+                Inscribirte ahora
+                <ArrowRight size={16} />
+              </a>
             </div>
           </div>
         </section>
@@ -941,12 +961,12 @@ export default async function CoursePage() {
 
             <div className="mt-8 flex flex-col sm:flex-row items-center gap-4">
               <a
-                href={WHATSAPP_URL}
+                href={STRIPE_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn-primary"
               >
-                Reservar por WhatsApp
+                Inscribirte ahora
                 <ArrowRight size={16} />
               </a>
               <span className="text-xs uppercase tracking-[0.3em] text-muted-dark font-mono">
@@ -985,12 +1005,12 @@ export default async function CoursePage() {
 
             <div className="mt-8 flex justify-center">
               <a
-                href={WHATSAPP_URL}
+                href={STRIPE_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn-secondary"
               >
-                Hablar por WhatsApp
+                Inscribirte ahora
                 <ArrowRight size={16} />
               </a>
             </div>
