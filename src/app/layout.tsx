@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { Inter, Playfair_Display, JetBrains_Mono } from "next/font/google";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/react";
@@ -60,7 +61,9 @@ fbq('track', 'PageView');`}
           />
         </noscript>
         {children}
-        <MetaPixel />
+        <Suspense fallback={null}>
+          <MetaPixel />
+        </Suspense>
         <Analytics />
       </body>
     </html>
