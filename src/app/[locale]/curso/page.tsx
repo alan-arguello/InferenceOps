@@ -10,13 +10,8 @@ import {
   Sparkles,
   BadgeCheck,
 } from "lucide-react";
-import { notFound } from "next/navigation";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-
-type CoursePageProps = {
-  params: Promise<{ locale: string }>;
-};
 
 const WHATSAPP_URL = "https://wa.me/525544702523";
 
@@ -210,15 +205,7 @@ const faqs = [
   },
 ];
 
-export async function generateMetadata({
-  params,
-}: CoursePageProps): Promise<Metadata> {
-  const { locale } = await params;
-
-  if (locale !== "es") {
-    return {};
-  }
-
+export async function generateMetadata(): Promise<Metadata> {
   const title = "Curso de IA aplicada | Implementación real en 3 semanas";
   const description =
     "Aprende cómo funcionan los modelos de IA y crea automatizaciones con retorno real, sin programar. Curso intensivo con casos reales y acompañamiento.";
@@ -253,13 +240,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function CoursePage({ params }: CoursePageProps) {
-  const { locale } = await params;
-
-  if (locale !== "es") {
-    notFound();
-  }
-
+export default async function CoursePage() {
   const logoTrack = [...trustLogos, ...trustLogos];
   const cityTrack = [...cityGallery, ...cityGallery];
   const linkClassName = "underline-animation text-foreground";
