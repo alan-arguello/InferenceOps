@@ -17,6 +17,7 @@ export default function Navigation() {
   const pathname = usePathname();
   const currentLocale = locale === "en" ? "en" : "es";
   const homeHref = currentLocale === "es" ? "/" : `/${currentLocale}`;
+  const courseHref = currentLocale === "es" ? "/curso" : `/${currentLocale}/curso`;
   const navLinks = [
     { href: `${homeHref}#servicios`, label: t("links.services") },
     { href: `${homeHref}#casos`, label: t("links.cases") },
@@ -91,6 +92,12 @@ export default function Navigation() {
 
             {/* Desktop CTA */}
             <div className="hidden lg:flex items-center gap-4">
+              <a
+                href={courseHref}
+                className="btn btn-secondary btn-small"
+              >
+                {t("courseCta")}
+              </a>
               <a
                 href={SCHEDULE_CALL_URL}
                 className="group btn btn-primary btn-small"
@@ -176,8 +183,15 @@ export default function Navigation() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 }}
-                className="mt-10"
+                className="mt-10 space-y-3"
               >
+                <a
+                  href={courseHref}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="btn btn-secondary w-full"
+                >
+                  {t("courseCta")}
+                </a>
                 <a
                   href={SCHEDULE_CALL_URL}
                   onClick={() => setIsMobileMenuOpen(false)}

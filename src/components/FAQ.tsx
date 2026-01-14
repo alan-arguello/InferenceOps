@@ -2,12 +2,12 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "framer-motion";
-import { useRef, useState } from "react";
-import { useTranslations } from "next-intl";
+import { useRef, useState, ReactNode } from "react";
+import { useLocale, useTranslations } from "next-intl";
 
 type FaqItem = {
   question: string;
-  answer: string;
+  answer: ReactNode;
 };
 
 function FAQItem({
@@ -58,10 +58,23 @@ export default function FAQ() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const t = useTranslations("FAQ");
+  const locale = useLocale();
+  const courseHref = locale === "es" ? "/curso" : `/${locale}/curso`;
   const title = t.rich("title", {
     muted: (chunks) => <span className="text-elegant text-muted">{chunks}</span>,
   });
-  const faqs = t.raw("items") as { question: string; answer: string }[];
+  const faqs = (t.raw("items") as { question: string }[]).map(
+    (item, index) => ({
+      question: item.question,
+      answer: t.rich(`items.${index}.answer`, {
+        link: (chunks) => (
+          <a href={courseHref} className="underline-animation text-foreground">
+            {chunks}
+          </a>
+        ),
+      }),
+    })
+  );
 
   return (
     <section

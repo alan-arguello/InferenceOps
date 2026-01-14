@@ -32,6 +32,7 @@
       "faq": "FAQ"
     },
     "cta": "Agendar llamada",
+    "courseCta": "Capacitación de IA",
     "mobileCta": "Agendar llamada ->",
     "toggleLabel": "Cambiar idioma",
     "menuToggle": "Abrir menú",
@@ -317,7 +318,7 @@
       },
       {
         "question": "¿Esto es un curso?",
-        "answer": "No. Podemos entrenar al equipo, pero el enfoque principal es implementación y uso real dentro de la empresa."
+        "answer": "No. Brindamos diferentes servicios de consultoría, entre ellos capacitación para equipos. Si eres solo una persona, <link>haz clic aquí</link> para revisar nuestro programa."
       },
       {
         "question": "¿Necesito un equipo técnico interno?",

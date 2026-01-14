@@ -32,6 +32,7 @@
       "faq": "FAQ"
     },
     "cta": "Schedule a call",
+    "courseCta": "AI Training",
     "mobileCta": "Schedule a call ->",
     "toggleLabel": "Change language",
     "menuToggle": "Toggle menu",
@@ -317,7 +318,7 @@
       },
       {
         "question": "Is this a course?",
-        "answer": "No. We can train the team, but the main focus is implementation and real use inside the company."
+        "answer": "No. We offer different consulting services, including training for teams. If you're an individual, <link>click here</link> to review our program."
       },
       {
         "question": "Do I need an internal technical team?",
