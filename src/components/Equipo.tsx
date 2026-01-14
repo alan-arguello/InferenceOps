@@ -209,7 +209,7 @@ export default function Equipo() {
         </motion.p>
 
         {/* Team Grid */}
-        <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8 md:[&>*:nth-child(3)]:col-span-2 md:[&>*:nth-child(3)]:justify-self-center md:[&>*:nth-child(3)]:w-full md:[&>*:nth-child(3)]:max-w-[520px] lg:[&>*:nth-child(3)]:col-span-1 lg:[&>*:nth-child(3)]:max-w-none lg:[&>*:nth-child(3)]:justify-self-stretch">
           {team.map((member, index) => (
             <MemberCard
               key={index}

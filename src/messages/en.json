@@ -135,32 +135,13 @@
       },
       "training": {
         "title": "Adoption Rate",
-        "skills": [
-          "Prompting",
-          "Tools",
-          "Workflows",
-          "Analysis"
-        ],
-        "metrics": [
-          "Sessions",
-          "Hours",
-          "Teams"
-        ],
+        "skills": ["Prompting", "Tools", "Workflows", "Analysis"],
+        "metrics": ["Sessions", "Hours", "Teams"],
         "completion": "81.5% COMPLETE"
       },
       "strategy": {
-        "milestones": [
-          "Diagnosis",
-          "Design",
-          "Execution"
-        ],
-        "phases": [
-          "Q1",
-          "Q2",
-          "Q3",
-          "Q4",
-          "SCALE"
-        ],
+        "milestones": ["Diagnosis", "Design", "Execution"],
+        "phases": ["Q1", "Q2", "Q3", "Q4", "SCALE"],
         "progress": "PHASE 3 OF 5"
       },
       "talent": {
@@ -169,20 +150,9 @@
       },
       "events": {
         "title": "Attendance",
-        "months": [
-          "JAN",
-          "DEC"
-        ],
-        "metrics": [
-          "Events",
-          "Avg",
-          "NPS"
-        ],
-        "units": [
-          "/yr",
-          "pax",
-          ""
-        ],
+        "months": ["JAN", "DEC"],
+        "metrics": ["Events", "Avg", "NPS"],
+        "units": ["/yr", "pax", ""],
         "next": "NEXT: MAR 15"
       },
       "siliconValley": {
@@ -213,11 +183,7 @@
       },
       "blind": {
         "engagement": "Engagement",
-        "metrics": [
-          "Reach",
-          "CTR",
-          "Conv."
-        ]
+        "metrics": ["Reach", "CTR", "Conv."]
       },
       "bunny": {
         "input": "INPUT",
@@ -225,11 +191,7 @@
         "output": "OUTPUT"
       },
       "universidad": {
-        "labels": [
-          "Projects",
-          "Teams",
-          "Impact"
-        ]
+        "labels": ["Projects", "Teams", "Impact"]
       }
     },
     "cases": [
@@ -291,7 +253,7 @@
     "team": [
       {
         "name": "Alan Arguello",
-        "role": "CEO, Software Engineer & MBA",
+        "role": "Strategy & Technology Specialist",
         "image": "/alan.png",
         "bio": [
           "Co-founded Torrenegra Organization with Shark Tank investor Alex Torrenegra, supporting more than 100 companies in execution, operations, and expansion.",
@@ -299,14 +261,17 @@
           "Backed by Platanus Ventures. Member of Latitud, On Deck, and AI Circle."
         ],
         "logos": [
-          { "src": "/alan_logos/Group 2.svg", "alt": "Torrenegra Organization" },
+          {
+            "src": "/alan_logos/Group 2.svg",
+            "alt": "Torrenegra Organization"
+          },
           { "src": "/alan_logos/buny.svg", "alt": "Bunny" }
         ],
         "linkedin": "https://www.linkedin.com/in/alan-arguello/"
       },
       {
         "name": "Michelle Arguello",
-        "role": "CFO, Venture Capital Specialist",
+        "role": "Accounting & Finance Specialist",
         "image": "/michelle.jpeg",
         "bio": [
           "Accountant specialized in operations and finance.",
@@ -318,6 +283,21 @@
           { "src": "/michelle_logos/derevo.svg", "alt": "Derevo" }
         ],
         "linkedin": "https://www.linkedin.com/in/michelleargoroz/"
+      },
+      {
+        "name": "Emilio Jacome",
+        "role": "Venture Capital Specialist",
+        "image": "/emilio/profile_photo.jpeg",
+        "bio": [
+          "Venture capital specialist with investment and portfolio experience at Potencia Ventures and Startups Ventures.",
+          "Led research and growth at Startupeable, Makers Fellowship, and B2 Founders, supporting early-stage founders.",
+          "Co-founder of Psicconnect and Sigma Squared Society fellow, with training in Business & Economics at the University of Sussex."
+        ],
+        "logos": [
+          { "src": "/emilio/startupeable.png", "alt": "Startupeable" },
+          { "src": "/emilio/sussex.png", "alt": "University of Sussex" }
+        ],
+        "linkedin": "https://www.linkedin.com/in/emilio-jacome/"
       }
     ]
   },
@@ -615,18 +595,8 @@
         {
           "name": "Alan Arguello",
           "role": "CEO, Engineer & MBA",
-          "tags": [
-            "Engineering",
-            "MBA",
-            "YC",
-            "Startups"
-          ],
-          "experience": [
-            "Beek (YC)",
-            "Citi",
-            "NWL",
-            "Platanus"
-          ],
+          "tags": ["Engineering", "MBA", "YC", "Startups"],
+          "experience": ["Beek (YC)", "Citi", "NWL", "Platanus"],
           "bullets": [
             "Co-founded Torrenegra Organization alongside Alex Torrenegra.",
             "Part of the founding team of Makers Fellowship with Andres Bilbao.",
@@ -636,17 +606,9 @@
         },
         {
           "name": "Michelle Arguello",
-          "role": "CFO, VC Specialist",
-          "tags": [
-            "Finance",
-            "VC",
-            "Operations"
-          ],
-          "experience": [
-            "IGNIA",
-            "Derevo",
-            "VC Ops"
-          ],
+          "role": "Accounting & Finance Specialist",
+          "tags": ["Finance", "VC", "Operations"],
+          "experience": ["IGNIA", "Derevo", "VC Ops"],
           "bullets": [
             "Administration Manager at IGNIA Partners, leading investor reporting.",
             "Led operational control and financial governance processes for growing companies.",

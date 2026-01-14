@@ -135,32 +135,13 @@
       },
       "training": {
         "title": "Tasa de adopción",
-        "skills": [
-          "Prompting",
-          "Herramientas",
-          "Workflows",
-          "Análisis"
-        ],
-        "metrics": [
-          "Sesiones",
-          "Horas",
-          "Equipos"
-        ],
+        "skills": ["Prompting", "Herramientas", "Workflows", "Análisis"],
+        "metrics": ["Sesiones", "Horas", "Equipos"],
         "completion": "81.5% COMPLETO"
       },
       "strategy": {
-        "milestones": [
-          "Diagnóstico",
-          "Diseño",
-          "Ejecución"
-        ],
-        "phases": [
-          "Q1",
-          "Q2",
-          "Q3",
-          "Q4",
-          "ESCALA"
-        ],
+        "milestones": ["Diagnóstico", "Diseño", "Ejecución"],
+        "phases": ["Q1", "Q2", "Q3", "Q4", "ESCALA"],
         "progress": "FASE 3 DE 5"
       },
       "talent": {
@@ -169,20 +150,9 @@
       },
       "events": {
         "title": "Asistencia",
-        "months": [
-          "ENE",
-          "DIC"
-        ],
-        "metrics": [
-          "Eventos",
-          "Prom.",
-          "NPS"
-        ],
-        "units": [
-          "/año",
-          "pax",
-          ""
-        ],
+        "months": ["ENE", "DIC"],
+        "metrics": ["Eventos", "Prom.", "NPS"],
+        "units": ["/año", "pax", ""],
         "next": "SIG: 15 MAR"
       },
       "siliconValley": {
@@ -213,11 +183,7 @@
       },
       "blind": {
         "engagement": "Interacción",
-        "metrics": [
-          "Alcance",
-          "CTR",
-          "Conv."
-        ]
+        "metrics": ["Alcance", "CTR", "Conv."]
       },
       "bunny": {
         "input": "ENTRADA",
@@ -225,11 +191,7 @@
         "output": "SALIDA"
       },
       "universidad": {
-        "labels": [
-          "Proyectos",
-          "Equipos",
-          "Impacto"
-        ]
+        "labels": ["Proyectos", "Equipos", "Impacto"]
       }
     },
     "cases": [
@@ -291,7 +253,7 @@
     "team": [
       {
         "name": "Alan Arguello",
-        "role": "CEO, Software Engineer & MBA",
+        "role": "Strategy & Technology Specialist",
         "image": "/alan.png",
         "bio": [
           "Cofundó Torrenegra Organization junto al inversor de Shark Tank, Alex Torrenegra, apoyando a más de 100 empresas en ejecución, operación y expansión.",
@@ -299,14 +261,17 @@
           "Invertido por Platanus Ventures. Miembro de Latitud, On Deck y AI Circle."
         ],
         "logos": [
-          { "src": "/alan_logos/Group 2.svg", "alt": "Torrenegra Organization" },
+          {
+            "src": "/alan_logos/Group 2.svg",
+            "alt": "Torrenegra Organization"
+          },
           { "src": "/alan_logos/buny.svg", "alt": "Bunny" }
         ],
         "linkedin": "https://www.linkedin.com/in/alan-arguello/"
       },
       {
         "name": "Michelle Arguello",
-        "role": "CFO, Venture Capital Specialist",
+        "role": "Accounting & Finance Specialist",
         "image": "/michelle.jpeg",
         "bio": [
           "Contadora especializada en operación y finanzas.",
@@ -318,6 +283,21 @@
           { "src": "/michelle_logos/derevo.svg", "alt": "Derevo" }
         ],
         "linkedin": "https://www.linkedin.com/in/michelleargoroz/"
+      },
+      {
+        "name": "Emilio Jacome",
+        "role": "Venture Capital Specialist",
+        "image": "/emilio/profile_photo.jpeg",
+        "bio": [
+          "Especialista en venture capital con experiencia en análisis de inversión y portafolio en Potencia Ventures y Startups Ventures.",
+          "Lideró investigación y crecimiento en Startupeable, Makers Fellowship y B2 Founders, apoyando a fundadores en etapas tempranas.",
+          "Cofundador de Psicconnect y fellow de Sigma Squared Society, con formación en Business & Economics en University of Sussex."
+        ],
+        "logos": [
+          { "src": "/emilio/startupeable.png", "alt": "Startupeable" },
+          { "src": "/emilio/sussex.png", "alt": "University of Sussex" }
+        ],
+        "linkedin": "https://www.linkedin.com/in/emiliojacome/"
       }
     ]
   },
@@ -614,19 +594,9 @@
       "members": [
         {
           "name": "Alan Arguello",
-          "role": "CEO, Engineer & MBA",
-          "tags": [
-            "Ingeniería",
-            "MBA",
-            "YC",
-            "Startups"
-          ],
-          "experience": [
-            "Beek (YC)",
-            "Citi",
-            "NWL",
-            "Platanus"
-          ],
+          "role": "Strategy & Technology Specialist",
+          "tags": ["Ingeniería", "MBA", "YC", "Startups"],
+          "experience": ["Beek (YC)", "Citi", "NWL", "Platanus"],
           "bullets": [
             "Cofundó Torrenegra Organization junto a Alex Torrenegra.",
             "Parte del equipo inicial de Makers Fellowship con Andrés Bilbao.",
@@ -636,17 +606,9 @@
         },
         {
           "name": "Michelle Arguello",
-          "role": "CFO, VC Specialist",
-          "tags": [
-            "Finanzas",
-            "VC",
-            "Operación"
-          ],
-          "experience": [
-            "IGNIA",
-            "Derevo",
-            "VC Ops"
-          ],
+          "role": "Accounting & Finance Specialist",
+          "tags": ["Finanzas", "VC", "Operación"],
+          "experience": ["IGNIA", "Derevo", "VC Ops"],
           "bullets": [
             "Fue Administration Manager en IGNIA Partners, liderando reportes a inversionistas.",
             "Ha dirigido procesos de control operativo y gobierno financiero para compañías en crecimiento.",
