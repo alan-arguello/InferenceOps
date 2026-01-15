@@ -46,7 +46,7 @@
       "line1": "We implement <accent>artificial</accent>",
       "line2": "<accent>intelligence</accent> for your <accent>company.</accent>"
     },
-    "subtitle": "We help executive teams across SMEs, corporates, and governments improve efficiency, revenue, and operations with solutions that integrate into real workflows.",
+    "subtitle": "We implement generative AI (ChatGPT/Gemini) in operations for Latin American companies.",
     "bullets": [
       "We bring order and clarity on what is worth implementing and what is not",
       "We prioritize what moves the P&L and cut what does not",
@@ -65,6 +65,7 @@
     "paragraphs": [
       "In recent months, as we spoke with executives and corporate leaders across the region, we saw the same pattern: <highlight>real interest in AI</highlight>, but <highlight>little clarity</highlight> on how to turn it into <highlight>results</highlight>.",
       "Many efforts fail not because of the technology, but because of <highlight>poor prioritization</highlight>, <highlight>lack of integration</highlight>, and <highlight>zero adoption</highlight>.",
+      "<highlight>Generative AI</highlight> (ChatGPT/Gemini) can already automate tasks, analyze information, and speed up decisions when it is integrated into real processes.",
       "<strong>That's why we exist:</strong> we implement what truly moves operations.<br></br>We start with the <highlight>highest-impact case</highlight>, integrate it into your current tools, and stay with you until the team uses it day to day, with <highlight>clear metrics</highlight>."
     ]
   },
