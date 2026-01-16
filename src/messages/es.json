@@ -46,7 +46,7 @@
       "line1": "Implementamos <accent>inteligencia</accent>",
       "line2": "<accent>artificial</accent> en tu <accent>empresa.</accent>"
     },
-    "subtitle": "Implementamos IA generativa (ChatGPT/Gemini) en operación para empresas de Latinoamérica.",
+    "subtitle": "Implementamos IA generativa en operación para empresas de Latinoamérica.",
     "bullets": [
       "Ponemos orden y claridad sobre qué sí vale la pena implementar y qué no",
       "Priorizamos lo que sí mueve el P&L y descartamos lo que no",
@@ -55,7 +55,8 @@
     "cta": {
       "primary": "Agendar llamada",
       "secondary": "Ver casos"
-    }
+    },
+    "clientsLabel": "Algunos de nuestros clientes"
   },
   "Oportunidad": {
     "title": {

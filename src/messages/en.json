@@ -46,7 +46,7 @@
       "line1": "We implement <accent>artificial</accent>",
       "line2": "<accent>intelligence</accent> for your <accent>company.</accent>"
     },
-    "subtitle": "We implement generative AI (ChatGPT/Gemini) in operations for Latin American companies.",
+    "subtitle": "We implement generative AI in operations for Latin American companies.",
     "bullets": [
       "We bring order and clarity on what is worth implementing and what is not",
       "We prioritize what moves the P&L and cut what does not",
@@ -55,7 +55,8 @@
     "cta": {
       "primary": "Schedule a call",
       "secondary": "See cases"
-    }
+    },
+    "clientsLabel": "Some of our clients"
   },
   "Oportunidad": {
     "title": {

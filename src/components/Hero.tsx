@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { useTranslations } from "next-intl";
 import ParticleField from "./ParticleField";
@@ -9,6 +10,18 @@ import { SCHEDULE_CALL_URL } from "@/lib/links";
 export default function Hero() {
   const t = useTranslations("Hero");
   const bullets = t.raw("bullets") as string[];
+  const logos = [
+    { src: "/previous_clients/Lax.png", alt: "Lax" },
+    { src: "/previous_clients/blindcreator.png", alt: "Blindcreator" },
+    { src: "/previous_clients/continental.png", alt: "Continental" },
+    { src: "/previous_clients/freeticket.png", alt: "FreeTicket" },
+    { src: "/previous_clients/grayola.png", alt: "Grayola" },
+    { src: "/previous_clients/innovahub.png", alt: "InnovaHub" },
+    { src: "/previous_clients/makers.png", alt: "Makers" },
+    { src: "/previous_clients/saees.png", alt: "Saees" },
+    { src: "/previous_clients/yufun.png", alt: "Yufun" },
+  ];
+  const logoTrack = [...logos, ...logos];
   const titleLine1 = t.rich("title.line1", {
     accent: (chunks) => (
       <span className="text-elegant text-foreground">{chunks}</span>
@@ -97,6 +110,36 @@ export default function Hero() {
                 className="group-hover:translate-x-1 transition-transform duration-300"
               />
             </a>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.65, ease: [0.16, 1, 0.3, 1] }}
+            className="mt-10 sm:mt-12"
+          >
+            <p className="text-[10px] sm:text-xs uppercase tracking-[0.35em] text-muted-dark text-center sm:text-left">
+              {t("clientsLabel")}
+            </p>
+            <div className="mt-4 logo-marquee" aria-label={t("clientsLabel")}>
+              <div className="logo-track">
+                {logoTrack.map((logo, index) => (
+                  <div
+                    key={`${logo.alt}-${index}`}
+                    className="logo-item"
+                    aria-hidden={index >= logos.length}
+                  >
+                    <Image
+                      src={logo.src}
+                      alt={logo.alt}
+                      width={200}
+                      height={64}
+                      className="logo-image"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
           </motion.div>
         </div>
       </div>
